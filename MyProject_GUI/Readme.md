@@ -1,7 +1,7 @@
-# This project is about my research.
+﻿# This project is about my research.
 * I'm [Ting-Yu Chen](https://github.com/Wilhelmine21/Wilhelmine21). 
 * I'm from [Test Lab](http://testlab.ncue.edu.tw/tch/), Electronic Engineering, National Changhua University of Education.
-* The title of my thesis is ** AN Codes LS-PWL-RALUT**.
+* The title of my thesis is **AN Codes LS-PWL-RALUT**.
 
 ## AN Codes LS-PWL-RALUT
 * AN codes --- [wiki](https://en.wikipedia.org/wiki/AN_codes)
