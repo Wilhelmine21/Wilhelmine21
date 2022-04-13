@@ -4,35 +4,34 @@
 * The title of my thesis is **AN Codes LS-PWL-RALUT**.
 
 ## AN Codes LS-PWL-RALUT
-* AN codes --- [wiki](https://en.wikipedia.org/wiki/AN_codes)
+* AN codes --- [wiki](https://en.wikipedia.org/wiki/AN_codes)</br>
 	<img src="./img/Pasted image 20220413215340.png" width="50%" height="50%"/></br>
 	* 方法
-	* Galois Field : GF(A)</br>
-		<img src="./img/Pasted image 20220413222224.png" width="50%" height="50%"/></br>
+	* Galois Field : GF(A)
 		* 2 is a primitive element
 			* GF(3)={0;1,2}
 			* GF(5)={0;1,2,4,3}
 			* GF(7)={0;1,2,4,3,6,5}
 		* 3 is a primitive element
 			* GF(7)={0;1,3,2,6,4,5}</br>
-		<img src="./img/Pasted image 20220413222224.png" width="50%" height="50%"/></br>
-		<img src="./img/Pasted image 20220413222328.png" width="50%" height="50%"/></br>
+		<img src="./img/Pasted image 20220413222224.png" width="50%" height="50%"/><img src="./img/Pasted image 20220413222328.png" width="50%" height="50%"/></br>
 	* 為什麼使用
 	* Error Model
 
 * Light Number
 	* 說明
-		* 
-	* Example:
-	$$1.625=+1+\frac{1}{2}+\frac{1}{8}=+2^0+2^{-1}+2^{-3}$$$$ 0.4375=+\frac{1}{2}-\frac{1}{8}+\frac{1}{16}=+2^{-1}-2^{-3}+2^{-4}$$
+	* 
+	* Example:</br>
+		* 1.625=+1+1/2+1/8=+2^0+2^{-1}+2^{-3}
+		* 0.4375=+1/2-1/8+1/16=+2^{-1}-2^{-3}+2^{-4}
 
-	|s1 |m1 |s2 |m2 |s3 |m3|
-	|:----:|:----:|:----:|:----:|:----:|:----:|
-	|+ |0 |+ |-1 |+ |-3|
-	|+ |-1 |- |-3 |+ |-4|
+		|s1 |m1 |s2 |m2 |s3 |m3|
+		|:----:|:----:|:----:|:----:|:----:|:----:|
+		|+ |0 |+ |-1 |+ |-3|
+		|+ |-1 |- |-3 |+ |-4|
 
 * 題目說明
-</br><img src="./img/Pasted image 20220413222506" width="50%" height="50%"/></br>
+</br><img src="./img/Pasted image 20220413222506.png" width="50%" height="50%"/></br>
 ---
 ## My Project GUI
 * 簡介 我做了一個GUI用來展示
