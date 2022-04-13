@@ -1,14 +1,14 @@
-﻿# This project is about my research.
+# This project is about my research.
 * I'm [Ting-Yu Chen](https://github.com/Wilhelmine21/Wilhelmine21). 
 * I'm from [Test Lab](http://testlab.ncue.edu.tw/tch/), Electronic Engineering, National Changhua University of Education.
 * The title of my thesis is **AN Codes LS-PWL-RALUT**.
 
-## AN Codes LS-PWL-RALUT
+## I. AN Codes LS-PWL-RALUT
 * AN codes --- [wiki](https://en.wikipedia.org/wiki/AN_codes)
 * Light Number
 * 說明
 ---
-## My Project GUI
+## II. My Project GUI
 * 簡介 我做了一個GUI用來展示
 * 環境 iVerilog GTKwave
 * 版本(Win10, Linux)及附加檔案(for EDA)
@@ -80,8 +80,7 @@
 	
 #### 2. ANRCAM
 <img src="./img/Pasted image 20220413130605.png" width="50%" height="50%"/></br>
-
-* 介面功能介紹
+* 這個project透過設定基本參數，對激勵函數做線性分段，搜尋出最少的線段，範圍和輕數斜率等數據
 	
 ---
 
