@@ -18,7 +18,7 @@
 ## AN Codes LS-PWL-RALUT
 ### AN codes --- [wiki](https://en.wikipedia.org/wiki/AN_codes) 
 </br><img src="./img/Pasted image 20220413215340.png" width="50%" height="50%"/></br>
-* AN codes是一個以整數A和N來命名的在線糾錯碼。運作方法是將我們要處理的數字N乘以我們選擇適合的模數A，經過一些計算後，除以A並解碼得到N。如果Mod A等於零，那代表這個數字是正確的，如果不是，那我們會需要回去查表去進行更正。
+* AN codes是一個以整數A和N來命名的在線糾錯碼。運作方法是將要處理的數字N乘以我們選擇適合的模數A，經過一些計算後，除以A並解碼得到N。如果Mod A等於零，那代表這個數字是正確的，如果不是，那我們會需要回去查表去進行更正。
 * 我們使用Galois Field來創造一個數字環，這個環中的數字是通過乘以一定的倍數來計算的。
 	* 例如，GF(7)可以使用x2或x3來創造數字環。但是我們不會使用x3的環，因為要處理的數字是二進制的，所以選擇2作為倍數。
 		* 2 is a primitive element
@@ -110,16 +110,16 @@
 </br><img src="./img/a1.png" width="20%" height="20%"/></br>
 	
 * 為什麼要使用查表及AN codes?	
-	*  關於神經網絡中的激勵函數和量化，我們可能會遇到需要應用於任何函數的情況，並且它可能具有各種函數，那這些函數可能是複雜的，也可能是無法被符號積分微分的函數。 在這種情況下，最合適的方法是使用`查表`。
+	*  關於神經網絡中的`激勵函數`和`量化`，我們可能會遇到需要應用於`任何函數`的情況，並且它可能具有各種函數，那這些函數可能是複雜的，也可能是無法被符號積分微分的函數。 在這種情況下，最合適的方法是使用`查表`。
 	*  對於傳統的查表，它有幾個缺點。首先是它需要記憶體去記錄，並使用了ROM。第二個是它記錄的數量非常大。因此，有些人使用PWL和RALUT來解決這些問題，但是對於第一個PWL來說，它需要乘法器，而這會佔用面積；然後對於第二個RALUT來說，它記錄的數量仍然很多。
-	*  因此，我們可以使用`輕數斜率(Light Slope)`來改善這兩個缺點，那我們提出的方法是`輕數斜率分段線性範圍可循址查表(LS-PWL RALUT)`。
-	*  隨著科技的發展，越來越多電動汽車使用神經網絡進行訓練，讓汽車得以自動駕駛。但是，我們時不時聽到有關於自動駕駛汽車的車禍事故。因此，提高神經網絡的可靠度是非常重要的。
+	*  因此，我們可以使用`輕數斜率(Light Slope)`來改善這兩個缺點，那我們提出的方法是`輕數斜率分段線性範圍可循址查表(LS-PWL-RALUT)`。
+	*  隨著科技的發展，越來越多電動汽車使用神經網絡進行訓練，讓汽車得以自動駕駛。但是，我們時不時聽到有關於自動駕駛汽車的車禍事故。因此，提高神經網絡的`可靠度`是非常重要的。
 	*  對於神經網絡的前幾層它具有自我修復的作用，但是對於最後一層它具有決定性的作用。最後一層的激勵函數通常不是像ReLU這樣簡單的函數，而是複雜的函數，那更應該使用查表去處理。但是由於來自通道或運算的雜訊，這一層很容易受到影響而錯誤。因此，為了能夠更正錯誤，我們添加了`AN codes`以提高神經網絡的可靠度。
 
 * 如何使用移位而不用乘法?	
 	*  下圖是一個tanh(x)的圖，它是一個常見的激勵函數
 		</br><img src="./img/tanh.png" width="40%" height="40%"/></br>
-	*  那我們的方法會對它進行線性分段，而這個分段的線段就可以用點斜式來表示
+	*  那我們的方法會對它進行線性分段，而這個分段的線段就可以用`點斜式`來表示
 		</br><img src="./img/tanh_pwl.png" width="40%" height="40%"/></br>
 	*  由於乘法會需要花費面積和時間，所以我們將斜率K替換成Light Number，這樣就可以使用移位的方式來完成這個式子，而不需要使用乘法器。
 		</br><img src="./img/funct1.png" width="20%" height="20%"/><img src="./img/toright.png" width="5%" height="5%"/><img src="./img/funct2.png" width="30%" height="30%"/><img src="./img/toright.png" width="5%" height="5%"/><img src="./img/funct3.png" width="30%" height="30%"/></br>
@@ -138,15 +138,15 @@
 	* 3. [EDA](https://github.com/Wilhelmine21/Wilhelmine21/blob/MyNCUE/MyProject_GUI/Readme.md#3-eda)
 * 環境
 	*  Verilog: [iVerilog](http://iverilog.icarus.com/), [GTKwave](http://gtkwave.sourceforge.net/)
-	*  EDA: Design Comilper, IC Compiler
+	*  EDA: `Design Comilper`, `IC Compiler`
 
 * 版本及檔案說明、影片連結
 	* Windows版本 --- [Link]()
-		* GUI_ALL.exe (執行檔)
+		* `GUI_ALL.exe` (執行檔)
 		* 目前版本無須額外檔案
-		* EDA功能不能使用
+		* EDA功能無法使用
 	* Linux版本 --- [Link]()
-		* GUI_ALL_linux (執行檔)
+		* `GUI_ALL_linux` (執行檔)
 		* EDA_add_files_GUI.tar (執行自動化繞線所需的額外檔案)
 	* Demo Video
 		* a. Windows 10 version --- [video](https://www.youtube.com/watch?v=kXfVsiijhno)
@@ -373,7 +373,7 @@
 
 * `VCD`功能鍵
 	* 使用[iVerilog](http://iverilog.icarus.com/)和[GTKwave](http://gtkwave.sourceforge.net/)來進行驗證
-	* 開始編譯ANRCAM.v與ANRCAM_tb.v，然後會產生ANRCAM.txt，裡面有輸入與輸出數據
+	* 開始編譯ANRCAM.v與ANRCAM_tb.v，然後會產生ANRCAM.txt，裡面有輸入與輸出的數據
 
 * `Plt fig`功能鍵
 	* 需先做`VCD` 
