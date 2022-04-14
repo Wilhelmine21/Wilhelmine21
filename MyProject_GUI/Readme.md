@@ -121,9 +121,26 @@
 
 ---
 ## My Project GUI
-* 簡介 我做了一個GUI用來展示
-* 環境 iVerilog GTKwave
-* 版本(Win10, Linux)及附加檔案(for EDA)
+* 我做了一個GUI用來展示我的題目
+* 我的GUI分為 3 個部分來運行
+	* 1. [AN codes](https://github.com/Wilhelmine21/Wilhelmine21/edit/MyNCUE/MyProject_GUI/Readme.md#1-an-codes-and-decoder)
+	* 2. [ANRCAM](https://github.com/Wilhelmine21/Wilhelmine21/edit/MyNCUE/MyProject_GUI/Readme.md#2-anrcam)
+	* 3. [EDA](https://github.com/Wilhelmine21/Wilhelmine21/edit/MyNCUE/MyProject_GUI/Readme.md#3-eda)
+* 環境
+	*  Verilog: [iVerilog](http://iverilog.icarus.com/), [GTKwave](http://gtkwave.sourceforge.net/)
+	*  EDA: Design Comilper, IC Compiler
+
+* 版本及檔案說明、影片連結
+	* Windows版本 --- [Link]()
+		* GUI_ALL.exe (執行檔)
+		* 目前版本無須額外檔案
+		* EDA功能不能使用
+	* Linux版本 --- [Link]()
+		* GUI_ALL_linux (執行檔)
+		* EDA_add_files_GUI.tar (執行自動化繞線所需的額外檔案)
+	* Demo Video
+		* a. Windows 10 version --- [video](https://www.youtube.com/watch?v=kXfVsiijhno)
+		* b. Linux (Centos 7) version --- [video](https://www.youtube.com/watch?v=Rb99CHsb28k) 
 
 ###  My Research
 <img src="./img/Pasted image 20220413130346.png" width="50%" height="50%"/><img src="./img/Pasted image 20220413130817.png" width="50%" height="50%"/>
