@@ -129,8 +129,6 @@
 	* 將輸入值N乘以A，進入比較範圍，然後只有一條Word Line會被enable
 	* 在ROM中查到對應的值，出來進行移位和加總，然後得到查表的輸出
 	* 將其除以A，然後對其進行解碼以進行更正，最後獲得正確的值。
-
-
 ---
 ## My Project GUI
 * 我做了一個GUI用來展示我的題目
@@ -218,7 +216,6 @@
 	* 最後About會顯示程式資訊</br>
 		<img src="./img/Pasted image 20220413142805.png" width="40%" height="40%"/>
 *** 
-	
 #### 2. ANRCAM
 <img src="./img/Pasted image 20220413130605.png" width="50%" height="50%"/></br>
 
