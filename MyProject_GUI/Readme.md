@@ -1,14 +1,39 @@
-# This project is about my research.
+﻿# This project is about my research.
 * I'm [Ting-Yu Chen](https://github.com/Wilhelmine21/Wilhelmine21). 
 * I'm from [Test Lab](http://testlab.ncue.edu.tw/tch/), Electronic Engineering, National Changhua University of Education.
 * The title of my thesis is **AN Codes LS-PWL-RALUT**.
 
-## I. AN Codes LS-PWL-RALUT
-* AN codes --- [wiki](https://en.wikipedia.org/wiki/AN_codes)
+## AN Codes LS-PWL-RALUT
+* AN codes --- [wiki](https://en.wikipedia.org/wiki/AN_codes)</br>
+	<img src="./img/Pasted image 20220413215340.png" width="50%" height="50%"/></br>
+	* 方法
+	* Galois Field : GF(A)
+		* 2 is a primitive element
+			* GF(3)={0;1,2}
+			* GF(5)={0;1,2,4,3}
+			* GF(7)={0;1,2,4,3,6,5}
+		* 3 is a primitive element
+			* GF(7)={0;1,3,2,6,4,5}</br>
+		<img src="./img/Pasted image 20220413222224.png" width="50%" height="50%"/><img src="./img/Pasted image 20220413222328.png" width="50%" height="50%"/></br>
+	* 為什麼使用
+	* Error Model
+
 * Light Number
-* 說明
+	* 說明
+	* 
+	* Example:</br>
+		* 1.625=+1+1/2+1/8=+2^0+2^{-1}+2^{-3}
+		* 0.4375=+1/2-1/8+1/16=+2^{-1}-2^{-3}+2^{-4}
+
+			|s1 |m1 |s2 |m2 |s3 |m3|
+			|:----:|:----:|:----:|:----:|:----:|:----:|
+			|+ |0 |+ |-1 |+ |-3|
+			|+ |-1 |- |-3 |+ |-4|
+
+* 題目說明
+</br><img src="./img/Pasted image 20220413222506.png" width="50%" height="50%"/></br>
 ---
-## II. My Project GUI
+## My Project GUI
 * 簡介 我做了一個GUI用來展示
 * 環境 iVerilog GTKwave
 * 版本(Win10, Linux)及附加檔案(for EDA)
@@ -80,7 +105,8 @@
 	
 #### 2. ANRCAM
 <img src="./img/Pasted image 20220413130605.png" width="50%" height="50%"/></br>
-* 這個project透過設定基本參數，對激勵函數做線性分段，搜尋出最少的線段，範圍和輕數斜率等數據
+
+* 介面功能介紹
 	
 ---
 
