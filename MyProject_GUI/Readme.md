@@ -37,7 +37,7 @@
 					
 	</br><img src="./img/Pasted image 20220413222224.png" width="50%" height="50%"/><img src="./img/Pasted image 20220413222328.png" width="50%" height="50%"/></br>
 * 為什麼我們使用AN codes而不是Hamming codes呢?
-	* 因為漢明碼經過計算後，它的檢查會被破壞，進而無法繼續具有更正錯誤的能力，而AN codes它可以經過計算後，依然具有更正錯誤的能力。
+	* 因為漢明碼經過計算後，它的檢查bit會被破壞，進而無法繼續具有更正錯誤的能力，而AN codes它可以經過計算後，依然具有更正錯誤的能力。
 * **4 Error Model**
 	* 為了能夠有更好的更正效果，我們針對以下四種情況分別進行定義錯誤模型。
 	* 1. **已知錯誤方向(Unidirectional)之完全非對稱模型**
@@ -179,6 +179,7 @@
 <img src="./img/Pasted image 20220413130543.png" width="40%" height="40%"/>
 
 * 這個Project主要用來生成AN codes解碼器(Verilog file)
+
 * Step 1. 找到可用的A
 	* (1) 輸入範圍 
 		* 需大於10
@@ -189,6 +190,7 @@
 		* BER: Bit Error Rate model
 		* AWE: Arithmetic Weight Error model
 	* (3) A maybe欄位會展示出範圍內可用的A
+
 * Step 2. 生成Verilog檔案
 	* (1) 在Select A輸入想要的A值
 		* 此值須為A maybe欄位中出現過的數字
@@ -196,6 +198,7 @@
 	<img src="./img/Pasted image 20220413141429.png" width="40%" height="40%"/> </br>
 	* (3) 若是看不清楚，可使用上方選單File->Open File... 開啟檔案查看 </br>
 	<img src="./img/Pasted image 20220413141620.png" width="40%" height="40%"/> </br>
+
 * Step 3. Verilog 驗證
 	* 這個功能使用[iVerilog](http://iverilog.icarus.com)和[GTKwave](http://gtkwave.sourceforge.net)來進行驗證
 	* testbench會隨解碼器檔一起生成
