@@ -372,7 +372,7 @@
 		* 5. 展示出2張圖: (1) 用搜尋後的輕數斜率與截距畫出激勵函數 (2) 所得值與正確值的誤差
 
 * `VCD`功能鍵
-	* 使用[iVerilog](http://iverilog.icarus.com/), 和[GTKwave](http://gtkwave.sourceforge.net/)來進行驗證
+	* 使用[iVerilog](http://iverilog.icarus.com/)和[GTKwave](http://gtkwave.sourceforge.net/)來進行驗證
 	* 開始編譯ANRCAM.v與ANRCAM_tb.v，然後會產生ANRCAM.txt，裡面有輸入與輸出數據
 
 * `Plt fig`功能鍵
