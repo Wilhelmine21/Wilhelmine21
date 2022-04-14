@@ -103,20 +103,20 @@
 *  對於神經網絡的前幾層它具有自我修復的作用，但是對於最後一層它具有決定性的作用。最後一層的激勵函數通常不是像ReLU這樣簡單的函數，而是複雜的函數，那更應該使用查表去處理。但是由於來自通道或運算的雜訊，這一層很容易受到影響而錯誤。因此，為了能夠更正錯誤，我們添加了AN codes以提高神經網絡的可靠度。
 *  第一個方程式是一個點斜式
   
-	</br><img src="./img/funct1.png" width="50%" height="50%"/></br>
+	</br><img src="./img/funct1.png" width="30%" height="30%"/></br>
 
 *  下圖是一個tanh(x)的圖，它是一個常見的激勵函數
 
-</br><img src="./img/tanh.png" width="50%" height="50%"/></br>
+	</br><img src="./img/tanh.png" width="40%" height="40%"/></br>
 
 *  那我們的方法會對它進行線性分段，而這個分段的線段就可以用點斜式來表示
 
-</br><img src="./img/tanh_pwl.png" width="50%" height="50%"/></br>
+	</br><img src="./img/tanh_pwl.png" width="40%" height="40%"/></br>
 
 *  由於乘法會需要花費面積和時間，所以我們將斜率K替換成Light Number，這樣就可以使用移位的方式來完成這個式子，而不需要使用乘法器。
 
-</br><img src="./img/funct2.png" width="50%" height="50%"/></br>
-</br><img src="./img/funct3.png" width="50%" height="50%"/></br>
+	</br><img src="./img/funct2.png" width="30%" height="30%"/></br>
+	</br><img src="./img/funct3.png" width="30%" height="30%"/></br>
 
 ---
 ## My Project GUI
