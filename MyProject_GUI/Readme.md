@@ -3,15 +3,15 @@
 * I'm from [Test Lab](http://testlab.ncue.edu.tw/tch/), Electronic Engineering, National Changhua University of Education.
 * The title of my thesis is **AN Codes LS-PWL-RALUT**.
 # 目錄
-* I. [AN Codes LS-PWL-RALUT](https://github.com/Wilhelmine21/Wilhelmine21/edit/MyNCUE/MyProject_GUI/Readme.md#an-codes-ls-pwl-ralut)
-	* i. [AN codes](https://github.com/Wilhelmine21/Wilhelmine21/edit/MyNCUE/MyProject_GUI/Readme.md#an-codes-----wiki)
-	* ii. [Light Number](https://github.com/Wilhelmine21/Wilhelmine21/edit/MyNCUE/MyProject_GUI/Readme.md#light-number)
-* II. [題目說明]	
-* III. [My Project GUI](https://github.com/Wilhelmine21/Wilhelmine21/edit/MyNCUE/MyProject_GUI/Readme.md#my-project-gui)
-	* i. [My Research](https://github.com/Wilhelmine21/Wilhelmine21/edit/MyNCUE/MyProject_GUI/Readme.md#my-research)
-		* 1. [AN codes](https://github.com/Wilhelmine21/Wilhelmine21/edit/MyNCUE/MyProject_GUI/Readme.md#1-an-codes-and-decoder)
-		* 2. [ANRCAM](https://github.com/Wilhelmine21/Wilhelmine21/edit/MyNCUE/MyProject_GUI/Readme.md#2-anrcam)
-		* 3. [EDA](https://github.com/Wilhelmine21/Wilhelmine21/edit/MyNCUE/MyProject_GUI/Readme.md#3-eda)
+* I. [AN Codes LS-PWL-RALUT](https://github.com/Wilhelmine21/Wilhelmine21/blob/MyNCUE/MyProject_GUI/Readme.md#an-codes-ls-pwl-ralut)
+	* i. [AN codes](https://github.com/Wilhelmine21/Wilhelmine21/blob/MyNCUE/MyProject_GUI/Readme.md#an-codes-----wiki)
+	* ii. [Light Number](https://github.com/Wilhelmine21/Wilhelmine21/blob/MyNCUE/MyProject_GUI/Readme.md#light-number)
+	* iii. [題目說明](https://github.com/Wilhelmine21/Wilhelmine21/blob/MyNCUE/MyProject_GUI/Readme.md#題目說明)	
+* II. [My Project GUI](https://github.com/Wilhelmine21/Wilhelmine21/blob/MyNCUE/MyProject_GUI/Readme.md#my-project-gui)
+	* i. [My Research](https://github.com/Wilhelmine21/Wilhelmine21/blob/MyNCUE/MyProject_GUI/Readme.md#my-research)
+		* 1. [AN codes](https://github.com/Wilhelmine21/Wilhelmine21/blob/MyNCUE/MyProject_GUI/Readme.md#1-an-codes-and-decoder)
+		* 2. [ANRCAM](https://github.com/Wilhelmine21/Wilhelmine21/blob/MyNCUE/MyProject_GUI/Readme.md#2-anrcam)
+		* 3. [EDA](https://github.com/Wilhelmine21/Wilhelmine21/blob/MyNCUE/MyProject_GUI/Readme.md#3-eda)
 		
 	
 
@@ -135,9 +135,9 @@
 ## My Project GUI
 * 我做了一個GUI用來展示我的題目
 * 我的GUI分為 3 個部分來運行
-	* 1. [AN codes](https://github.com/Wilhelmine21/Wilhelmine21/edit/MyNCUE/MyProject_GUI/Readme.md#1-an-codes-and-decoder)
-	* 2. [ANRCAM](https://github.com/Wilhelmine21/Wilhelmine21/edit/MyNCUE/MyProject_GUI/Readme.md#2-anrcam)
-	* 3. [EDA](https://github.com/Wilhelmine21/Wilhelmine21/edit/MyNCUE/MyProject_GUI/Readme.md#3-eda)
+	* 1. [AN codes](https://github.com/Wilhelmine21/Wilhelmine21/blob/MyNCUE/MyProject_GUI/Readme.md#1-an-codes-and-decoder)
+	* 2. [ANRCAM](https://github.com/Wilhelmine21/Wilhelmine21/blob/MyNCUE/MyProject_GUI/Readme.md#2-anrcam)
+	* 3. [EDA](https://github.com/Wilhelmine21/Wilhelmine21/blob/MyNCUE/MyProject_GUI/Readme.md#3-eda)
 * 環境
 	*  Verilog: [iVerilog](http://iverilog.icarus.com/), [GTKwave](http://gtkwave.sourceforge.net/)
 	*  EDA: Design Comilper, IC Compiler
