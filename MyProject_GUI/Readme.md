@@ -138,6 +138,8 @@
 	* 3. [EDA](https://github.com/Wilhelmine21/Wilhelmine21/blob/MyNCUE/MyProject_GUI/Readme.md#3-eda)
 * 環境
 	*  Verilog: [iVerilog](http://iverilog.icarus.com/), [GTKwave](http://gtkwave.sourceforge.net/)
+		*  新版已增加在Linux環境下會使用`Ncverilog`和`nWave`來進行驗證
+			* 目前版本在運行GUI前需手動輸入tcsh和source .cshrc
 	*  EDA: `Design Comilper`, `IC Compiler`
 
 * 版本及檔案說明、影片連結
@@ -147,10 +149,10 @@
 		* EDA功能無法使用
 	* Linux版本 --- [Link]()
 		* `GUI_ALL_linux` (執行檔)
-		* EDA_add_files_GUI.tar (執行自動化繞線所需的額外檔案)
+		* EDA_add_files_GUI.tar (執行自動化佈局所需的額外檔案)
 	* Demo Video
 		* a. Windows 10 version --- [video](https://www.youtube.com/watch?v=kXfVsiijhno)
-		* b. Linux (Centos 7) version --- [video](https://www.youtube.com/watch?v=Rb99CHsb28k) 
+		* b. Linux (Centos 7) version --- [video](https://www.youtube.com/watch?v=Rb99CHsb28k)
 
 ###  My Research
 <img src="./img/Pasted image 20220413130346.png" width="50%" height="50%"/><img src="./img/Pasted image 20220413130817.png" width="50%" height="50%"/>
@@ -201,6 +203,8 @@
 
 * Step 3. Verilog 驗證
 	* 這個功能使用[iVerilog](http://iverilog.icarus.com)和[GTKwave](http://gtkwave.sourceforge.net)來進行驗證
+	* 新版已增加在Linux環境下會使用`Ncverilog`和`nWave`來進行驗證
+		* 目前版本在運行GUI前需手動輸入tcsh和source .cshrc
 	* testbench會隨解碼器檔一起生成
 		* 對同一個數字做不同bit錯誤 
 		* 只要Output的數字一樣即為更正成功
@@ -267,7 +271,7 @@
 	    <td> 1 </td>
 	  </tr> 
 	  <tr>
-	    <td> b int Bit </td>
+	    <td> b Int Bit </td>
 	    <td> 截距b的整數位數 </td>
 	    <td> 0 </td>
 	  </tr>
@@ -373,6 +377,8 @@
 
 * `VCD`功能鍵
 	* 使用[iVerilog](http://iverilog.icarus.com/)和[GTKwave](http://gtkwave.sourceforge.net/)來進行驗證
+	* 新版已增加在Linux環境下會使用`Ncverilog`和`nWave`來進行驗證
+		* 目前版本在運行GUI前需手動輸入tcsh和source .cshrc
 	* 開始編譯ANRCAM.v與ANRCAM_tb.v，然後會產生ANRCAM.txt，裡面有輸入與輸出的數據
 
 * `Plt fig`功能鍵
