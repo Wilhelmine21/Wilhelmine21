@@ -79,7 +79,7 @@
 		
 		* 假設模數A為n位元，可更正(n-1)/2位元的數字。以模數A=13為例，它可更正的位元數為6(包含模數A本身)，可更正的範圍是0到3的數(不含模數A)，其解碼器電路如下圖。
 			
-			</br><img src="./img/tmp3.png" width="50%" height="50%"/></br>
+			</br><img src="./img/BER.svg" width="50%" height="50%"/></br>
 		
 	* 4. **算術權重錯誤模型(Arithmetic Weight Error model, AWE)**
 		* 針對情況是錯誤來自加法或減法，此時模數A所對應的餘數環為雙環，如下表。
@@ -93,7 +93,7 @@
 		* 假設模數A為n位元，可更正(n-1)/2位元的數字。以模數A=13為例，它可更正的位元數為6(包含模數A本身)，可更正的範圍是0到3的數(不含模數A)
 		* 其解碼器電路如下圖，不同於BER模型，AWE有圖7中的add來檢查錯誤來自加法或減法。
 			
-			</br><img src="./img/tmp4.png" width="50%" height="50%"/></br>
+			</br><img src="./img/AWE.svg" width="50%" height="50%"/></br>
 
 ### Light Number
 * 那什麼是Light Number？簡單來說，它就是一個算術權重小的數字。Light Number是由2的次方數來進行加減來得出的。
