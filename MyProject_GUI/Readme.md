@@ -205,11 +205,12 @@
 	* 這個功能使用[iVerilog](http://iverilog.icarus.com)和[GTKwave](http://gtkwave.sourceforge.net)來進行驗證
 	* 新版已增加在Linux環境下會使用`Ncverilog`和`nWave`來進行驗證
 		* 目前版本在運行GUI前需手動輸入tcsh和source .cshrc
+		</br><img src="./img/tcsh.png"/></br>
+		
 	* testbench會隨解碼器檔一起生成
 		* 對同一個數字做不同bit錯誤 
-		* 只要Output的數字一樣即為更正成功
-	
-		<img src="./img/Pasted image 20220413141506.png" width="40%" height="40%"/>
+		* 只要Output的數字一樣即為更正成功(上圖為GTKwave(Windows); 下圖為nWave(linux))
+		</br><img src="./img/Pasted image 20220413141506.png" width="80%" height="80%"/><img src="./img/nc03.png"/></br>
 ***
 * 上方的選單Help:</br>
  	<img src="./img/Pasted image 20220413141956.png" width="40%" height="40%"/></br>
