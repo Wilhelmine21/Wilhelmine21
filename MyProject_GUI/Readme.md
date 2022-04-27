@@ -52,7 +52,7 @@
 		* 由於已知錯誤方向，所以對應的餘數只有R+或R-，其解碼器電路如下圖。
 			* 左圖=>錯誤會從1變0(Uni HL), 右圖=>錯誤會從0變1(Uni LH)
 								
-			</br><img src="./img/tmp0.png" width="50%" height="50%"/><img src="./img/tmp1.png" width="50%" height="50%"/></br>
+			</br><img src="./img/UNIHL.svg" width="50%" height="50%"/><img src="./img/UNILH.svg" width="50%" height="50%"/></br>
 
 
 	* 2. **未知錯誤方向(Alternative direction)之完全非對稱模型**
@@ -67,7 +67,7 @@
 		* 假設模數A為n 位元，可更正(n-1)位元的數字。以模數A=13為例，它可更正的位元數為12(包含模數A本身)，可更正的範圍是0到255的數(不含模數A)
 		* 但是因為是未知錯誤方向，所以對應的餘數較多，其解碼器電路，如下圖，為四種模型中面積最大的。
 			
-			</br><img src="./img/tmp2.png" width="50%" height="50%"/></br>
+			</br><img src="./img/alter.svg"/></br>
 			
 	* 3. **位元錯誤率模型(Bit Error Rate model, BER)**
 		* 針對情況是電路受到干擾產生錯誤，由1變0或0變1，各有機率，此時模數A所對應的餘數環為雙環，如下表。
