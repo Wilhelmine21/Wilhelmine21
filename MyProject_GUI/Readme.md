@@ -379,11 +379,15 @@
 	* 使用[iVerilog](http://iverilog.icarus.com/)和[GTKwave](http://gtkwave.sourceforge.net/)來進行驗證
 	* 新版已增加在Linux環境下會使用`Ncverilog`和`nWave`來進行驗證
 		* 目前版本在運行GUI前需手動輸入tcsh和source .cshrc
+		* Run Default值所出現的波形圖
+		</br><img src="./img/vcd001.png"/></br>
 	* 開始編譯ANRCAM.v與ANRCAM_tb.v，然後會產生ANRCAM.txt，裡面有輸入與輸出的數據
 
 * `Plt fig`功能鍵
 	* 需先做`VCD` 
 	* 將verilog運算後的值(在ANRCAM.txt裡)畫成圖片 
+		* Run Default值所出現的激勵函數圖
+		</br><img src="./img/plt001.png"/></br>
 ---
 
 #### 3. EDA
