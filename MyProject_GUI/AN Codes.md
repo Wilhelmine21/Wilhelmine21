@@ -1,11 +1,11 @@
 # 目錄 [[Back]](https://github.com/Wilhelmine21/Wilhelmine21/tree/main/MyProject_GUI#this-project-is-about-my-research)
 * [AN Codes LS-PWL-RALUT 題目說明](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/MyProject_GUI/AN%20Codes%20LS-PWL-RALUT.md#an-codes-ls-pwl-ralut-題目說明)
-* [AN codes](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/MyProject_GUI/AN%20Codes.md#an-codes-----wiki)
-	* [1. 已知錯誤方向(Unidirectional)之完全非對稱模型](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/MyProject_GUI/AN%20Codes.md#1-已知錯誤方向unidirectional之完全非對稱模型)
-	* [2. 未知錯誤方向(Alternative direction)之完全非對稱模型](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/MyProject_GUI/AN%20Codes.md#2-未知錯誤方向alternative-direction之完全非對稱模型)
-	* [3. 位元錯誤率模型(Bit Error Rate model, BER)](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/MyProject_GUI/AN%20Codes.md#3-位元錯誤率模型bit-error-rate-model-ber)
-	* [4. 算術權重錯誤模型(Arithmetic Weight Error model, AWE)](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/MyProject_GUI/AN%20Codes.md#4-算術權重錯誤模型arithmetic-weight-error-model-awe)
-* [Light Number](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/MyProject_GUI/Light%20Numbers.md#light-number)
+	* [AN codes](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/MyProject_GUI/AN%20Codes.md#an-codes-----wiki)
+		* [1. 已知錯誤方向(Unidirectional)之完全非對稱模型](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/MyProject_GUI/AN%20Codes.md#1-已知錯誤方向unidirectional之完全非對稱模型)
+		* [2. 未知錯誤方向(Alternative direction)之完全非對稱模型](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/MyProject_GUI/AN%20Codes.md#2-未知錯誤方向alternative-direction之完全非對稱模型)
+		* [3. 位元錯誤率模型(Bit Error Rate model, BER)](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/MyProject_GUI/AN%20Codes.md#3-位元錯誤率模型bit-error-rate-model-ber)
+		* [4. 算術權重錯誤模型(Arithmetic Weight Error model, AWE)](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/MyProject_GUI/AN%20Codes.md#4-算術權重錯誤模型arithmetic-weight-error-model-awe)
+	* [Light Number](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/MyProject_GUI/Light%20Numbers.md#light-number)
 
 # AN codes --- [wiki](https://en.wikipedia.org/wiki/AN_codes) 
 </br><img src="./img/Pasted image 20220413215340.png" width="50%" height="50%"/></br>
