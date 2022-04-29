@@ -4,19 +4,18 @@
 * The title of my thesis is **AN Codes LS-PWL-RALUT**.
 
 # 目錄
-* I. [AN Codes LS-PWL-RALUT題目說明](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/MyProject_GUI/Readme(full).md#an-codes-ls-pwl-ralut)	
-* II. [My Project GUI](https://github.com/Wilhelmine21/Wilhelmine21/tree/main/MyProject_GUI#my-project-gui)
-	* i. [My Research](https://github.com/Wilhelmine21/Wilhelmine21/tree/main/MyProject_GUI#my-research)
-		* 1. [AN codes](https://github.com/Wilhelmine21/Wilhelmine21/tree/main/MyProject_GUI#1-an-codes-and-decoder)
-		* 2. [ANRCAM](https://github.com/Wilhelmine21/Wilhelmine21/tree/main/MyProject_GUI#2-anrcam)
-		* 3. [EDA](https://github.com/Wilhelmine21/Wilhelmine21/tree/main/MyProject_GUI#3-eda)
+* I. [AN Codes LS-PWL-RALUT題目說明](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/MyProject_GUI/AN%20Codes%20LS-PWL-RALUT.md)	
+* II. [My Research](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/MyProject_GUI/My%20Research.md)
+	* 1. [AN codes](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/MyProject_GUI/GUI-AN-codes.md)
+	* 2. [ANRCAM](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/MyProject_GUI/GUI-ANRCAM.md)
+	* 3. [EDA](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/MyProject_GUI/GUI-EDA.md)
 
 ## My Project GUI
 * 我做了一個GUI用來展示我的題目
 * 我的GUI分為 3 個部分來運行
-	* 1. [AN codes](https://github.com/Wilhelmine21/Wilhelmine21/tree/main/MyProject_GUI#1-an-codes-and-decoder)
-	* 2. [ANRCAM](https://github.com/Wilhelmine21/Wilhelmine21/tree/main/MyProject_GUI#2-anrcam)
-	* 3. [EDA](https://github.com/Wilhelmine21/Wilhelmine21/tree/main/MyProject_GUI#3-eda)
+	* 1. [AN codes](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/MyProject_GUI/GUI-AN-codes.md)
+	* 2. [ANRCAM](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/MyProject_GUI/GUI-ANRCAM.md)
+	* 3. [EDA](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/MyProject_GUI/GUI-EDA.md)
 * 環境
 	*  Verilog: [iVerilog](http://iverilog.icarus.com/), [GTKwave](http://gtkwave.sourceforge.net/)
 		*  新版已增加在Linux環境下會使用`Ncverilog`和`nWave`來進行驗證
