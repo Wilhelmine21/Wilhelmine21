@@ -4,7 +4,7 @@
   * [ANRCAM](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/MyProject_GUI/GUI-ANRCAM.md)
   * [EDA](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/MyProject_GUI/GUI-EDA.md)
 
-# AN codes and decoder
+# AN codes and Decoder
 <img src="./img/Pasted image 20220413130543.png" width="40%" height="40%"/>
 
 * 這個Project主要用來生成AN codes解碼器(Verilog file)
