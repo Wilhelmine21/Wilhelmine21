@@ -45,3 +45,4 @@
 	* Demo Video
 		* a. Windows 10 version --- [video](https://www.youtube.com/watch?v=kXfVsiijhno)
 		* b. Linux (Centos 7) version --- [video](https://www.youtube.com/watch?v=Rb99CHsb28k)
+		* c. New function (Windows 10/Centos 7) --- [video](https://youtu.be/7bM51ICH6qc)
