@@ -24,6 +24,8 @@
 	* (1) Demo Video: 連接到Youtube的所有功能說明及展示之影片
 		* a. Windows 10 version --- [video](https://www.youtube.com/watch?v=kXfVsiijhno)
 		* b. Linux (Centos 7) version --- [video](https://www.youtube.com/watch?v=Rb99CHsb28k)
+		* c. New function (Windows 10/Centos 7) --- [video](https://youtu.be/7bM51ICH6qc)
+
 	
 	* (2) About: 顯示此程式的相關資訊 </br>
 		<img src="./img/Pasted image 20220413134306.png" width="40%" height="40%"/>
