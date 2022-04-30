@@ -29,10 +29,16 @@
 	* 2. [ANRCAM](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/MyProject_GUI/GUI-ANRCAM.md#anrcam)
 	* 3. [EDA](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/MyProject_GUI/GUI-EDA.md#eda)
 * 環境
-	*  Verilog: [iVerilog](http://iverilog.icarus.com/), [GTKwave](http://gtkwave.sourceforge.net/)
-		*  新版已增加在Linux環境下會使用`Ncverilog`和`nWave`來進行驗證
+	* 生成圖片:
+		* [MiKTeX](https://miktex.org/)
+		* AN codes and Decoder --- `Circuit Diagram`功能鍵會使用Latex語法來生成圖片(svg檔案)並轉換成png檔案
+	
+	* Verilog: 
+		* 1. Windows 10 -> [iVerilog](http://iverilog.icarus.com/), [GTKwave](http://gtkwave.sourceforge.net/)
+		* 2. Linux(centos 7) -> 使用`Ncverilog`和`nWave`來進行驗證
 			* 目前版本在運行GUI前需手動輸入tcsh和source .cshrc
-	*  EDA: `Design Comilper`, `IC Compiler`
+			
+	* EDA: `Design Comilper`, `IC Compiler`
 
 * 版本及檔案說明、影片連結
 	* Windows版本 --- [Link]()
