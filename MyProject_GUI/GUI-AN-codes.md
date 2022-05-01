@@ -38,6 +38,21 @@
 	* 對同一個數字做不同bit錯誤 
 	* 只要Output的數字一樣即為更正成功(上圖為GTKwave(Windows); 下圖為nWave(linux))
 	</br><img src="./img/Pasted image 20220413141506.png" width="80%" height="80%"/><img src="./img/nc03.png"/></br>
+
+## New function: 生成對應的解碼器圖片
+</br><img src="./img/New1.jpg"></br>
+* `Circuit Diagram`功能鍵 --- 使用[MiKTeX](https://miktex.org/)
+* 這個功能會使用Latex語法來生成圖片(svg檔案)並轉換成png檔案
+	</br><img src="./img/f1.jpg"></br>
+
+* 隨著A值越大，圖片檔也會變大，所以在GUI裡開啟圖片時間也會變長。
+</br><img src="./img/New2.jpg"></br>
+* 所以這裡會跳出訊息詢問是否要從GUI裡開啟圖片。
+	* 是 -> 使用GUI開啟
+	</br><img src="./img/New3.jpg"></br>
+	* 否 -> 使用電腦預設的相片檢視器開啟
+	</br><img src="./img/New4.jpg"></br>
+
 ---
 ## 上方的選單Help:</br>
 <img src="./img/Pasted image 20220413141956.png" width="40%" height="40%"/></br>
