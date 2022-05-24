@@ -1,6 +1,6 @@
 - 👋 Hi, I’m Ting-Yu Chen.
 - I'm from [Test Lab](http://testlab.ncue.edu.tw/tch/), Electronic Engineering, National Changhua University of Education.
-
+---
 # Releases
 
 ## v4.1 (Windows)
@@ -19,7 +19,7 @@
 * Use ncverilog and nwave
 * NO Program icon (icon)
 
-
+---
 # Version history
 ## v2.0 : 
 * 將說明圖片轉成可包進exe的格式(import base64)
