@@ -41,11 +41,11 @@
 	* EDA: `Design Comilper`, `IC Compiler`
 
 * 版本及檔案說明、影片連結
-	* Windows版本 --- [Link]()
+	* Windows版本 --- [Link](https://drive.google.com/drive/folders/15bK1Rss-UhlTtRH2oE3V6_MIvZVVn5J7?usp=sharing)
 		* `GUI_ALL.exe` (執行檔)
 		* 目前版本無須額外檔案
 		* EDA功能無法使用
-	* Linux版本 --- [Link]()
+	* Linux版本 --- [Link](https://drive.google.com/drive/folders/109xFlMamUgpYf8ra9HT15_xmsM0LS-Ja?usp=sharing)
 		* `GUI_ALL_linux` (執行檔)
 		* EDA_add_files_GUI.tar (執行自動化佈局所需的額外檔案)
 	* Demo Video
