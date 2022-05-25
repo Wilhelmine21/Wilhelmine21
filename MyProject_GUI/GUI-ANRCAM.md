@@ -5,7 +5,7 @@
 	* 3. [EDA](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/MyProject_GUI/GUI-EDA.md#eda)
 	
 # ANRCAM
-<img src="./img/Pasted image 20220413130605.png" width="50%" height="50%"/></br>
+<img src="./img/ANRCAM_win10.png" width="80%" height="80%"/></br>
 
 * 用途是透過設定基本參數，對激勵函數做線性分段，搜尋出最少的線段、範圍和輕數斜率等數據，然後生成verilog檔。
 * 1. 基本參數設定
