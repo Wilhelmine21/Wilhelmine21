@@ -5,7 +5,7 @@
 	* 3. [EDA](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/MyProject_GUI/GUI-EDA.md#eda)
 
 # AN codes and Decoder
-<img src="./img/Pasted image 20220413130543.png" width="40%" height="40%"/>
+<img src="./img/ANcodesDecoder_win10.png" width="50%" height="50%"/>
 
 * 這個Project主要用來生成AN codes解碼器(Verilog file)
 
@@ -24,9 +24,9 @@
 * (1) 在Select A輸入想要的A值
 	* 此值須為A maybe欄位中出現過的數字
 * (2) 按下`Gen & Show`，即可在select A下方的文字框看見生成的檔案內容 </br>
-<img src="./img/Pasted image 20220413141429.png" width="40%" height="40%"/> </br>
+<img src="./img/ANcodesDecoder_win10_example.png" width="50%" height="50%"/> </br>
 * (3) 若是看不清楚，可使用上方選單File->Open File... 開啟檔案查看 </br>
-<img src="./img/Pasted image 20220413141620.png" width="40%" height="40%"/> </br>
+<img src="./img/ANcodesDecoder_win10_OpenFile.png" width="80%" height="80%"/> </br>
 
 ## Step 3. Verilog 驗證
 * 這個功能使用[iVerilog](http://iverilog.icarus.com)和[GTKwave](http://gtkwave.sourceforge.net)來進行驗證
@@ -37,7 +37,7 @@
 * testbench會隨解碼器檔一起生成
 	* 對同一個數字做不同bit錯誤 
 	* 只要Output的數字一樣即為更正成功(上圖為GTKwave(Windows); 下圖為nWave(linux))
-	</br><img src="./img/Pasted image 20220413141506.png" width="80%" height="80%"/><img src="./img/nc03.png"/></br>
+	</br><img src="./img/ANcodesDecoder_win10_VCD.png" width="90%" height="90%"/><img src="./img/nc03.png"/></br>
 
 ## New function: 生成對應的解碼器圖片
 </br><img src="./img/New1.jpg"></br>
@@ -55,13 +55,17 @@
 
 ---
 ## 上方的選單Help:</br>
-<img src="./img/Pasted image 20220413141956.png" width="40%" height="40%"/></br>
+<img src="./img/ANcodesDecoder_win10_Help.png" width="50%" height="50%"/></br>
 * 前兩項會連結到iVerilog和GTKwave的官網
 * 第三項 Error Model Descripton為錯誤模型的簡單說明及電路圖
-	* 會根據Error Model選擇的不同而有改變說明</br>
-	<img src="./img/Pasted image 20220413142653.png" width="30%" height="30%"/>
-	<img src="./img/Pasted image 20220413142534.png" width="50%" height="50%"/><img src="./img/Pasted image 20220413142605.png" width="70%" height="70%"/></br>
+	* v2.1 (舊版) 
+		* 會根據1. Show availabel A-Error Model選擇的不同而有改變說明</br>
+		<img src="./img/Pasted image 20220413142653.png" width="30%" height="30%"/>
+		<img src="./img/Pasted image 20220413142534.png" width="50%" height="50%"/><img src="./img/Pasted image 20220413142605.png" width="70%" height="70%"/></br>
+	* v4.1
+		* 會根據Error Model選擇的不同而有改變說明</br> 
+		<img src="./img/ANcodesDecoder_win10_ErrorModel.png" width="60%" height="60%"/>
 	
 * 第四項Video則為AN codes這個project展示與說明的影片
 * 最後About會顯示程式資訊</br>
-	<img src="./img/Pasted image 20220413142805.png" width="40%" height="40%"/></br>
+	<img src="./img/ANcodesDecoder_win10_About.png" width="50%" height="50%"/></br>
