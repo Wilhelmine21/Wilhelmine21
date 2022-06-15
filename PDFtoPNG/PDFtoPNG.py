@@ -1,13 +1,5 @@
-# 
-
-# import module
+YourFileName="tmp"+".pdf"
 from pdf2image import convert_from_path
- 
- 
-# Store Pdf with convert_from_path function
-images = convert_from_path('彰師大電子系碩士論文口試---日期調查 - Google 表單.pdf')
- 
+images = convert_from_path(YourFileName)
 for i in range(len(images)):
-   
-      # Save pages as images in the pdf
-    images[i].save('彰師大電子系碩士論文口試---日期調查 - Google 表單page'+ str(i) +'.jpg', 'JPEG')
+    images[i].save(YourFileName+'_page'+ str(i+1) +'.png', 'PNG')
