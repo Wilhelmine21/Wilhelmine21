@@ -1,0 +1,251 @@
+%\documentclass{article}
+\documentclass[tikz, margin=3pt, dvisvgm]{standalone}
+\usepackage[xetex,active,tightpage]{preview}
+\setlength\PreviewBorder{2mm}
+%\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+\usepackage{circuitikz}
+\usetikzlibrary{calc}
+%%%% BER 13 %%%
+\begin{document}
+\begin{preview}
+\begin{tikzpicture}
+	% Circuit style
+	\ctikzset{
+	    logic ports=ieee,
+	    logic ports/scale=0.8,
+	    logic ports/fill=lightgray
+	}
+	% 餘數區	
+	\node(R3) at (4.5,3.5) {$R_3$};
+	\draw[-, line width=0.4pt](4.5,3.2)--(4.5,-13.7);
+	\draw[-, line width=0.4pt](3,2.2)--(4.5,2.2); % --
+	\draw[-, line width=0.4pt](3,2.2)--(3,1.2); % |
+	\node[not port, rotate=-90 ] (not3) at (3,0.8){};
+	\draw[-, line width=0.4pt](3,1.2)--(not3.in);
+	\draw[-, line width=0.4pt](not3.out)--(3,-13.7);
+	
+	\node(R2) at (7.5,3.5) {$R_2$};
+	\draw[-, line width=0.4pt](7.5,3.2)--(7.5,-13.7);
+	\draw[-, line width=0.4pt](6,2.2)--(7.5,2.2); % --
+	\draw[-, line width=0.4pt](6,2.2)--(6,1.2); % |
+	\node[not port, rotate=-90 ] (not2) at (6,0.8){};
+	\draw[-, line width=0.4pt](6,1.2)--(not2.in);
+	\draw[-, line width=0.4pt](not2.out)--(6,-13.7);
+
+
+	\node(R1) at (10.5,3.5) {$R_1$};
+	\draw[-, line width=0.4pt](10.5,3.2)--(10.5,-13.7);
+	\draw[-, line width=0.4pt](9,2.2)--(10.5,2.2); % --
+	\draw[-, line width=0.4pt](9,2.2)--(9,1.2); % |
+	\node[not port, rotate=-90 ] (not1) at (9,0.8){};
+	\draw[-, line width=0.4pt](9,1.2)--(not1.in);
+	\draw[-, line width=0.4pt](not1.out)--(9,-13.7);
+
+	
+	\node(R0) at (13.5,3.5) {$R_0$};
+	\draw[-, line width=0.4pt](13.5,3.2)--(13.5,-13.7);
+	\draw[-, line width=0.4pt](12,2.2)--(13.5,2.2); % --
+	\draw[-, line width=0.4pt](12,2.2)--(12,1.2); % |
+	\node[not port, rotate=-90 ] (not0) at (12,0.8){};
+	\draw[-, line width=0.4pt](12,1.2)--(not0.in);
+	\draw[-, line width=0.4pt](not0.out)--(12,-13.7);	
+	
+	% node and
+	%餘數1
+	% 3,6,9,12/4.5,7.5,10.5,13.5
+	\draw[fill=black](3,-0.5) circle(1mm);
+	\draw[fill=black](6,-0.5) circle(1mm);
+	\draw[fill=black](9,-0.5) circle(1mm);
+	\draw[fill=black](13.5,-0.5) circle(1mm);
+	\draw[-, line width=0.2pt](3,-0.5)--(13.5,-0.5);
+	\node[and port, number inputs=4] (AND1) at (15.5,-0.5){$1$};
+	\draw(AND1.in 1) -- (AND1.in 2) -- (AND1.in 3) -- (AND1.in 4);
+	\draw[-, line width=2pt](13.5,-0.5)--(14.6,-0.5);
+	%餘數2
+	% 3,6,9,12/4.5,7.5,10.5,13.5
+	\draw[fill=black](3,-1.7) circle(1mm);
+	\draw[fill=black](6,-1.7) circle(1mm);
+	\draw[fill=black](10.5,-1.7) circle(1mm);
+	\draw[fill=black](12,-1.7) circle(1mm);
+	\draw[-, line width=0.2pt](3,-1.7)--(13.5,-1.7);
+	\node[and port, number inputs=4] (AND2) at (15.5,-1.7){$2$};
+	\draw(AND2.in 1) -- (AND2.in 2) -- (AND2.in 3) -- (AND2.in 4);
+	\draw[-, line width=2pt](13.5,-1.7)--(14.6,-1.7);
+	%餘數3 0011
+	% 3,6,9,12/4.5,7.5,10.5,13.5
+	\draw[fill=black](3,-2.9) circle(1mm);
+	\draw[fill=black](6,-2.9) circle(1mm);
+	\draw[fill=black](10.5,-2.9) circle(1mm);
+	\draw[fill=black](13.5,-2.9) circle(1mm);	
+	\draw[-, line width=0.2pt](3,-2.9)--(13.5,-2.9);
+	\node[and port, number inputs=4] (AND3) at (15.5,-2.9){$3$};
+	\draw(AND3.in 1) -- (AND3.in 2) -- (AND3.in 3) -- (AND3.in 4);
+	\draw[-, line width=2pt](13.5,-2.9)--(14.6,-2.9);
+	%餘數4 0100
+	% 3,6,9,12/4.5,7.5,10.5,13.5
+	\draw[fill=black](3,-4.1) circle(1mm);
+	\draw[fill=black](7.5,-4.1) circle(1mm);
+	\draw[fill=black](9,-4.1) circle(1mm);
+	\draw[fill=black](12,-4.1) circle(1mm);	
+	\draw[-, line width=0.2pt](3,-4.1)--(13.5,-4.1);
+	\node[and port, number inputs=4] (AND4) at (15.5,-4.1){$4$};
+	\draw(AND4.in 1) -- (AND4.in 2) -- (AND4.in 3) -- (AND4.in 4);
+	\draw[-, line width=2pt](13.5,-4.1)--(14.6,-4.1);
+	%餘數5 0101
+	% 0,6,9,12/4.5,7.5,10.5,13.5
+	\draw[fill=black](3,-5.3) circle(1mm);
+	\draw[fill=black](7.5,-5.3) circle(1mm);
+	\draw[fill=black](9,-5.3) circle(1mm);
+	\draw[fill=black](13.5,-5.3) circle(1mm);		
+	\draw[-, line width=0.2pt](3,-5.3)--(13.5,-5.3);
+	\node[and port, number inputs=4] (AND5) at (15.5,-5.3){$5$};
+	\draw(AND5.in 1) -- (AND5.in 2) -- (AND5.in 3) -- (AND5.in 4);
+	\draw[-, line width=2pt](13.5,-5.3)--(14.6,-5.3);
+	%餘數6 0110
+	% 3,6,9,12/4.5,7.5,10.5,13.5
+	\draw[fill=black](3,-6.5) circle(1mm);
+	\draw[fill=black](7.5,-6.5) circle(1mm);
+	\draw[fill=black](10.5,-6.5) circle(1mm);
+	\draw[fill=black](12,-6.5) circle(1mm);		
+	\draw[-, line width=0.2pt](3,-6.5)--(13.5,-6.5);
+	\node[and port, number inputs=4] (AND6) at (15.5,-6.5){$6$};
+	\draw(AND6.in 1) -- (AND6.in 2) -- (AND6.in 3) -- (AND6.in 4);
+	\draw[-, line width=2pt](13.5,-6.5)--(14.6,-6.5);
+	%餘數7 0111
+	% 3,6,9,12/4.5,7.5,10.5,13.5
+	\draw[fill=black](3,-7.7) circle(1mm);
+	\draw[fill=black](7.5,-7.7) circle(1mm);
+	\draw[fill=black](10.5,-7.7) circle(1mm);
+	\draw[fill=black](13.5,-7.7) circle(1mm);		
+	\draw[-, line width=0.2pt](3,-7.7)--(13.5,-7.7);
+	\node[and port, number inputs=4] (AND7) at (15.5,-7.7){$7$};
+	\draw(AND7.in 1) -- (AND7.in 2) -- (AND7.in 3) -- (AND7.in 4);
+	\draw[-, line width=2pt](13.5,-7.7)--(14.6,-7.7);	
+	%餘數8 1000
+	% 3,6,9,12/4.5,7.5,10.5,13.5
+	\draw[fill=black](4.5,-8.9) circle(1mm);
+	\draw[fill=black](6,-8.9) circle(1mm);
+	\draw[fill=black](9,-8.9) circle(1mm);
+	\draw[fill=black](12,-8.9) circle(1mm);		
+	\draw[-, line width=0.2pt](3,-8.9)--(13.5,-8.9);
+	\node[and port, number inputs=4] (AND8) at (15.5,-8.9){$8$};
+	\draw(AND8.in 1) -- (AND8.in 2) -- (AND8.in 3) -- (AND8.in 4);
+	\draw[-, line width=2pt](13.5,-8.9)--(14.6,-8.9);	
+	%餘數9 1001
+	% 3,6,9,12/4.5,7.5,10.5,13.5
+	\draw[fill=black](4.5,-10.1) circle(1mm);
+	\draw[fill=black](6,-10.1) circle(1mm);
+	\draw[fill=black](9,-10.1) circle(1mm);
+	\draw[fill=black](13.5,-10.1) circle(1mm);		
+	\draw[-, line width=0.2pt](3,-10.1)--(13.5,-10.1);
+	\node[and port, number inputs=4] (AND9) at (15.5,-10.1){$9$};
+	\draw(AND9.in 1) -- (AND9.in 2) -- (AND9.in 3) -- (AND9.in 4);
+	\draw[-, line width=2pt](13.5,-10.1)--(14.6,-10.1);
+	%餘數10 1010
+	% 0/1
+	% 3,6,9,12/4.5,7.5,10.5,13.5
+	\draw[fill=black](4.5,-11.3) circle(1mm);
+	\draw[fill=black](6,-11.3) circle(1mm);
+	\draw[fill=black](10.5,-11.3) circle(1mm);
+	\draw[fill=black](12,-11.3) circle(1mm);	
+	\draw[-, line width=0.2pt](3,-11.3)--(13.5,-11.3);
+	\node[and port, number inputs=4] (AND10) at (15.5,-11.3){$10$};
+	\draw(AND10.in 1) -- (AND10.in 2) -- (AND10.in 3) -- (AND10.in 4);
+	\draw[-, line width=2pt](13.5,-11.3)--(14.6,-11.3);
+	%餘數11 1011
+	\draw[fill=black](4.5,-12.5) circle(1mm);
+	\draw[fill=black](6,-12.5) circle(1mm);
+	\draw[fill=black](10.5,-12.5) circle(1mm);
+	\draw[fill=black](13.5,-12.5) circle(1mm);	
+	\draw[-, line width=0.2pt](3,-12.5)--(13.5,-12.5);
+	\node[and port, number inputs=4] (AND11) at (15.5,-12.5){$11$};
+	\draw(AND11.in 1) -- (AND11.in 2) -- (AND11.in 3) -- (AND11.in 4);
+	\draw[-, line width=2pt](13.5,-12.5)--(14.6,-12.5);
+	%餘數12 1100
+	% 3,6,9,12/4.5,7.5,10.5,13.5
+	\draw[fill=black](4.5,-13.7) circle(1mm);
+	\draw[fill=black](7.5,-13.7) circle(1mm);
+	\draw[fill=black](9,-13.7) circle(1mm);
+	\draw[fill=black](12,-13.7) circle(1mm);
+	\draw[-, line width=0.2pt](3,-13.7)--(13.5,-13.7);
+	\node[and port, number inputs=4] (AND12) at (15.5,-13.7){$12$};
+	\draw(AND12.in 1) -- (AND12.in 2) -- (AND12.in 3) -- (AND12.in 4);
+	\draw[-, line width=2pt](13.5,-13.7)--(14.6,-13.7);
+	% error bit
+	% Logic ports
+	% or
+	\node [or port] (OR0) at (18.5,-1){$0$};
+	\draw [red](AND1.out) |- (OR0.in 1);
+	\draw [red](17,-1.25) -- (OR0.in 2);
+	\draw [red](17,-1.25) -- (17,-13.7);
+	\draw [red](17,-13.7) -- (AND12.out);
+	
+	\node [or port] (OR1) at (18.5,-3){$1$};
+	\draw [green](AND2.out) -| (OR1.in 1);
+	\draw [green](17.2,-3.24) -- (OR1.in 2);
+	\draw [green](17.2,-12.5) -- (17.2,-3.24);
+	\draw [green](17.2,-12.5) -- (AND11.out);
+	
+	\node [or port] (OR2) at (18.5,-5){$2$};
+	\draw [blue](AND4.out) -| (OR2.in 1);
+	\draw [blue](17.4,-5.24) -- (OR2.in 2);
+	\draw [blue](17.4,-10.1) -- (17.4,-5.24);
+	\draw [blue](17.4,-10.1) -- (AND9.out);
+	
+	\node [or port] (OR3) at (18.5,-7){$3$};
+	\draw [red](AND5.out) |- (OR3.in 1);
+	\draw [red](16.8,-7.24) -- (OR3.in 2);
+	\draw [red](16.8,-8.9) -- (16.8,-7.24);
+	\draw [red](16.8,-8.9)--(AND8.out);
+	
+	\node [or port] (OR4) at (18.5,-9){$4$};
+	\draw [green](16.6,-8.8) -- (OR4.in 1);
+	\draw [green](16.6,-2.9)--(16.6,-8.8);
+	\draw [green](16.6,-2.9)--(AND3.out);
+	\draw [green](16.6,-9.2) -- (OR4.in 2);
+	\draw [green](16.6,-11.3) -- (16.6,-9.2);
+	\draw [green](16.6,-11.3)--(AND10.out);
+		
+	\node [or port] (OR5) at (18.5,-11){$5$};
+	\draw [blue](17.1,-10.75)--(OR5.in 1);
+	\draw [blue](17.1,-10.75)--(17.1,-6.5);
+	\draw [blue](17.1,-6.5)--(AND6.out);
+	\draw [blue](16.9,-11.24) -- (OR5.in 2);
+	\draw [blue](16.9,-11.24)--(16.9,-7.7);
+	\draw [blue](16.9,-7.7)--(AND7.out);
+	
+	%xor
+	\node [xor port] (XOR0) at (22.5,-1.5){$0$};
+	\draw (OR0.out) -| (XOR0.in 1);
+	\node (Input0) at (XOR0.in 2)[anchor=east]{$Input[0]$};
+
+	\node [xor port] (XOR1) at (22.5,-3.5){$1$};
+	\draw (OR1.out) -| (XOR1.in 1);
+	\node (Input1) at (XOR1.in 2)[anchor=east]{$Input[1]$};
+
+	\node [xor port] (XOR2) at (22.5,-5.5){$2$};
+	\draw (OR2.out) -| (XOR2.in 1);
+	\node (Input2) at (XOR2.in 2)[anchor=east]{$Input[2]$};
+	
+	\node [xor port] (XOR3) at (22.5,-7.5){$3$};
+	\draw (OR3.out) -| (XOR3.in 1);
+	\node (Input3) at (XOR3.in 2)[anchor=east]{$Input[3]$};
+	
+	\node [xor port] (XOR4) at (22.5,-9.5){$4$};
+	\draw (OR4.out) -| (XOR4.in 1);
+	\node (Input4) at (XOR4.in 2)[anchor=east]{$Input[4]$};
+	
+	\node [xor port] (XOR5) at (22.5,-11.5){$5$};
+	\draw (OR5.out) -| (XOR5.in 1);
+	\node (Input5) at (XOR5.in 2)[anchor=east]{$Input[5]$};
+	
+	\draw (XOR0.out) -- (XOR1.out) -- (XOR2.out) -- (XOR3.out) -- (XOR4.out) -- (XOR5.out);
+	\draw (XOR2.out) -- ++(1.5,0)node[right](AN){};
+	\draw (AN) -- ++(2,0)node[right](Output){Output};
+	\node (rect) at (AN) [draw, thick, fill=white, fill opacity=1,minimum width=1cm,minimum height=4cm] {$/13$};
+
+ 
+\end{tikzpicture}
+\end{preview}
+\end{document}
