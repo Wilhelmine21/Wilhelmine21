@@ -13,9 +13,6 @@
 	* 輸出svg
 	* > dvisvgm --zoom=-1 --exact --font-format=woff `file name`.xdv
 * svg fig
-	* 網路上的範例(可以用動圖)
-</br><img src="tikz-animation.svg" width="50%" height="50%"></br>
-	
 	* 我自己的範例:
 </br><img src="BER.svg"></br>
 
