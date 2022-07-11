@@ -47,8 +47,8 @@ Latex ---> Auto-Gen-fig
 			*   [Readme.md](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/Tools/PDFtoPNG/Readme.md "Readme.md")
 			
 		*   **[TCB](https://github.com/Wilhelmine21/Wilhelmine21/tree/main/Tools/TCB "TCB")** : Convert multiplication to shift and addition
-		*   [Readme.md](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/Tools/TCB/Readme.md "Readme.md")
-		*   [TCB.py](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/Tools/TCB/TCB.py "TCB.py")
+			*   [Readme.md](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/Tools/TCB/Readme.md "Readme.md")
+			*   [TCB.py](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/Tools/TCB/TCB.py "TCB.py")
 
 ## Releases
 * [About Release](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/MyProject_GUI/Releases(GUI).md#releases)
