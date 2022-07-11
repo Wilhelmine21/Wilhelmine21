@@ -5,7 +5,7 @@
 ## Folder & Files
 * Folder tree
 ```mermaid
-graph TD;
+graph LR;
 Wilhelmine21((Wilhelmine21)) ---> MyProject_GUI
 Wilhelmine21((Wilhelmine21)) ---> Tools
 
