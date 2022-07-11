@@ -15,4 +15,7 @@ from pdf2image import convert_from_path
     * else:
         * `FileName_page1.png`~`FileName_pagen.png`
 
-
+## Example
+* BER.pdf is converted to BER.png.
+* BER.png
+* ![BER.png](./files/BER.png)
