@@ -5,8 +5,14 @@
 from pdf2image import convert_from_path
 ```
 
-2. Input file : `tmp.pdf`
-
-3. Output file: `tmp_page0.png`~`tmp_page(n-1).png`
+2. Input file :
+    * Terminal:
+    * YourFileName >> `FileName`
+ 
+3. Output file: 
+    * if only one page:
+        * `FileName.png`
+    * else:
+        * `FileName_page1.png`~`FileName_pagen.png`
 
 
