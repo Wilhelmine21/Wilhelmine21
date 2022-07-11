@@ -21,7 +21,7 @@ PDFtoPNG ---> files
 Latex ---> Auto-Gen-fig
 ```
 
-*  Folder and file descriptions(**folders shown in bold**)
+*  Folders and file descriptions(**folders shown in bold**)
 	*   **[MyProject_GUI](https://github.com/Wilhelmine21/Wilhelmine21/tree/main/MyProject_GUI "MyProject_GUI")**
 		*   **[img](https://github.com/Wilhelmine21/Wilhelmine21/tree/main/MyProject_GUI/img "img")** : pictures for explain
 		*  [Readme.md](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/MyProject_GUI/Readme.md "Readme.md") : Explain the purpose and usage of the entire Project
