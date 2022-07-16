@@ -9,6 +9,7 @@ Tools ---> ICONtoPY
 Tools ---> Latex
 Tools ---> PDFtoPNG
 Tools ---> TCB
+Tools ---> Mermaid
 
 PDFtoPNG ---> files
 Latex ---> Auto-Gen-fig
