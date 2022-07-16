@@ -16,6 +16,7 @@ Tools ---> ICONtoPY
 Tools ---> Latex
 Tools ---> PDFtoPNG
 Tools ---> TCB
+Tools ---> Mermaid
 
 PDFtoPNG ---> files
 Latex ---> Auto-Gen-fig
@@ -49,6 +50,8 @@ Latex ---> Auto-Gen-fig
 		*   **[TCB](https://github.com/Wilhelmine21/Wilhelmine21/tree/main/Tools/TCB "TCB")** : Convert multiplication to shift and addition
 			*   [Readme.md](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/Tools/TCB/Readme.md "Readme.md")
 			*   [TCB.py](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/Tools/TCB/TCB.py "TCB.py")
+		*   **[Mermaid](https://github.com/Wilhelmine21/Wilhelmine21/tree/main/Tools/Mermaid "Mermaid")**: 用來在Makedown裡顯示流程圖之類的用法
+			*   [Readme.md](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/Tools/Mermaid/Readme.md "Readme.md")
 
 ## Releases
 * [About Release](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/MyProject_GUI/Releases(GUI).md#releases)
