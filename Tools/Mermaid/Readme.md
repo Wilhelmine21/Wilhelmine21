@@ -487,7 +487,7 @@ erDiagram
           State1 --> State2
           note left of State2 : This is the note to the left.
   ```  
- * 範例九
+* 範例九
   * 程式碼
   ```
   stateDiagram-v2
