@@ -56,3 +56,7 @@ module MUX2_1_tb;
   end
 endmodule
 ```
+## Terminal實際操作
+![terminal.png](./img/terminal.jpg)
+## 範例檔之波形
+![wave.png](./img/wave.png)
