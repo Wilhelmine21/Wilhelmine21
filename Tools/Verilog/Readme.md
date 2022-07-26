@@ -25,13 +25,13 @@ module MUX2_1(out,sel,in0,in1);
   output out;
   input in0, in1, sel;
 
-  not (sel_, sel);
-  and (a1, a, sel_);
-  and (b1, b, sel);
-  or (out, a1, b1);
+  not (BarSel, sel);
+  and (n0, in0, BarSel);
+  and (n1, in1, sel);
+  or (out, n0, n1);
 endmodule
 ```
-* adder_tb.v1
+* adder_tb.v
 ```verilog
 module MUX2_1_tb;
   wire out;
