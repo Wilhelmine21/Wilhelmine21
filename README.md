@@ -24,7 +24,6 @@ Latex ---> Auto-Gen-fig
 Verilog ---> GTKWave
 Verilog ---> VerilogImg[img]
 ```
-```
 
 *  Folder and file descriptions(**folders shown in bold**)
 	*   **[MyProject_GUI](https://github.com/Wilhelmine21/Wilhelmine21/tree/main/MyProject_GUI "MyProject_GUI")**
