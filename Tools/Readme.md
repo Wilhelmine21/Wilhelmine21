@@ -10,7 +10,10 @@ Tools ---> Latex
 Tools ---> PDFtoPNG
 Tools ---> TCB
 Tools ---> Mermaid
+Tools ---> Verilog
 
 PDFtoPNG ---> files
 Latex ---> Auto-Gen-fig
+Verilog ---> GTKWave
+Verilog ---> img
 ```
