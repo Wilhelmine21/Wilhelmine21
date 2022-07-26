@@ -9,7 +9,7 @@ graph LR;
 Wilhelmine21((Wilhelmine21)) ---> MyProject_GUI
 Wilhelmine21((Wilhelmine21)) ---> Tools
 
-MyProject_GUI ---> img
+MyProject_GUI ---> GUIImg[img]
 
 Tools ---> Drawio
 Tools ---> ICONtoPY
@@ -17,9 +17,13 @@ Tools ---> Latex
 Tools ---> PDFtoPNG
 Tools ---> TCB
 Tools ---> Mermaid
+Tools ---> Verilog
 
 PDFtoPNG ---> files
 Latex ---> Auto-Gen-fig
+Verilog ---> GTKWave
+Verilog ---> VerilogImg[img]
+```
 ```
 
 *  Folder and file descriptions(**folders shown in bold**)
