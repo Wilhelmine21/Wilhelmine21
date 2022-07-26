@@ -19,7 +19,7 @@ vvp -n filename.out
 gtkwave filename.vcd
 ```
 ## 測試檔
-* adder.v
+* MUX2_1.v
 ```verilog
 module MUX2_1(out,sel,in0,in1);
   output out;
@@ -31,7 +31,7 @@ module MUX2_1(out,sel,in0,in1);
   or (out, n0, n1);
 endmodule
 ```
-* adder_tb.v
+* MUX2_1_tb.v
 ```verilog
 module MUX2_1_tb;
   wire out;
