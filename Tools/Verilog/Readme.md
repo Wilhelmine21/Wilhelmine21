@@ -25,10 +25,10 @@ module MUX2_1(out,sel,in0,in1);
   output out;
   input in0, in1, sel;
 
-  not (BarSel, sel);
-  and (n0, in0, BarSel);
-  and (n1, in1, sel);
-  or (out, n0, n1);
+  not n1(BarSel, sel);
+  and a1(n0, in0, BarSel);
+  and a2(n1, in1, sel);
+  or o1(out, n0, n1);
 endmodule
 ```
 * MUX2_1_tb.v
