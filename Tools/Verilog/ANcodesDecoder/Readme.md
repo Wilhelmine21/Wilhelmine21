@@ -26,43 +26,42 @@
         > mode 1 ---> Find an available A          
         > mode 2 ---> Find the most appropriate A  
         >   
-        > Please select a mode:1  
-        > -------------Find an available A-------------  
-        > 雙向錯誤可用的A(7~100)=[7, 11, 13, 19, 23, 29, 37, 47, 53, 59, 61, 67, 71, 79, 83]  
-        > 可更正bit數(N)= [0, 1, 2, 4, 6, 9, 12, 17, 20, 23, 24, 26, 28, 32, 34]  
-        >   
-        > 單向錯誤可用的A(7~100)= [11, 13, 19, 29, 37, 53, 59, 61, 67, 83]  
-        > 可更正bit數(N)= [6, 8, 13, 23, 30, 46, 52, 54, 59, 75]  
-    
+        > Please select a mode:2  
+        > -------------Find the most appropriate A-------------  
+        > 雙向錯誤最合適的A= [7, 13, 29, 61, 83]  
+        > 雙向錯誤可更正bit數(N)= [0, 2, 9, 24, 34]  
+        > 
+        > 單向錯誤最合適的A= [13, 29, 61, 83]  
+        > 單向錯誤可更正bit數(N)= [8, 23, 54, 75] 
     * Step2:選擇Error models
         > model 1 ---> Unidirectional Fully Asymmetric Channel model  
         > model 2 ---> Alternative-direction Fully Asymmetric Channel model  
         > model 3 ---> BER model  
-        > model 4 ---> AWE model
-        > Choose model:4
+        > model 4 ---> AWE model  
+        > Choose model:3
     * Step3:輸入數字並軟體驗證更正能力
         * Step3-1: 輸入數字
-            > Input a number(N):13
-            > N的Bit數= 4  
+            > Input a number(N):218
+            > N的Bit數= 8  
             > ----------Two-way error mode----------  
-            > 適合的A= 19  
-            > 可更正的bit數(N)= 4  
+            > 適合的A= 61  
+            > 可更正的bit數(N)= 24  
             >  
             > ---------Original Data-------------  
-            > Correct N= 13  
-            > Correct AN= 247  
-            > Correct AN(2)= 11110111  
-            > module= 19  
+            > Correct N= 218  
+            > Correct AN= 13298  
+            > Correct AN(2)= 11001111110010  
+            > module= 61  
         * Step3-2: 隨機1位元錯誤植入
             > ------Random error generation------  
-            > Error bit= 1  
-            > Error AN= 245  
-            > Error AN(2)= 011110101  
+            > Error bit= 2  
+            > Error AN= 13302  
+            > Error AN(2)= 000000000000000011001111110110  
         * Step3-3: AN codes的更正方法(餘數對應錯誤位元)
             > ----------CorrectTwo----------  
-            > Error is in 1 bit  
-            > ------Error come fromr Subtraction.------  
-            > final_answer= 13  
+            > Error is in 2 bit  
+            > ------Error come from Addition.------  
+            > final_answer= 218  
             >   
             > Correct ^_^  
     * Step4:生成解碼器Verilog file
@@ -72,80 +71,92 @@
         > Please select:1  
         * Step4-1: 將基本更正資訊寫入
             > ---------------開始寫檔案---------------  
-            > 可更正AN的bit數= 9  
-            > mod的bit數= 5  
-            > and gate數= 18  
-            > 可更正N的bit數= 4  
+            > 可更正AN的bit數= 30  
+            > mod的bit數= 6  
+            > and gate數= 60  
+            > 可更正N的bit數= 24  
         * Step4-2: 對同一數隨機五次的錯誤植入(tb.v使用)
             > ---------------開始生成tb所需的Data---------------  
             > ###Data 1 生成###  
             >   
             > ---------Original Data-------------  
-            > Correct N= 13  
-            > Correct AN= 247  
-            > Correct AN(2)= 11110111  
-            > module= 19  
+            > Correct N= 218  
+            > Correct AN= 13298  
+            > Correct AN(2)= 11001111110010  
+            > module= 61  
             > 
             > ------Random error generation------  
-            > Error bit= 5  
-            > Error AN= 215  
-            > Error AN(2)= 011010111  
+            > Error bit= 16  
+            > Error AN= 78834  
+            > Error AN(2)= 000000000000010011001111110010  
             > 
             > ###Data 2 生成###  
             > 
             > ---------Original Data-------------  
-            > Correct N= 13  
-            > Correct AN= 247  
-            > Correct AN(2)= 11110111  
-            > module= 19  
+            > Correct N= 218  
+            > Correct AN= 13298  
+            > Correct AN(2)= 11001111110010    
+            > module= 61  
             > 
             > ------Random error generation------  
-            > Error bit= 1  
-            > Error AN= 245  
-            > Error AN(2)= 011110101  
+            > Error bit= 25  
+            > Error AN= 33567730  
+            > Error AN(2)= 000010000000000011001111110010  
             > 
             > ###Data 3 生成###  
             > 
             > ---------Original Data-------------  
-            > Correct N= 13  
-            > Correct AN= 247  
-            > Correct AN(2)= 11110111  
-            > module= 19  
+            > Correct N= 218  
+            > Correct AN= 13298  
+            > Correct AN(2)= 11001111110010  
+            > module= 61  
             > 
             >  ------Random error generation------  
-            > Error bit= 3  
-            > Error AN= 255  
-            > Error AN(2)= 011111111  
+            > Error bit= 8  
+            > Error AN= 13042  
+            > Error AN(2)= 000000000000000011001011110010  
             > 
             > ###Data 4 生成###  
             > 
             > ---------Original Data-------------  
-            > Correct N= 13  
-            > Correct AN= 247  
-            > Correct AN(2)= 11110111  
-            > module= 19  
+            > Correct N= 218  
+            > Correct AN= 13298  
+            > Correct AN(2)= 11001111110010  
+            > module= 61   
             > 
             > ------Random error generation------  
-            > Error bit= 2  
-            > Error AN= 243  
-            > Error AN(2)= 011110011  
+            > Error bit= 1  
+            > Error AN= 13296  
+            > Error AN(2)= 000000000000000011001111110000  
             > 
             > ###Data 5 生成###  
             > 
             > ---------Original Data-------------  
-            > Correct N= 13  
-            > Correct AN= 247  
-            > Correct AN(2)= 11110111  
-            > module= 19  
+            > Correct N= 218  
+            > Correct AN= 13298 
+            > Correct AN(2)= 11001111110010  
+            > module= 61  
             > 
             > ------Random error generation------  
-            > Error bit= 6  
-            > Error AN= 183  
-            > Error AN(2)= 010110111  
+            > Error bit= 29  
+            > Error AN= 536884210  
+            > Error AN(2)= 100000000000000011001111110010   
         * Step4-3:生成檔案(包含tb)並呼叫iverilog & GTKwave進行驗證
             > ---------------寫檔案完成---------------  
-            > ./files/AWE_20221005_1324/ANdecoder_AWE_19_for_N_13.v has been generated.  
+            > ./files/BER_20221005_1405/ANdecoder_BER_61_for_N_218.v has been generated.   
             > 
-            > ./files/AWE_20221005_1324/ANdecoder_AWE_19_tb_for_N_13.v has been generated.  
+            > ./files/BER_20221005_1405/ANdecoder_BER_61_tb_for_N_218.v has been generated.  
             > 
-            > ---------Auto Verification---------    
+            > ---------Auto Verification---------  
+            > VCD info: dumpfile ./files/BER_20221005_1405/A61N218.  
+            > vcd opened for output.    
+            > ./files/BER_20221005_1405/> ANdecoder_BER_61_tb_for_N_218.v:21: $finish called at 60 (1s)  
+            > 
+            > GTKWave Analyzer v3.3.108 (w)1999-2020 BSI  
+            > [0] start time.  
+            > [60] end time.  
+            > Interpreter id is gtkwave_16260  
+            > % WM Destroy  
+            > The file has been authenticated.     
+* 波形圖驗證:(若為自動顯示，僅會顯示出numx,out兩個訊號，其他需要自行點開)
+<img src="2022-10-05 14.07.31.png"></br>  
