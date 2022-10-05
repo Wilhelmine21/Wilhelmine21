@@ -1,5 +1,5 @@
 # AN codes decoder
-* 4 error models
+* 4 error models - [[Know more]](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/MyProject_GUI/AN%20Codes.md#4-error-model)
     1. Uni-direction / Fully asymmetric channel model (完全非對稱模型)
         * Error will only occur in uni-direction.事先知道哪一個1->0/0->1
     2. Alternative-direction / Fully asymmetric channel model 
@@ -22,7 +22,7 @@
     * Step1:選擇A的模式
         > Ex: The length of the number entered = 4 bit  
         > 以AWE mode 來舉例: Mode 1=> A=19, 可更正4bit的N  
-        >                   Mode 2=> A=29, 可更正9bit的N  
+        > Mode 2=> A=29, 可更正9bit的N  
         > mode 1 ---> Find an available A          
         > mode 2 ---> Find the most appropriate A  
         >   
@@ -41,7 +41,7 @@
         > Choose model:3
     * Step3:輸入數字並軟體驗證更正能力
         * Step3-1: 輸入數字
-            > Input a number(N):218
+            > Input a number(N):218  
             > N的Bit數= 8  
             > ----------Two-way error mode----------  
             > 適合的A= 61  
