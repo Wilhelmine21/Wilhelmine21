@@ -1,19 +1,20 @@
-// File Name: ./files/BER_20221005_1405/ANdecoder_BER_61_for_N_218.v
-// module= 61
-// タANbit计= 30
+// File Name: ./files/AWE_20221006_1501/ANdecoder_AWE_47_for_N_1343.v
+// module= 47
+// タANbit计= 23
 // modbit计= 6
-// タNbit计= 24
+// タNbit计= 17
 
 module ANdecoder(numX, out);
-input [29:0] numX;
-output [23:0] out;
+input [22:0] numX;
+output [16:0] out;
 wire [5:0] mod_tri;
 wire [5:0] not_mod_tri;
-wire [29:0] error_bit;
-wire [59:0] and_out;
-wire [29:0] AN;
+wire [22:0] error_bit;
+wire [45:0] and_out;
+wire add;
+wire [22:0] AN;
 
-assign mod_tri = numX % 61;
+assign mod_tri = numX % 47;
 
 //not gate
 not not_0(not_mod_tri[0], mod_tri[0]);
@@ -69,82 +70,34 @@ and and_43(and_out[42], mod_tri[0], mod_tri[1], not_mod_tri[2], mod_tri[3], not_
 and and_44(and_out[43], not_mod_tri[0], not_mod_tri[1], mod_tri[2], mod_tri[3], not_mod_tri[4], mod_tri[5]);
 and and_45(and_out[44], mod_tri[0], not_mod_tri[1], mod_tri[2], mod_tri[3], not_mod_tri[4], mod_tri[5]);
 and and_46(and_out[45], not_mod_tri[0], mod_tri[1], mod_tri[2], mod_tri[3], not_mod_tri[4], mod_tri[5]);
-and and_47(and_out[46], mod_tri[0], mod_tri[1], mod_tri[2], mod_tri[3], not_mod_tri[4], mod_tri[5]);
-and and_48(and_out[47], not_mod_tri[0], not_mod_tri[1], not_mod_tri[2], not_mod_tri[3], mod_tri[4], mod_tri[5]);
-and and_49(and_out[48], mod_tri[0], not_mod_tri[1], not_mod_tri[2], not_mod_tri[3], mod_tri[4], mod_tri[5]);
-and and_50(and_out[49], not_mod_tri[0], mod_tri[1], not_mod_tri[2], not_mod_tri[3], mod_tri[4], mod_tri[5]);
-and and_51(and_out[50], mod_tri[0], mod_tri[1], not_mod_tri[2], not_mod_tri[3], mod_tri[4], mod_tri[5]);
-and and_52(and_out[51], not_mod_tri[0], not_mod_tri[1], mod_tri[2], not_mod_tri[3], mod_tri[4], mod_tri[5]);
-and and_53(and_out[52], mod_tri[0], not_mod_tri[1], mod_tri[2], not_mod_tri[3], mod_tri[4], mod_tri[5]);
-and and_54(and_out[53], not_mod_tri[0], mod_tri[1], mod_tri[2], not_mod_tri[3], mod_tri[4], mod_tri[5]);
-and and_55(and_out[54], mod_tri[0], mod_tri[1], mod_tri[2], not_mod_tri[3], mod_tri[4], mod_tri[5]);
-and and_56(and_out[55], not_mod_tri[0], not_mod_tri[1], not_mod_tri[2], mod_tri[3], mod_tri[4], mod_tri[5]);
-and and_57(and_out[56], mod_tri[0], not_mod_tri[1], not_mod_tri[2], mod_tri[3], mod_tri[4], mod_tri[5]);
-and and_58(and_out[57], not_mod_tri[0], mod_tri[1], not_mod_tri[2], mod_tri[3], mod_tri[4], mod_tri[5]);
-and and_59(and_out[58], mod_tri[0], mod_tri[1], not_mod_tri[2], mod_tri[3], mod_tri[4], mod_tri[5]);
-and and_60(and_out[59], not_mod_tri[0], not_mod_tri[1], mod_tri[2], mod_tri[3], mod_tri[4], mod_tri[5]);
 //or gate
-or or_0(error_bit[0], and_out[0], and_out[59]);
-or or_1(error_bit[1], and_out[1], and_out[58]);
-or or_2(error_bit[2], and_out[3], and_out[56]);
-or or_3(error_bit[3], and_out[7], and_out[52]);
-or or_4(error_bit[4], and_out[15], and_out[44]);
-or or_5(error_bit[5], and_out[28], and_out[31]);
-or or_6(error_bit[6], and_out[2], and_out[57]);
-or or_7(error_bit[7], and_out[5], and_out[54]);
-or or_8(error_bit[8], and_out[11], and_out[48]);
-or or_9(error_bit[9], and_out[23], and_out[36]);
-or or_10(error_bit[10], and_out[12], and_out[47]);
-or or_11(error_bit[11], and_out[25], and_out[34]);
-or or_12(error_bit[12], and_out[8], and_out[51]);
-or or_13(error_bit[13], and_out[17], and_out[42]);
-or or_14(error_bit[14], and_out[24], and_out[35]);
-or or_15(error_bit[15], and_out[10], and_out[49]);
-or or_16(error_bit[16], and_out[21], and_out[38]);
-or or_17(error_bit[17], and_out[16], and_out[43]);
-or or_18(error_bit[18], and_out[26], and_out[33]);
-or or_19(error_bit[19], and_out[6], and_out[53]);
-or or_20(error_bit[20], and_out[13], and_out[46]);
-or or_21(error_bit[21], and_out[27], and_out[32]);
-or or_22(error_bit[22], and_out[4], and_out[55]);
-or or_23(error_bit[23], and_out[9], and_out[50]);
-or or_24(error_bit[24], and_out[19], and_out[40]);
-or or_25(error_bit[25], and_out[20], and_out[39]);
-or or_26(error_bit[26], and_out[18], and_out[41]);
-or or_27(error_bit[27], and_out[22], and_out[37]);
-or or_28(error_bit[28], and_out[14], and_out[45]);
-or or_29(error_bit[29], and_out[29], and_out[30]);
-//xor gate
-xor xor_0(AN[0],error_bit[0],numX[0]);
-xor xor_1(AN[1],error_bit[1],numX[1]);
-xor xor_2(AN[2],error_bit[2],numX[2]);
-xor xor_3(AN[3],error_bit[3],numX[3]);
-xor xor_4(AN[4],error_bit[4],numX[4]);
-xor xor_5(AN[5],error_bit[5],numX[5]);
-xor xor_6(AN[6],error_bit[6],numX[6]);
-xor xor_7(AN[7],error_bit[7],numX[7]);
-xor xor_8(AN[8],error_bit[8],numX[8]);
-xor xor_9(AN[9],error_bit[9],numX[9]);
-xor xor_10(AN[10],error_bit[10],numX[10]);
-xor xor_11(AN[11],error_bit[11],numX[11]);
-xor xor_12(AN[12],error_bit[12],numX[12]);
-xor xor_13(AN[13],error_bit[13],numX[13]);
-xor xor_14(AN[14],error_bit[14],numX[14]);
-xor xor_15(AN[15],error_bit[15],numX[15]);
-xor xor_16(AN[16],error_bit[16],numX[16]);
-xor xor_17(AN[17],error_bit[17],numX[17]);
-xor xor_18(AN[18],error_bit[18],numX[18]);
-xor xor_19(AN[19],error_bit[19],numX[19]);
-xor xor_20(AN[20],error_bit[20],numX[20]);
-xor xor_21(AN[21],error_bit[21],numX[21]);
-xor xor_22(AN[22],error_bit[22],numX[22]);
-xor xor_23(AN[23],error_bit[23],numX[23]);
-xor xor_24(AN[24],error_bit[24],numX[24]);
-xor xor_25(AN[25],error_bit[25],numX[25]);
-xor xor_26(AN[26],error_bit[26],numX[26]);
-xor xor_27(AN[27],error_bit[27],numX[27]);
-xor xor_28(AN[28],error_bit[28],numX[28]);
-xor xor_29(AN[29],error_bit[29],numX[29]);
-assign out = AN / 61;
+or or_0(error_bit[0], and_out[0], and_out[45]);
+or or_1(error_bit[1], and_out[1], and_out[44]);
+or or_2(error_bit[2], and_out[3], and_out[42]);
+or or_3(error_bit[3], and_out[7], and_out[38]);
+or or_4(error_bit[4], and_out[15], and_out[30]);
+or or_5(error_bit[5], and_out[14], and_out[31]);
+or or_6(error_bit[6], and_out[16], and_out[29]);
+or or_7(error_bit[7], and_out[12], and_out[33]);
+or or_8(error_bit[8], and_out[20], and_out[25]);
+or or_9(error_bit[9], and_out[4], and_out[41]);
+or or_10(error_bit[10], and_out[9], and_out[36]);
+or or_11(error_bit[11], and_out[19], and_out[26]);
+or or_12(error_bit[12], and_out[6], and_out[39]);
+or or_13(error_bit[13], and_out[13], and_out[32]);
+or or_14(error_bit[14], and_out[18], and_out[27]);
+or or_15(error_bit[15], and_out[8], and_out[37]);
+or or_16(error_bit[16], and_out[17], and_out[28]);
+or or_17(error_bit[17], and_out[10], and_out[35]);
+or or_18(error_bit[18], and_out[21], and_out[24]);
+or or_19(error_bit[19], and_out[2], and_out[43]);
+or or_20(error_bit[20], and_out[5], and_out[40]);
+or or_21(error_bit[21], and_out[11], and_out[34]);
+or or_22(error_bit[22], and_out[22], and_out[23]);
+or or_23(add, and_out[45], and_out[44], and_out[42], and_out[38], and_out[30], and_out[14], and_out[29], and_out[12], and_out[25], and_out[4], and_out[9], and_out[19], and_out[39], and_out[32], and_out[18], and_out[37], and_out[28], and_out[10], and_out[21], and_out[43], and_out[40], and_out[34], and_out[22]);
+
+assign AN = (add==0) ? numX-error_bit : numX+error_bit;
+
+assign out = AN / 47;
 
 endmodule

@@ -60,7 +60,7 @@ while n > 0:
             else:
                 print('\nFail~ q_q\n')
             #txt
-            wr_txt1=int(input('Write the verilog file or not?\n 1---> Yes.\n 2---> No.\nPlease select:'))
+            wr_txt1=int(input('Write the verilog file or not?\t(1---> Yes.  2---> No.)\nPlease select:'))
             if wr_txt1 == 1:
                 if direction1 == 1:
                     fn,fn2,fvcd,fo=Uni_LH_veri(N1,findA_One1,Ta_array1)
@@ -96,7 +96,7 @@ while n > 0:
             else:
                 print('\nFail~ q_q\n')
             #txt
-            wr_txt=int(input('Write the verilog file or not?\n 1---> Yes.\n 2---> No.\nPlease select:'))
+            wr_txt=int(input('Write the verilog file or not?\t(1---> Yes.  2---> No.)\nPlease select:'))
             if wr_txt == 1:
                 fn,fn2,fvcd,fo=Alter_veri(N,findA_One,Ta_array)
             else:
@@ -122,7 +122,7 @@ while n > 0:
             else:
                 print('\nFail~ q_q\n')
             #txt
-            wr_txt=int(input('Write the verilog file or not?\n 1---> Yes.\n 2---> No.\nPlease select:'))
+            wr_txt=int(input('Write the verilog file or not?\t(1---> Yes.  2---> No.)\nPlease select:'))
             if wr_txt == 1:
                 fn,fn2,fvcd,fo=BER_veri(N,findA_Two,Ta_array,Sa_array)
             else:
@@ -148,7 +148,7 @@ while n > 0:
             else:
                 print('\nFail~ q_q\n')
             #txt
-            wr_txt=int(input('Write the verilog file or not?\n 1---> Yes.\n 2---> No.\nPlease select:'))
+            wr_txt=int(input('Write the verilog file or not?\t(1---> Yes.  2---> No.)\nPlease select:'))
             if wr_txt == 1:
                 fn,fn2,fvcd,fo=AWE_veri(N,findA_Two,Ta_array,Sa_array)
             else:
@@ -200,7 +200,7 @@ while n > 0:
             else:
                 print('\nFail~ q_q\n')
             #txt
-            wr_txt=int(input('Write the verilog file or not?\n 1---> Yes.\n 2---> No.\nPlease select:'))
+            wr_txt=int(input('Write the verilog file or not?\t(1---> Yes.  2---> No.)\nPlease select:'))
             if wr_txt == 1:
                 if direction == 1:
                     fn,fn2,fvcd,fo=Uni_LH_veri(N,findA_One,Ta_array)
@@ -236,7 +236,7 @@ while n > 0:
             else:
                 print('\nFail~ q_q\n')
             #txt
-            wr_txt=int(input('Write the verilog file or not?\n 1---> Yes.\n 2---> No.\nPlease select:'))
+            wr_txt=int(input('Write the verilog file or not?\t(1---> Yes.  2---> No.)\nPlease select:'))
             if wr_txt == 1:
                 fn,fn2,fvcd,fo=Alter_veri(N,findA_One,Ta_array)
             else:
@@ -262,7 +262,7 @@ while n > 0:
             else:
                 print('\nFail~ q_q\n')
             #txt
-            wr_txt=int(input('Write the verilog file or not?\n 1---> Yes.\n 2---> No.\nPlease select:'))
+            wr_txt=int(input('Write the verilog file or not?\t(1---> Yes.  2---> No.)\nPlease select:'))
             if wr_txt == 1:
                 fn,fn2,fvcd,fo=BER_veri(N,findA_Two,Ta_array,Sa_array)
             else:
@@ -288,7 +288,7 @@ while n > 0:
             else:
                 print('\nFail~ q_q\n')
             #txt
-            wr_txt=int(input('Write the verilog file or not?\n 1---> Yes.\n 2---> No.\nPlease select:'))
+            wr_txt=int(input('Write the verilog file or not?\t(1---> Yes.  2---> No.)\nPlease select:'))
             if wr_txt == 1:
                 fn,fn2,fvcd,fo=AWE_veri(N,findA_Two,Ta_array,Sa_array)
             else:
