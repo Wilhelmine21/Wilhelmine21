@@ -1,6 +1,8 @@
 # 尚未改完
 from ver3_def import *
 n=1
+show_correct_bit=1
+rang2=100
 # DescriptionA='Ex: The length of the number entered = 4 bit\n\t以AWE mode 來舉例: Mode 1=> A=19, 可更正4bit的N\n\t\t\t   Mode 2=> A=29, 可更正9bit的N'
 Description_Error_Model='''\nmodel 1 ---> Uni-direction Fully Asymmetric Channel model
 model 2 ---> Alternative-direction Fully Asymmetric Channel model
@@ -10,6 +12,7 @@ autoCreatFolder(VerilogFolder)
 
 while n > 0:
     # print(DescriptionA)
+    Show_A_TEXT(rang2,show_correct_bit)
     selA=input('mode 1 ---> Find an available A\nmode 2 ---> Find the most appropriate A\nPlease select a mode:')
     if selA == 'exit':
         print('\nExit the program.')
@@ -18,7 +21,6 @@ while n > 0:
         selA=int(selA)
     else:
         print('\nPlease re-select mode!')
-    rang2=100
 
     if selA == 1:
         Two_A,Two_cbit_N,One_A,One_cbit_N=FindA(1,rang2)
@@ -158,7 +160,7 @@ while n > 0:
             print('The file has been authenticated.')
             break
         else:
-            print('\nNo this mode!\nExit the program.\n')
+            print('\nNo this model!\nExit the program.\n')
             break
         ################################################# 
     elif selA == 2:

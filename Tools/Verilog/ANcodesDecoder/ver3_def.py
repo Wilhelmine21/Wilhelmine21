@@ -63,7 +63,7 @@ def FindA(mode,rang2):
     One_A_bit=[]
     One_cbit=[]
     One_cbit_N=[]    
-    rang1=7
+    rang1=8
     for module in range(rang1,(rang2+1)):
             Ra_array,Ta_array,Sa_array=TableTwo(module)
             Ra2_array,Ta2_array=TableOne(module)
@@ -138,28 +138,116 @@ def FindA(mode,rang2):
         One_A_most_cbitN.append(t3One)
     #################################################
     if mode == 1:
-        print('\n-------------Find an available A-------------')
-        print('雙向錯誤可用的A(%d~%d)=%s'%(rang1,rang2,Two_A))
-        print('可更正bit數(N)=',Two_cbit_N)
-        print('\n單向錯誤可用的A(7~100)=',One_A)
-        print('可更正bit數(N)=',One_cbit_N)
         return Two_A,Two_cbit_N,One_A,One_cbit_N
     #################################################
     else:
-        print('\n-------------Find the most appropriate A-------------')
-        print("雙向錯誤最合適的A=",Two_A_most)
-        print("雙向錯誤可更正bit數(N)=",Two_A_most_cbitN)
-        print("\n單向錯誤最合適的A=",One_A_most)
-        print("單向錯誤可更正bit數(N)=",One_A_most_cbitN)
         return Two_A_most,Two_A_most_cbitN,One_A_most,One_A_most_cbitN
 ####----------------------####
+def Show_A_TEXT(rang2, show_correct_bit):
+    txt_A=""
+    Two_A=[]
+    Two_A_bit=[]
+    Two_cbit=[]
+    Two_cbit_N=[]
+    One_A=[]
+    One_A_bit=[]
+    One_cbit=[]
+    One_cbit_N=[]    
+    rang1=8
+    for module in range(rang1,(rang2+1)):
+            Ra_array,Ta_array,Sa_array=TableTwo(module)
+            Ra2_array,Ta2_array=TableOne(module)
+            module_2=bin(module)[2:]
+            module_len=len(module_2)
+            count=0
+            for i in range(1, module):
+                if i in Ra_array:
+                    count+=1
+            check=set(Ra_array)
+            if count == (module-1) and len(Ra_array) == len(check):
+                Two_A.append(module)
+                maxT=max(Ta_array)
+                cbit=maxT+1
+                Two_cbit.append(cbit)
+                cbitN=cbit-module_len
+                Two_cbit_N.append(cbitN)
+                Two_A_bit.append(module_len)         
+            count2=0
+            for i2 in range(1, module):
+                if i2 in Ra2_array:
+                    count2+=1
+            check2=set(Ra2_array)
+            if count2 == (module-1) and len(Ra2_array) == len(check2):
+                One_A.append(module)
+                maxT2=max(Ta2_array)
+                cbit2=maxT2+1
+                One_cbit.append(cbit2)
+                cbitN2=cbit2-module_len
+                One_cbit_N.append(cbitN2)
+                One_A_bit.append(module_len)
+    #################################################
+    bitA=Two_A_bit[-1] +1
+    Two_A_bit_len=len(Two_A_bit)
+    Two_A_most=[]
+    for j in range(0,bitA):
+        t1=[]
+        for k in range(0,Two_A_bit_len):  
+            if Two_A_bit[k]==j:
+                t1.append(Two_A[k])
+        if len(t1) > 1:
+            t1max=max(t1)
+            Two_A_most.append(t1max)
+        elif len(t1) == 1:
+            Two_A_most.append(t1[0])
+    Two_A_most_cbitN=[]
+    for g in range(0,len(Two_A_most)):
+        t2=Two_A_most[g]
+        Two_most_index=Two_A.index(t2)
+        t3=Two_cbit_N[Two_most_index]
+        Two_A_most_cbitN.append(t3)
+    #################################################
+    bitA_One=One_A_bit[-1] +1
+    One_A_bit_len=len(One_A_bit)
+    One_A_most=[]
+    for j1 in range(0,bitA_One):
+        t1One=[]
+        for k1 in range(0,One_A_bit_len):   
+            if One_A_bit[k1]==j1:
+                t1One.append(One_A[k1])
+        if len(t1One) > 1:
+            t1maxOne=max(t1One)
+            One_A_most.append(t1maxOne)
+        elif len(t1One) == 1:
+            One_A_most.append(t1One[0])
+    One_A_most_cbitN=[]
+    for g1 in range(0,len(One_A_most)):
+        t2One=One_A_most[g1]
+        One_most_index=One_A.index(t2One)
+        t3One=One_cbit_N[One_most_index]
+        One_A_most_cbitN.append(t3One)
+    #################################################
+    txt_A=txt_A+'-------------Find an available A-------------\n'\
+    +'雙向錯誤可用的A(%d~%d)=%s\n'%(rang1,rang2,Two_A)\
+    +'單向錯誤可用的A(7~100)=%s\n'%One_A\
+    +'-------------Find the most appropriate A-------------\n'\
+    +"雙向錯誤最合適的A=%s\n"%Two_A_most\
+    +"單向錯誤最合適的A=%s\n"%One_A_most
+    txt_A_split=txt_A.split("\n")
+    if show_correct_bit == 1:
+        txt_A_split.insert(2,"可更正bit數(N)=%s"%Two_cbit_N)
+        txt_A_split.insert(4,"可更正bit數(N)=%s\n"%One_cbit_N)
+        txt_A_split.insert(7,"可更正bit數(N)=%s"%Two_A_most_cbitN)
+        txt_A_split.insert(9,"可更正bit數(N)=%s"%One_A_most_cbitN)
+    final_string = '\n'.join(txt_A_split)
+    print(final_string)
+####----------------------####
 def AutoFindA(mode,A,cbitN):    
-    N=int(input('Input a number(N):'))
+    N=int(input('\nInput a number(N):'))
     N_2=bin(N)[2:]
     N_2_len=len(N_2)
     print('N的Bit數=',N_2_len) 
     if mode == 1 :
-        print('----------Two-way error mode----------')
+        print('----------Double R Ring----------')
         Two_A=A
         Two_cbit_N=cbitN
         if N_2_len in Two_cbit_N: #剛好有對應的樹
@@ -182,7 +270,7 @@ def AutoFindA(mode,A,cbitN):
                 print('可更正的bit數(N)=',Two_cbit_N[(index_Two+1)])
                 return N,findA3_Two,Two_cbit_N[(index_Two+1)]
     else :
-        print('----------One-way error mode----------')
+        print('----------Single R Ring----------')
         One_A=A
         One_cbit_N=cbitN
         if N_2_len in One_cbit_N: #剛好有對應的樹
@@ -218,15 +306,11 @@ def errorGenTwo(bitAN,module,N):
         AN2_0List[ebit] = '0'
     ANe2=''.join(AN2_0List)
     ANe=int(ANe2,2)
+    R=ANe%module
     print('\n---------Original Data-------------')
-    print('Correct N=',N)
-    print('Correct AN=',AN)
-    print('Correct AN(2)=',AN2)
-    print('module=',module)
-    print('\n------Random error generation------')
-    print('Error bit=',ebitp)
-    print('Error AN=',ANe)
-    print('Error AN(2)=',ANe2)
+    print("A\tN\tAN\tAN2\n%d\t%d\t%d\t%s"%(module,N,AN,AN2))
+    print('------Random error generation------')
+    print("R\tebit\tANe\tANe2\n%d\t%d\t%d\t%s"%(R,ebitp,ANe,ANe2))
     return ANe,ANe2,ebit
 ####----------------------####
 def errorGenLH(bitAN,module,N):
@@ -241,18 +325,13 @@ def errorGenLH(bitAN,module,N):
         if AN2_0List[ebit] == '0':
             AN2_0List[ebit] = '1'
             cnt+=1
-    
     ANe2=''.join(AN2_0List)
     ANe=int(ANe2,2)
+    R=ANe%module
     print('\n---------Original Data-------------')
-    print('Correct N=',N)
-    print('Correct AN=',AN)
-    print('Correct AN(2)=',AN2)
-    print('module=',module)
-    print('\n------Random error generation------')
-    print('Error bit=',ebitp)
-    print('Error AN=',ANe)
-    print('Error AN(2)=',ANe2)
+    print("A\tN\tAN\tAN2\n%d\t%d\t%d\t%s"%(module,N,AN,AN2))
+    print('------Random error generation------')
+    print("R\tebit\tANe\tANe2\n%d\t%d\t%d\t%s"%(R,ebitp,ANe,ANe2))
     return ANe,ANe2,ebit
 ####----------------------####
 def errorGenHL(bitAN,module,N):
@@ -267,112 +346,87 @@ def errorGenHL(bitAN,module,N):
         if AN2_0List[ebit] == '1':
             AN2_0List[ebit] = '0'
             cnt+=1
-    
     ANe2=''.join(AN2_0List)
     ANe=int(ANe2,2)
+    R=ANe%module
     print('\n---------Original Data-------------')
-    print('Correct N=',N)
-    print('Correct AN=',AN)
-    print('Correct AN(2)=',AN2)
-    print('module=',module)
-    print('\n------Random error generation------')
-    print('Error bit=',ebitp)
-    print('Error AN=',ANe)
-    print('Error AN(2)=',ANe2)
+    print("A\tN\tAN\tAN2\n%d\t%d\t%d\t%s"%(module,N,AN,AN2))
+    print('------Random error generation------')
+    print("R\tebit\tANe\tANe2\n%d\t%d\t%d\t%s"%(R,ebitp,ANe,ANe2))
     return ANe,ANe2,ebit   
 ####------------------correction-----------------------------#### 
 def CorrectTwo(bit,data,module,Ra_array,Ta_array,Sa_array):
+    ErrorWay=""
     R=data % module
-    print('\n----------CorrectTwo----------')
+    print('-------------------CorrectTwo-------------------')
     for i in range(1,bit):
         databin=Dec2Bin(bit, data)
-        bitint=int(bit)
-        #if no int(bit) #when bit=36, 2^bit=0
-        #I do not know why.
+        bitint=int(bit)        #if no int(bit) #when bit=36, 2^bit=0 #I do not know why.
         pow2Bit=pow(2,bitint)
         if data < pow2Bit:              
             if(R==0):
                 final_answer=int(data/module)
                 final_answer_bin=Dec2Bin(bit, final_answer)
                 print('There is no error.')
-                #print('final_answer_bin=',final_answer_bin)
                 return final_answer_bin
             elif R in Ra_array:   
                 errorbit=Ta_array[R]
-                print('Error is in',errorbit,'bit')
-                #print('It was\n',databin)
                 data_B2D=Bin2Dec(bit,databin)
                 errValue=2**(errorbit)
-                #print('error value=2**(%d)=%d'%(errorbit,errValue))
                 if(Sa_array[R]==0):
                     if(errValue>data_B2D):
                         print('Error cannot be detected.')
-                        #print('databin=',databin)
                         return databin
-                        break
                     else:
-                        print('------Error come from Addition.------')
+                        ErrorWay="Addition"
                         dec_data=data_B2D-errValue
                 else:
                     if(data_B2D+errValue > 2**bit):
                         print('Error cannot be detected.')
-                        #print('databin=',databin)
                         return databin
-                        break
                     else:
-                        print('------Error come fromr Subtraction.------')
+                        ErrorWay="Subtraction"
                         dec_data=data_B2D+errValue
-                        #print('dec_data===',dec_data)
                 #############################
                 if(dec_data % module==0):
+                    ANc2=bin(dec_data)[2:]
                     final_answer=int(dec_data/module)
-                    print('final_answer=',final_answer)
                     final_answer_bin=Dec2Bin(bit, final_answer)
+                    print("R\tebit\tANc\tANc2\tNc\tError way\n%d\t%d\t%d\t%s\t%d\t%s"%(R,errorbit,dec_data,ANc2,final_answer,ErrorWay))
                     return final_answer_bin
                 else:
-                    #print('mod=',dec_data % module)#更正後餘數
-                    #print('R=',R)#更正前餘數
                     print('Error cannot be detected.')
-                    #print('databin=',databin)
                     return databin
         else:                                   #超過範圍直接輸出
-                #print('R=',R)
                 print('Error cannot be detected')
-                #print('databin=',databin)
                 return databin
 ####----------------------#### direction: 1->LH ,others->HL # Bug, No USE!
 def CorrectUni(bit,data,module,Ra_array,Ta_array,direction):
     if direction == 1:
         R=data % module
-        print('\n----------CorrectLH----------')
+        print('----------CorrectLH----------')
     else:
         R=module-(data % module)
-        print('\n----------CorrectHL----------')
+        print('----------CorrectHL----------')
     for i in range(1,bit):
         databin=Dec2Bin(bit, data)
-        bitint=int(bit)
-        #if no int(bit) #when bit=36, 2^bit=0
-        #I do not know why.
+        bitint=int(bit)        #if no int(bit) #when bit=36, 2^bit=0 #I do not know why.
         pow2Bit=pow(2,bitint)
         if data < pow2Bit:              
             if(R==0):
                 final_answer=int(data/module)
                 final_answer_bin=Dec2Bin(bit, final_answer)
                 print('There is no error.')
-                #print('final_answer_bin=',final_answer_bin)
                 return final_answer_bin
             elif R in Ra_array:   
                 errorbit=Ta_array[R]
-                print('Error is in',errorbit,'bit')
-                #print('It was\n',databin)
+                print("R\tebit\n%d\t%d"%(R,errorbit))
                 errorbit_computer=bit-(errorbit+1)
                 if databin[errorbit_computer]==1:
                     databin[errorbit_computer]=0
                 else:
                     databin[errorbit_computer]=1
-                #print("更改後\n",databin)
                 dec_data=Bin2Dec(bit, databin)
-                #print(dec_data)
                 #############################
                 if(dec_data % module==0):
                     final_answer=int(dec_data/module)
@@ -380,20 +434,16 @@ def CorrectUni(bit,data,module,Ra_array,Ta_array,direction):
                     final_answer_bin=Dec2Bin(bit, final_answer)
                     return final_answer_bin
                 else:
-                    #print('mod=',dec_data % module)#更正後餘數
-                    #print('R=',R)#更正前餘數
                     print('Error cannot be detected.')
-                    #print('databin=',databin)
                     return databin
         else:                                   #超過範圍直接輸出
-                #print('R=',R)
-                print('---Error cannot be detected')
-                #print('databin=',databin)
+                print('Error cannot be detected')
                 return databin
 ####----------------------####
 def CorrectLH(bit,data,module,Ra_array,Ta_array):
     R=data % module
     print('\n----------CorrectLH----------')
+    print("R=%d"%R)
     for i in range(1,bit):
         databin=Dec2Bin(bit, data)
         bitint=int(bit)
@@ -443,6 +493,7 @@ def CorrectHL(bit,data,module,Ra_array,Ta_array):
     R=module -  Re
     #print('模數-餘數=',R)
     print('\n----------CorrectHL----------')
+    print("R=%d"%R)
     for i in range(1,bit):
         databin=Dec2Bin(bit, data)
         #print('data=',data)
