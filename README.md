@@ -21,6 +21,7 @@ Tools ---> Verilog
 
 PDFtoPNG ---> files
 Latex ---> Auto-Gen-fig
+Verilog ---> ANcodesDecoder
 Verilog ---> GTKWave
 Verilog ---> VerilogImg[img]
 ```
