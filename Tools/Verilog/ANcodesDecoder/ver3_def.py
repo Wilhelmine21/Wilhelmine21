@@ -330,7 +330,7 @@ def TestforAllErrorAWE(bitAN,module,N):
         R_list.append(ANe_num%module)
     # 應該要確認位元是否只有一位變化? # 好像不引響 # 去除負數
     return ANe_list,ebit_list,R_list
-####----------------------####Problem!!!!!!
+####----------------------####
 def TestforAllErrorBER(bitAN,module,N):
     ANe_list=[]
     ebit_list=[]
@@ -339,21 +339,23 @@ def TestforAllErrorBER(bitAN,module,N):
     AN2=bin(AN)[2:]
     AN2_0=AN2.zfill(bitAN)
     AN2_0List=list(AN2_0)
-    for i in range(bitAN): # 0->1
+    for i in range(bitAN-1,-1,-1): # 0->1
+        AN2_0List_e=AN2_0List.copy()
         if AN2_0List[i] == '0':
-            AN2_0List[i] = '1'
-            ANe2=''.join(AN2_0List)
+            AN2_0List_e[i] = '1'
+            ANe2=''.join(AN2_0List_e)
             ANe_num=int(ANe2,2)
             ANe_list.append(ANe_num)
-            ebit_list.append((bitAN-i-1))
+            ebit_list.append(bitAN-i-1)
             R_list.append(ANe_num%module)
-    for j in range(bitAN): # 1->0
+    for j in range(bitAN-1,-1,-1): # 1->0
+        AN2_0List_e=AN2_0List.copy()
         if AN2_0List[j] == '1':
-            AN2_0List[j] = '0'
-            ANe2=''.join(AN2_0List)
+            AN2_0List_e[j] = '0'
+            ANe2=''.join(AN2_0List_e)
             ANe_num=int(ANe2,2)
             ANe_list.append(ANe_num)
-            ebit_list.append((bitAN-j-1))
+            ebit_list.append(bitAN-j-1)
             R_list.append(ANe_num%module)
     return ANe_list,ebit_list,R_list
 ####----------------------####
@@ -584,21 +586,21 @@ def AWE_veri(N,module,Ta_array,Sa_array):
     f = open(fn, "w")
     f.write("// File Name: %s/ANdecoder_AWE_%s_for_N_%s.v\n"%(Rpath,module_str,Nstr))
     f.write("// module= %d\n// 可更正AN的bit數= %d\n// mod的bit數= %d\n// 可更正N的bit數= %d\n"%(module,bitIN,bitMod,bitN))
-    f.write("\nmodule ANdecoder(numX, out);\n")
-    f.write("input [%d:0] numX;\n"%(bitIN-1))
+    f.write("\nmodule ANdecoder(ANe, Nc);\n")
+    f.write("input [%d:0] ANe;\n"%(bitIN-1))
     if (bitN-1) == 0:
-        f.write("output out;\n")
+        f.write("output Nc;\n")
     else:
-        f.write("output [%d:0] out;\n" %(bitN-1))  
+        f.write("output [%d:0] Nc;\n" %(bitN-1))  
     f.write("wire [%d:0] mod_tri;\n"%(bitMod-1))
     f.write("wire [%d:0] not_mod_tri;\n"%(bitMod-1))
     f.write("wire [%d:0] error_bit;\n"%(bitIN-1))
     f.write("wire [%d:0] and_out;\n"%(bit1-1))
     f.write("wire add;\n" )
     
-    f.write("wire [%d:0] AN;\n"%(bitIN-1))
+    f.write("wire [%d:0] ANc;\n"%(bitIN-1))
     # mod R
-    f.write("\nassign mod_tri = numX %% %d;\n"%module)
+    f.write("\nassign mod_tri = ANe %% %d;\n"%module)
     #Inv
     f.write("\n//not gate")
     for j in range(0,bitMod):
@@ -648,8 +650,8 @@ def AWE_veri(N,module,Ta_array,Sa_array):
         err1_2=" ".join(err1)
     err1t=err1_2[:-1]
     f.write("%s);"%err1t)        
-    f.write("\n\nassign AN = (add==0) ? numX-error_bit : numX+error_bit;\n" )
-    f.write("\nassign out = AN / %d;\n"%module)
+    f.write("\n\nassign ANc = (add==0) ? ANe-error_bit : ANe+error_bit;\n" )
+    f.write("\nassign Nc = ANc / %d;\n"%module)
     f.write("\nendmodule")
     f.close()
     #tb
@@ -658,14 +660,14 @@ def AWE_veri(N,module,Ta_array,Sa_array):
     f2.write("// File Name: %s\n"%fn2)
     f2.write("// module= %d\n// N= %d\n"%(module,N))
     f2.write("\nmodule ANdecoder_tb;\n")
-    f2.write("reg [%d:0] numX;\n"%(bitIN-1))
+    f2.write("reg [%d:0] ANe;\n"%(bitIN-1))
     if (bitN-1) == 0:
-        f2.write("wire out;\n")
+        f2.write("wire Nc;\n")
     else:
-        f2.write("wire [%d:0] out;\n" %(bitN-1))
-    f2.write("\nANdecoder D0(numX, out);\ninitial begin\n")
+        f2.write("wire [%d:0] Nc;\n" %(bitN-1))
+    f2.write("\nANdecoder D0(ANe, Nc);\ninitial begin\n")
     f2.write("$dumpfile(\"%s/A%dN%d.vcd\"); \n$dumpvars(0, ANdecoder_tb);\n"%(Rpath,module,N))  
-    f2.write("\nnumX=%d'd0;\n"%bitIN)
+    f2.write("\nANe=%d'd0;\n"%bitIN)
     #error
     ANe_list,ebit_list,R_list=TestforAllErrorAWE(bitIN,module,N)
     for t1 in range(len(ANe_list)):
@@ -676,12 +678,12 @@ def AWE_veri(N,module,Ta_array,Sa_array):
             f2.write("\n//ANe=%s(負數), R=%s, error bit=%s"%(tANe,tR,tebit))
         else:
             if t1 > 0:
-                f2.write("\n#10 numX=%d'd%d; //R=%s, error bit=%s"%(bitIN,tANe,tR,tebit))
+                f2.write("\n#10 ANe=%d'd%d; //R=%s, error bit=%s"%(bitIN,tANe,tR,tebit))
             else:
-                f2.write("\nnumX=%d'd%d; //R=%s, error bit=%s"%(bitIN,tANe,tR,tebit))
+                f2.write("\nANe=%d'd%d; //R=%s, error bit=%s"%(bitIN,tANe,tR,tebit))
     f2.write("\n#10 $finish;\nend\nendmodule\n")
     f2.close()
-    print('\n---------------寫檔案完成---------------')
+    print('---------------寫檔案完成---------------')
     print('%s has been generated.'%fn)
     print('%s has been generated.'%fn2) 
     fvcd=Path+'\\A'+module_str+'N'+Nstr+'.vcd'
@@ -707,21 +709,21 @@ def BER_veri(N,module,Ta_array,Sa_array):
     f = open(fn, "w")
     f.write("// File Name: %s\n"%fn)
     f.write("// module= %d\n// 可更正AN的bit數= %d\n// mod的bit數= %d\n// 可更正N的bit數= %d\n"%(module,bitIN,bitMod,bitN))
-    f.write("\nmodule ANdecoder(numX, out);\n")
-    f.write("input [%d:0] numX;\n"%(bitIN-1))
+    f.write("\nmodule ANdecoder(ANe, Nc);\n")
+    f.write("input [%d:0] ANe;\n"%(bitIN-1))
     if (bitN-1) == 0:
-        f.write("output out;\n")
+        f.write("output Nc;\n")
     else:
-        f.write("output [%d:0] out;\n" %(bitN-1))
+        f.write("output [%d:0] Nc;\n" %(bitN-1))
     f.write("wire [%d:0] mod_tri;\n"%(bitMod-1))
     f.write("wire [%d:0] not_mod_tri;\n"%(bitMod-1))
     f.write("wire [%d:0] error_bit;\n"%(bitIN-1))
     f.write("wire [%d:0] and_out;\n"%(bit1-1))
     
-    f.write("wire [%d:0] AN;\n"%(bitIN-1))
+    f.write("wire [%d:0] ANc;\n"%(bitIN-1))
     
     # mod R
-    f.write("\nassign mod_tri = numX %% %d;\n"%module)
+    f.write("\nassign mod_tri = ANe %% %d;\n"%module)
     #Inv
     f.write("\n//not gate")
     for j in range(0,bitMod):
@@ -766,8 +768,8 @@ def BER_veri(N,module,Ta_array,Sa_array):
         f.write("%s);"%orList3)     
     f.write("\n//xor gate")
     for xo in range(0,bitIN):
-        f.write('\nxor xor_%d(AN[%d],error_bit[%d],numX[%d]);'%(xo,xo,xo,xo))
-    f.write("\nassign out = AN / %d;\n"%module)
+        f.write('\nxor xor_%d(ANc[%d],error_bit[%d],ANe[%d]);'%(xo,xo,xo,xo))
+    f.write("\nassign Nc = ANc / %d;\n"%module)
     f.write("\nendmodule")
     f.close()  
     #tb
@@ -776,15 +778,15 @@ def BER_veri(N,module,Ta_array,Sa_array):
     f2.write("// File Name: %s\n"%fn2)
     f2.write("// module= %d\n// N= %d\n"%(module,N))
     f2.write("\nmodule ANdecoder_tb;\n")
-    f2.write("reg [%d:0] numX;\n"%(bitIN-1))
+    f2.write("reg [%d:0] ANe;\n"%(bitIN-1))
     if (bitN-1) == 0:
-        f2.write("wire out;\n")
+        f2.write("wire Nc;\n")
     else:
-        f2.write("wire [%d:0] out;\n" %(bitN-1))
+        f2.write("wire [%d:0] Nc;\n" %(bitN-1))
     
-    f2.write("\nANdecoder D0(numX, out);\ninitial begin\n")
+    f2.write("\nANdecoder D0(ANe, Nc);\ninitial begin\n")
     f2.write("$dumpfile(\"%s/A%dN%d.vcd\"); \n$dumpvars(0, ANdecoder_tb);\n"%(Rpath,module,N))  
-    # f2.write("\nnumX=%d'd0;\n"%bitIN)
+    # f2.write("\nANe=%d'd0;\n"%bitIN)
     #error
     ANe_list,ebit_list,R_list=TestforAllErrorBER(bitIN,module,N)
     for t1 in range(len(ANe_list)):
@@ -792,12 +794,12 @@ def BER_veri(N,module,Ta_array,Sa_array):
         tebit=ebit_list[t1]
         tR=R_list[t1]
         if t1 > 0:
-            f2.write("\n#10 numX=%d'd%d; //R=%s, error bit=%s"%(bitIN,tANe,tR,tebit))
+            f2.write("\n#10 ANe=%d'd%d; //R=%s, error bit=%s"%(bitIN,tANe,tR,tebit))
         else:
-            f2.write("\nnumX=%d'd%d; //R=%s, error bit=%s"%(bitIN,tANe,tR,tebit))
+            f2.write("\nANe=%d'd%d; //R=%s, error bit=%s"%(bitIN,tANe,tR,tebit))
     f2.write("\n#10 $finish;\nend\nendmodule\n")
     f2.close()
-    print('\n---------------寫檔案完成---------------')
+    print('---------------寫檔案完成---------------')
     print('%s has been generated.'%fn)
     print('%s has been generated.'%fn2) 
     fvcd=Path+'\\A'+module_str+'N'+Nstr+'.vcd'
@@ -822,12 +824,12 @@ def Alter_veri(N,module,Ta_array):
     f = open(fn, "w")
     f.write("// File Name: %s\n"%fn)
     f.write("// module= %d\n// 可更正AN的bit數= %d\n// mod的bit數= %d\n// 可更正N的bit數= %d\n"%(module,bitIN,bitMod,bitN))
-    f.write("\nmodule ANdecoder(numX, out);\n")
-    f.write("input [%d:0] numX;\n"%(bitIN-1))
+    f.write("\nmodule ANdecoder(ANe, Nc);\n")
+    f.write("input [%d:0] ANe;\n"%(bitIN-1))
     if (bitN-1) == 0:
-        f.write("output out;\n")
+        f.write("output Nc;\n")
     else:
-        f.write("output [%d:0] out;\n" %(bitN-1))  
+        f.write("output [%d:0] Nc;\n" %(bitN-1))  
     
     f.write("wire [%d:0] mod_tri;\n"%(bitMod-1))
     f.write("wire [%d:0] not_mod_tri;\n"%(bitMod-1))
@@ -840,10 +842,10 @@ def Alter_veri(N,module,Ta_array):
     f.write("wire [%d:0] out2;\n"%(bitIN-1))
     f.write("wire [%d:0] check;\n"%(bitMod-1))
     
-    f.write("wire [%d:0] AN;\n" %(bitIN-1))    
+    f.write("wire [%d:0] ANc;\n" %(bitIN-1))    
     
     # mod R
-    f.write("\nassign mod_tri = numX %% %d;\n"%module)
+    f.write("\nassign mod_tri = ANe %% %d;\n"%module)
     # Inv
     f.write("\n//not0 gate")
     for j1 in range(0,bitMod):
@@ -893,20 +895,20 @@ def Alter_veri(N,module,Ta_array):
     # xor0 改成not+and
     #f.write("\n//XOR gate")
     #for x1 in range(0,bitIN):
-        #f.write("\nxor xor_%d(out1[%d],error_bit1[%d], numX[%d]);"%(x1,x1,x1,x1) )
+        #f.write("\nxor xor_%d(out1[%d],error_bit1[%d], ANe[%d]);"%(x1,x1,x1,x1) )
     #    ebit=Ta_array[(x1+1)]
-    #    f.write("\nxor xor_%d(out1[%d],R[%d], numX[%d]);"%(x1,x1,ebit,x1) )
+    #    f.write("\nxor xor_%d(out1[%d],R[%d], ANe[%d]);"%(x1,x1,ebit,x1) )
     
 
     # Not
     f.write("\n//not1 gate")
     for j0 in range(0,bitIN):
         f.write("\nnot not1_%d(notR[%d], R[%d]);"%(j0,j0,j0) ) 
-    # And1 # R&numX對應
+    # And1 # R&ANe對應
     f.write("\n//and1 gate")
     for j3 in range(0,bitIN):
         ebit=Ta_array[(j3+1)]
-        f.write("\nand and1_%d(out1[%d], notR[%d], numX[%d]);"%(ebit,ebit,j3,ebit))
+        f.write("\nand and1_%d(out1[%d], notR[%d], ANe[%d]);"%(ebit,ebit,j3,ebit))
     # xor1 
     #0727 改or gate
     f.write("\n//or gate")
@@ -915,12 +917,12 @@ def Alter_veri(N,module,Ta_array):
         ebit2=Ta_array[xxx]
         f.write("\nor or_%d(out2[%d], "%(ebit2,ebit2))
         f.write("R[%d], "%x1)
-        f.write("numX[%d]);"%ebit2)
+        f.write("ANe[%d]);"%ebit2)
     
     f.write("\n//check")
     f.write("\nassign check = out1 %% %d;"%module)
-    f.write("\nassign AN = (check == %d'd0) ? out1 : out2;"%bitMod)
-    f.write("\nassign out = AN / %d;"%module)
+    f.write("\nassign ANc = (check == %d'd0) ? out1 : out2;"%bitMod)
+    f.write("\nassign Nc = ANc / %d;"%module)
     f.write("\nendmodule")
     f.close()    
     #tb
@@ -929,17 +931,17 @@ def Alter_veri(N,module,Ta_array):
     f2.write("// File Name: %s\n"%fn2)
     f2.write("// module= %d\n// N= %d\n"%(module,N))
     f2.write("\nmodule ANdecoder_tb;\n")
-    f2.write("reg [%d:0] numX;\n"%(bitIN-1))
+    f2.write("reg [%d:0] ANe;\n"%(bitIN-1))
     if (bitN-1) == 0:
-        f2.write("wire out;\n")
+        f2.write("wire Nc;\n")
     else:
-        f2.write("wire [%d:0] out;\n" %(bitN-1))
+        f2.write("wire [%d:0] Nc;\n" %(bitN-1))
  
-    f2.write("\nANdecoder D0(numX, out);\ninitial begin\n")
+    f2.write("\nANdecoder D0(ANe, Nc);\ninitial begin\n")
     f2.write("$dumpfile(\"%s/A%dN%d.vcd\"); \n$dumpvars(0, ANdecoder_tb);\n"%(Rpath,module,N))  
-    f2.write("\nnumX=%d'd0;\n"%bitIN)
+    f2.write("\nANe=%d'd0;\n"%bitIN)
     #error
-    print('---------------開始生成tb所需的Data---------------')
+    # print('---------------開始生成tb所需的Data---------------')
     for t1 in range(0,3):
         print('\n###Data %d 生成###'%(t1+1))
         f2.write("\n//error 0->1")
@@ -947,18 +949,18 @@ def Alter_veri(N,module,Ta_array):
         #tebitp=bitIN-(tebit+1) #人看的bit
         #取R
         #R=tANe%module
-        f2.write("\n#10 numX=%d'd%d;"%(bitIN,tANe))
+        f2.write("\n#10 ANe=%d'd%d;"%(bitIN,tANe))
     for t2 in range(3,6):
         print('\n###Data %d 生成###'%(t2+1))
         f2.write("\n//error 1->0")
         tANe,tANe2,tebit=errorGenHL(bitIN,module,N)
         #取R
         #R=tANe%module
-        f2.write("\n#10 numX=%d'd%d;"%(bitIN,tANe))
+        f2.write("\n#10 ANe=%d'd%d;"%(bitIN,tANe))
     
     f2.write("\n#10 $finish;\nend\nendmodule\n")
     f2.close()
-    print('\n---------------寫檔案完成---------------')
+    print('---------------寫檔案完成---------------')
     print('%s has been generated.'%fn)
     print('%s has been generated.'%fn2) 
     fvcd=Path+'\\A'+module_str+'N'+Nstr+'.vcd'
@@ -983,20 +985,20 @@ def Uni_LH_veri(N,module,Ta_array):
     f = open(fn, "w")
     f.write("// File Name: %s\n"%fn)
     f.write("// module= %d\n// 可更正AN的bit數= %d\n// mod的bit數= %d\n// 可更正N的bit數= %d\n"%(module,bitIN,bitMod,bitN))
-    f.write("\nmodule ANdecoder(numX, out);\n")
-    f.write("input [%d:0] numX;\n"%(bitIN-1))
+    f.write("\nmodule ANdecoder(ANe, Nc);\n")
+    f.write("input [%d:0] ANe;\n"%(bitIN-1))
     if (bitN-1) == 0:
-        f.write("output out;\n")
+        f.write("output Nc;\n")
     else:
-        f.write("output [%d:0] out;\n" %(bitN-1))
+        f.write("output [%d:0] Nc;\n" %(bitN-1))
     f.write("wire [%d:0] mod_tri;\n"%(bitMod-1))
     f.write("wire [%d:0] not_mod_tri;\n"%(bitMod-1))
     f.write("wire [%d:0] error_bit;\n"%(bitIN-1))
     f.write("wire [%d:0] not_error_bit;\n"%(bitIN-1))
-    f.write("wire [%d:0] AN;"%(bitIN-1))
+    f.write("wire [%d:0] ANc;"%(bitIN-1))
     
     # mod R
-    f.write("\nassign mod_tri = numX %% %d;\n"%module)
+    f.write("\nassign mod_tri = ANe %% %d;\n"%module)
     #Inv
     f.write("\n//not0 gate")
     for j1 in range(0,bitMod):
@@ -1024,7 +1026,7 @@ def Uni_LH_veri(N,module,Ta_array):
     # xor
     #f.write("\n//XOR gate")
     #for x1 in range(0,bitIN):
-    #    f.write("\nxor xor_%d(AN[%d],error_bit[%d], numX[%d]);"%(x1,x1,x1,x1) )
+    #    f.write("\nxor xor_%d(ANc[%d],error_bit[%d], ANe[%d]);"%(x1,x1,x1,x1) )
     
     # not
     f.write("\n//not1 gate")
@@ -1033,8 +1035,8 @@ def Uni_LH_veri(N,module,Ta_array):
     # and
     f.write("\n//and1 gate")
     for x2 in range(0,bitIN):
-        f.write("\nand and1_%d(AN[%d],not_error_bit[%d], numX[%d]);"%(x2,x2,x2,x2) )
-    f.write("\n\nassign out = AN / %d;\n"%module)
+        f.write("\nand and1_%d(ANc[%d],not_error_bit[%d], ANe[%d]);"%(x2,x2,x2,x2) )
+    f.write("\n\nassign Nc = ANc / %d;\n"%module)
     f.write("\nendmodule")
     f.close()
     #tb
@@ -1043,14 +1045,14 @@ def Uni_LH_veri(N,module,Ta_array):
     f2.write("// File Name: %s\n"%fn2)
     f2.write("// module= %d\n// N= %d\n"%(module,N))
     f2.write("\nmodule ANdecoder_tb;\n")
-    f2.write("reg [%d:0] numX;\n"%(bitIN-1))
+    f2.write("reg [%d:0] ANe;\n"%(bitIN-1))
     if (bitN-1) == 0:
-        f2.write("wire out;\n")
+        f2.write("wire Nc;\n")
     else:
-        f2.write("wire [%d:0] out;\n" %(bitN-1))
-    f2.write("\nANdecoder D0( numX, out);\ninitial begin\n")
+        f2.write("wire [%d:0] Nc;\n" %(bitN-1))
+    f2.write("\nANdecoder D0( ANe, Nc);\ninitial begin\n")
     f2.write("$dumpfile(\"%s/A%dN%d.vcd\"); \n$dumpvars(0, ANdecoder_tb);\n"%(Rpath,module,N))  
-    f2.write("\nnumX=%d'd0;\n"%bitIN)
+    f2.write("\nANe=%d'd0;\n"%bitIN)
     #error
     print('---------------開始生成tb所需的Data---------------')
     for t1 in range(0,5):
@@ -1060,10 +1062,10 @@ def Uni_LH_veri(N,module,Ta_array):
         #tebitp=bitIN-(tebit+1) #人看的bit
         #取R
         #R=tANe%module
-        f2.write("\n#10 numX=%d'd%d;"%(bitIN,tANe))
+        f2.write("\n#10 ANe=%d'd%d;"%(bitIN,tANe))
     f2.write("\n#10 $finish;\nend\nendmodule\n")
     f2.close()
-    print('\n---------------寫檔案完成---------------')
+    print('---------------寫檔案完成---------------')
     print('%s has been generated.'%fn)
     print('%s has been generated.'%fn2) 
     fvcd=Path+'\\A'+module_str+'N'+Nstr+'.vcd'
@@ -1088,20 +1090,20 @@ def Uni_HL_veri(N,module,Ta_array):
     f = open(fn, "w")
     f.write("// File Name: %s\n"%fn)
     f.write("// module= %d\n// 可更正AN的bit數= %d\n// mod的bit數= %d\n// 可更正N的bit數= %d\n"%(module,bitIN,bitMod,bitN))
-    f.write("\nmodule ANdecoder(numX, out);\n")
-    f.write("input [%d:0] numX;\n"%(bitIN-1))
+    f.write("\nmodule ANdecoder(ANe, Nc);\n")
+    f.write("input [%d:0] ANe;\n"%(bitIN-1))
     if (bitN-1) == 0:
-        f.write("output out;\n")
+        f.write("output Nc;\n")
     else:
-        f.write("output [%d:0] out;\n" %(bitN-1))
+        f.write("output [%d:0] Nc;\n" %(bitN-1))
     f.write("wire [%d:0] mod_tri;\n"%(bitMod-1))
     f.write("wire [%d:0] not_mod_tri;\n"%(bitMod-1))
     f.write("wire [%d:0] error_bit;\n"%(bitIN-1))
     
-    f.write("wire [%d:0] AN;"%(bitIN-1))
+    f.write("wire [%d:0] ANc;"%(bitIN-1))
     
     # mod R
-    f.write("\nassign mod_tri = numX %% %d;\n"%module)
+    f.write("\nassign mod_tri = ANe %% %d;\n"%module)
     #Inv
     f.write("\n//not gate")
     for j1 in range(0,bitMod):
@@ -1129,8 +1131,8 @@ def Uni_HL_veri(N,module,Ta_array):
     # xor #0727 改成or gate(驗證成功)
     f.write("\n//or gate")
     for x1 in range(0,bitIN):
-        f.write("\nor or_%d(AN[%d],error_bit[%d], numX[%d]);"%(x1,x1,x1,x1) )
-    f.write("\nassign out = AN / %d;\n"%module)
+        f.write("\nor or_%d(ANc[%d],error_bit[%d], ANe[%d]);"%(x1,x1,x1,x1) )
+    f.write("\nassign Nc = ANc / %d;\n"%module)
     f.write("\nendmodule")
     f.close()
     #tb
@@ -1139,14 +1141,14 @@ def Uni_HL_veri(N,module,Ta_array):
     f2.write("// File Name: %s\n"%fn2)
     f2.write("// module= %d\n// N= %d\n"%(module,N))
     f2.write("\nmodule ANdecoder_tb;\n")
-    f2.write("reg [%d:0] numX;\n"%(bitIN-1))
+    f2.write("reg [%d:0] ANe;\n"%(bitIN-1))
     if (bitN-1) == 0:
-        f2.write("wire out;\n")
+        f2.write("wire Nc;\n")
     else:
-        f2.write("wire [%d:0] out;\n" %(bitN-1))
-    f2.write("\nANdecoder D0(numX, out);\ninitial begin\n")
+        f2.write("wire [%d:0] Nc;\n" %(bitN-1))
+    f2.write("\nANdecoder D0(ANe, Nc);\ninitial begin\n")
     f2.write("$dumpfile(\"%s/A%dN%d.vcd\"); \n$dumpvars(0, ANdecoder_tb);\n"%(Rpath,module,N))  
-    f2.write("\nnumX=%d'd0;\n"%bitIN)
+    f2.write("\nANe=%d'd0;\n"%bitIN)
     #error
     print('---------------開始生成tb所需的Data---------------')
     for t1 in range(0,5):
@@ -1156,10 +1158,10 @@ def Uni_HL_veri(N,module,Ta_array):
         #tebitp=bitIN-(tebit+1) #人看的bit
         #取R
         #R=tANe%module
-        f2.write("\n#10 numX=%d'd%d;"%(bitIN,tANe))
+        f2.write("\n#10 ANe=%d'd%d;"%(bitIN,tANe))
     f2.write("\n#10 $finish;\nend\nendmodule\n")
     f2.close()
-    print('\n---------------寫檔案完成---------------')
+    print('---------------寫檔案完成---------------')
     print('%s has been generated.'%fn)
     print('%s has been generated.'%fn2) 
     fvcd=Path+'\\A'+module_str+'N'+Nstr+'.vcd'
