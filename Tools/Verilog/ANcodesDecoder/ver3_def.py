@@ -359,6 +359,34 @@ def TestforAllErrorBER(bitAN,module,N):
             R_list.append(ANe_num%module)
     return ANe_list,ebit_list,R_list
 ####----------------------####
+def TestforAllErrorAlter(bitAN,module,N): #verilog未寫出error bit #效果不好
+    ANe_list=[]
+    ebit_list=[]
+    R_list=[]
+    AN=module*N
+    AN2=bin(AN)[2:]
+    AN2_0=AN2.zfill(bitAN)
+    AN2_0List=list(AN2_0)
+    for i in range(bitAN-1,-1,-1):
+        AN2_0List_e=AN2_0List.copy()
+        if AN2_0List[i] == '0':
+            AN2_0List_e[i] = '1'
+            ANe2=''.join(AN2_0List_e)
+            ANe_num=int(ANe2,2)
+            ANe_list.append(ANe_num)
+            ebit_list.append(bitAN-i-1)
+            R_list.append(ANe_num%module)
+    for j in range(bitAN-1,-1,-1):
+        AN2_0List_e=AN2_0List.copy()
+        if AN2_0List[j] == '1':
+            AN2_0List_e[j] = '0'
+            ANe2=''.join(AN2_0List_e)
+            ANe_num=int(ANe2,2)
+            ANe_list.append(ANe_num)
+            ebit_list.append(bitAN-j-1)
+            R_list.append(ANe_num%module)
+    return ANe_list,ebit_list,R_list
+####----------------------#### 
 def errorGenLH(bitAN,module,N):
     cnt=0
     AN=module*N
@@ -820,7 +848,7 @@ def Alter_veri(N,module,Ta_array):
     bitMod=len(bin(module)[2:])  #mod的bit數
     bitN=bitIN-bitMod
     print('---------------開始寫檔案---------------')
-    print('可更正AN的bit數=',bitIN,'\nmod的bit數=',bitMod,'\n可更正N的bit數=',bitN)
+    print('可更正AN的bit數=',bitIN,'\tmod的bit數=',bitMod,'\t可更正N的bit數=',bitN)
     f = open(fn, "w")
     f.write("// File Name: %s\n"%fn)
     f.write("// module= %d\n// 可更正AN的bit數= %d\n// mod的bit數= %d\n// 可更正N的bit數= %d\n"%(module,bitIN,bitMod,bitN))
@@ -836,10 +864,10 @@ def Alter_veri(N,module,Ta_array):
     #f.write("wire [%d:0] error_bit1;\n"%(bitIN-1))
     f.write("wire [%d:0] R;\n"%(bitIN-1))
     f.write("wire [%d:0] notR;\n"%(bitIN-1))
-    f.write("wire [%d:0] out1;\n"%(bitIN-1))
+    f.write("wire [%d:0] ANc1;\n"%(bitIN-1))
     
     #f.write("wire [%d:0] error_bit2;\n"%(bitIN-1))
-    f.write("wire [%d:0] out2;\n"%(bitIN-1))
+    f.write("wire [%d:0] ANc2;\n"%(bitIN-1))
     f.write("wire [%d:0] check;\n"%(bitMod-1))
     
     f.write("wire [%d:0] ANc;\n" %(bitIN-1))    
@@ -850,27 +878,6 @@ def Alter_veri(N,module,Ta_array):
     f.write("\n//not0 gate")
     for j1 in range(0,bitMod):
         f.write("\nnot not0_%d(not_mod_tri[%d], mod_tri[%d]);"%(j1,j1,j1) )
-    # And0
-    #f.write("\n//and0 gate")
-    #for k in range(1,module): #EX: i=13 => 1-12
-    #   iLen=len(str(bin(module)[2:]))
-    #   f.write("\nand and0_%d("%k)
-    #   ebit=Ta_array[k]
-    #   f.write("error_bit1[%d], "%ebit)
-    #   k2=bin(k)[2:]
-    #   k2_0=k2.zfill(iLen)
-    #   k2_arr=list(str(k2_0))
-    #   k2_arr.reverse()
-    #   k2Tran=[]
-    #   for x in range(0, iLen):
-    #       if k2_arr[x] == '1' :
-    #            k2Tran.append('mod_tri[%d],'%x)
-    #       else :
-    #            k2Tran.append('not_mod_tri[%d],'%x)
-    #   k2Tran2=" ".join(k2Tran)
-    #   k2Tran3=k2Tran2[:-1]
-    #   f.write("%s);"%k2Tran3)
-    
     # And
     f.write("\n//and gate")
     for k in range(1,module): #EX: i=13 => 1-12
@@ -891,15 +898,6 @@ def Alter_veri(N,module,Ta_array):
        k2Tran2=" ".join(k2Tran)
        k2Tran3=k2Tran2[:-1]
        f.write("%s);"%k2Tran3)
-   
-    # xor0 改成not+and
-    #f.write("\n//XOR gate")
-    #for x1 in range(0,bitIN):
-        #f.write("\nxor xor_%d(out1[%d],error_bit1[%d], ANe[%d]);"%(x1,x1,x1,x1) )
-    #    ebit=Ta_array[(x1+1)]
-    #    f.write("\nxor xor_%d(out1[%d],R[%d], ANe[%d]);"%(x1,x1,ebit,x1) )
-    
-
     # Not
     f.write("\n//not1 gate")
     for j0 in range(0,bitIN):
@@ -908,20 +906,20 @@ def Alter_veri(N,module,Ta_array):
     f.write("\n//and1 gate")
     for j3 in range(0,bitIN):
         ebit=Ta_array[(j3+1)]
-        f.write("\nand and1_%d(out1[%d], notR[%d], ANe[%d]);"%(ebit,ebit,j3,ebit))
+        f.write("\nand and1_%d(ANc1[%d], notR[%d], ANe[%d]);"%(ebit,ebit,j3,ebit))
     # xor1 
     #0727 改or gate
     f.write("\n//or gate")
     for x1 in range(0,bitIN):
         xxx=module-(x1+1)
         ebit2=Ta_array[xxx]
-        f.write("\nor or_%d(out2[%d], "%(ebit2,ebit2))
+        f.write("\nor or_%d(ANc2[%d], "%(ebit2,ebit2))
         f.write("R[%d], "%x1)
         f.write("ANe[%d]);"%ebit2)
     
     f.write("\n//check")
-    f.write("\nassign check = out1 %% %d;"%module)
-    f.write("\nassign ANc = (check == %d'd0) ? out1 : out2;"%bitMod)
+    f.write("\nassign check = ANc1 %% %d;"%module)
+    f.write("\nassign ANc = (check == %d'd0) ? ANc1 : ANc2;"%bitMod)
     f.write("\nassign Nc = ANc / %d;"%module)
     f.write("\nendmodule")
     f.close()    
@@ -939,25 +937,16 @@ def Alter_veri(N,module,Ta_array):
  
     f2.write("\nANdecoder D0(ANe, Nc);\ninitial begin\n")
     f2.write("$dumpfile(\"%s/A%dN%d.vcd\"); \n$dumpvars(0, ANdecoder_tb);\n"%(Rpath,module,N))  
-    f2.write("\nANe=%d'd0;\n"%bitIN)
     #error
-    # print('---------------開始生成tb所需的Data---------------')
-    for t1 in range(0,3):
-        print('\n###Data %d 生成###'%(t1+1))
-        f2.write("\n//error 0->1")
-        tANe,tANe2,tebit=errorGenLH(bitIN,module,N)
-        #tebitp=bitIN-(tebit+1) #人看的bit
-        #取R
-        #R=tANe%module
-        f2.write("\n#10 ANe=%d'd%d;"%(bitIN,tANe))
-    for t2 in range(3,6):
-        print('\n###Data %d 生成###'%(t2+1))
-        f2.write("\n//error 1->0")
-        tANe,tANe2,tebit=errorGenHL(bitIN,module,N)
-        #取R
-        #R=tANe%module
-        f2.write("\n#10 ANe=%d'd%d;"%(bitIN,tANe))
-    
+    ANe_list,ebit_list,R_list=TestforAllErrorAlter(bitIN,module,N)
+    for t1 in range(len(ANe_list)):
+        tANe=ANe_list[t1]
+        tebit=ebit_list[t1]
+        tR=R_list[t1]
+        if t1 > 0:
+            f2.write("\n#10 ANe=%d'd%d; //R=%s, error bit=%s"%(bitIN,tANe,tR,tebit))
+        else:
+            f2.write("\nANe=%d'd%d; //R=%s, error bit=%s"%(bitIN,tANe,tR,tebit))
     f2.write("\n#10 $finish;\nend\nendmodule\n")
     f2.close()
     print('---------------寫檔案完成---------------')
@@ -981,7 +970,7 @@ def Uni_LH_veri(N,module,Ta_array):
     bitMod=len(bin(module)[2:])  #mod的bit數
     bitN=bitIN-bitMod
     print('---------------開始寫檔案---------------')
-    print('可更正AN的bit數=',bitIN,'\nmod的bit數=',bitMod,'\n可更正N的bit數=',bitN)
+    print('可更正AN的bit數=',bitIN,'\tmod的bit數=',bitMod,'\t可更正N的bit數=',bitN)
     f = open(fn, "w")
     f.write("// File Name: %s\n"%fn)
     f.write("// module= %d\n// 可更正AN的bit數= %d\n// mod的bit數= %d\n// 可更正N的bit數= %d\n"%(module,bitIN,bitMod,bitN))
@@ -1086,7 +1075,7 @@ def Uni_HL_veri(N,module,Ta_array):
     bitMod=len(bin(module)[2:])  #mod的bit數
     bitN=bitIN-bitMod
     print('---------------開始寫檔案---------------')
-    print('可更正AN的bit數=',bitIN,'\nmod的bit數=',bitMod,'\n可更正N的bit數=',bitN)
+    print('可更正AN的bit數=',bitIN,'\tmod的bit數=',bitMod,'\t可更正N的bit數=',bitN)
     f = open(fn, "w")
     f.write("// File Name: %s\n"%fn)
     f.write("// module= %d\n// 可更正AN的bit數= %d\n// mod的bit數= %d\n// 可更正N的bit數= %d\n"%(module,bitIN,bitMod,bitN))
