@@ -71,40 +71,45 @@ def AddError():
         Text_ANe2.delete(1.0,END) 
         Text_ANe2.insert(END,str(ANe22))
         ANe22_DEC=int(ANe22,2)
+        #####
         RR1=ANe22_DEC%FindA1.get()
         Mod1.set(RR1)
-        Febit=Ta_array[RR1]
-        Finderrorbit.set(Febit)
         # correct
         if Combobox_Model.current() == 0:
             Ra_array,Ta_array=TableOne(FindA1.get())
+            Febit=Ta_array[RR1]
             Nc11_bin=CorrectHL(BitAN_e,ANe22_DEC,FindA1.get(),Ra_array,Ta_array,Sa_array)
             Nc11=Bin2Dec(BitAN_e, Nc11_bin)
             ANc11=Nc11*FindA1.get()
 
         if Combobox_Model.current() == 1:
             Ra_array,Ta_array=TableOne(FindA1.get())
+            Febit=Ta_array[RR1]
             Nc11_bin=CorrectLH(BitAN_e,ANe22_DEC,FindA1.get(),Ra_array,Ta_array,Sa_array)
             Nc11=Bin2Dec(BitAN_e, Nc11_bin)
             ANc11=Nc11*FindA1.get()
 
         if Combobox_Model.current() == 2:
             Ra_array,Ta_array=TableOne(FindA1.get())
+            Febit=Ta_array[RR1]
             Nc11_bin=CorrectUni(BitAN_e,ANe22_DEC,FindA1.get(),Ra_array,Ta_array,Sa_array)
             Nc11=Bin2Dec(BitAN_e, Nc11_bin)
             ANc11=Nc11*FindA1.get()
 
         if Combobox_Model.current() == 3:
             Ra_array,Ta_array,Sa_array=TableTwo(FindA1.get())
+            Febit=Ta_array[RR1]
             Nc11_bin=CorrectBER(BitAN_e,ANe22_DEC,FindA1.get(),Ra_array,Ta_array,Sa_array)
             Nc11=Bin2Dec(BitAN_e, Nc11_bin)
             ANc11=Nc11*FindA1.get()
      
-        if Combobox_Model.current() == 4:
+        if Combobox_Model.current() == 4:            
             Ra_array,Ta_array,Sa_array=TableTwo(FindA1.get())
+            Febit=Ta_array[RR1]
             Nc11_bin=CorrectAWE(BitAN_e,ANe22_DEC,FindA1.get(),Ra_array,Ta_array,Sa_array)
             Nc11=Bin2Dec(BitAN_e, Nc11_bin)
             ANc11=Nc11*FindA1.get()
+        Finderrorbit.set(Febit)
         Nc.set(Nc11)
         ANc.set(ANc11)
 #
