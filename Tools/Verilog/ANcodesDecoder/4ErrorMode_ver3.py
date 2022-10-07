@@ -70,7 +70,7 @@ while n > 0:
                 break
             #auto VCD
             print('---------Auto Verification---------')
-            autoVCD(fn,fn2,fvcd,fo)
+            autoVCD(fn,fn2,fvcd,fo,selMode)
             print('The file has been authenticated.')
             break
         #Alter FAC: You can‘t know in advance which is error’s direction.
@@ -103,7 +103,7 @@ while n > 0:
                 break
             #auto VCD
             print('---------Auto Verification---------')
-            autoVCD(fn,fn2,fvcd,fo)
+            autoVCD(fn,fn2,fvcd,fo,selMode)
             print('The file has been authenticated.')
             break
         #BER
@@ -129,7 +129,7 @@ while n > 0:
                 break
             #auto VCD
             print('---------Auto Verification---------')
-            autoVCD(fn,fn2,fvcd,fo)
+            autoVCD(fn,fn2,fvcd,fo,selMode)
             print('The file has been authenticated.')
             break
         #AWE: The error maybe come from addition or subtraction.
@@ -155,7 +155,7 @@ while n > 0:
                 break
             #auto VCD
             print('---------Auto Verification---------')
-            autoVCD(fn,fn2,fvcd,fo)
+            autoVCD(fn,fn2,fvcd,fo,selMode)
             print('The file has been authenticated.')
             break
         else:
@@ -210,7 +210,7 @@ while n > 0:
                 break
             #auto VCD
             print('---------Auto Verification---------')
-            autoVCD(fn,fn2,fvcd,fo)
+            autoVCD(fn,fn2,fvcd,fo,selMode)
             print('The file has been authenticated.')
             break
         #Alter FAC
@@ -243,7 +243,7 @@ while n > 0:
                 break
             #auto VCD
             print('---------Auto Verification---------')
-            autoVCD(fn,fn2,fvcd,fo)
+            autoVCD(fn,fn2,fvcd,fo,selMode)
             print('The file has been authenticated.')
             break
         #BER
@@ -269,7 +269,7 @@ while n > 0:
                 break
             #auto VCD
             print('---------Auto Verification---------')
-            autoVCD(fn,fn2,fvcd,fo)
+            autoVCD(fn,fn2,fvcd,fo,selMode)
             print('The file has been authenticated.')
             break
         #AWE
@@ -295,7 +295,7 @@ while n > 0:
                 break
             #auto VCD
             print('---------Auto Verification---------')
-            autoVCD(fn,fn2,fvcd,fo)
+            autoVCD(fn,fn2,fvcd,fo,selMode)
             print('The file has been authenticated.')
             break
         

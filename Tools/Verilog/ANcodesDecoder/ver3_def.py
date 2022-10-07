@@ -1245,10 +1245,15 @@ def Uni_HL_veri(N,module,Ta_array):
     fo=Path+'\\A'+module_str+'N'+Nstr+'.out'
     return fn,fn2,fvcd,fo
 ####------------------iverilog-------------------------------####
-def autoVCD(fn,ftb,fvcd,fo):
+def autoVCD(fn,ftb,fvcd,fo,ErrorModels):
+    if ErrorModels == 2:
+        tclName="auto_Alter"
+    else:
+        tclName="auto"
+
     os.system('iverilog -o %s %s %s'%(fo,fn,ftb))
     os.system('vvp -n %s'%fo)
-    os.system('gtkwave -T auto.tcl %s'%fvcd)
+    os.system('gtkwave -T %s.tcl %s'%(tclName,fvcd))
 ####---------------------------------------------------------####
 def autoCreatFolder(newFolder):
     path = os.path.abspath('.')

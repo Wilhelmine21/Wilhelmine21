@@ -1,19 +1,19 @@
-// File Name: ./files/BER_20221006_1611/ANdecoder_BER_19_for_N_11.v
-// module= 19
-// タANbit计= 9
+// File Name: ./files/BER_20221007_1058/ANdecoder_BER_29_for_N_123.v
+// module= 29
+// タANbit计= 14
 // modbit计= 5
-// タNbit计= 4
+// タNbit计= 9
 
 module ANdecoder(ANe, Nc);
-input [8:0] ANe;
-output [3:0] Nc;
+input [13:0] ANe;
+output [8:0] Nc;
 wire [4:0] mod_tri;
 wire [4:0] not_mod_tri;
-wire [8:0] error_bit;
-wire [17:0] and_out;
-wire [8:0] ANc;
+wire [13:0] error_bit;
+wire [27:0] and_out;
+wire [13:0] ANc;
 
-assign mod_tri = ANe % 19;
+assign mod_tri = ANe % 29;
 
 //not gate
 not not_0(not_mod_tri[0], mod_tri[0]);
@@ -40,16 +40,31 @@ and and_15(and_out[14], mod_tri[0], mod_tri[1], mod_tri[2], mod_tri[3], not_mod_
 and and_16(and_out[15], not_mod_tri[0], not_mod_tri[1], not_mod_tri[2], not_mod_tri[3], mod_tri[4]);
 and and_17(and_out[16], mod_tri[0], not_mod_tri[1], not_mod_tri[2], not_mod_tri[3], mod_tri[4]);
 and and_18(and_out[17], not_mod_tri[0], mod_tri[1], not_mod_tri[2], not_mod_tri[3], mod_tri[4]);
+and and_19(and_out[18], mod_tri[0], mod_tri[1], not_mod_tri[2], not_mod_tri[3], mod_tri[4]);
+and and_20(and_out[19], not_mod_tri[0], not_mod_tri[1], mod_tri[2], not_mod_tri[3], mod_tri[4]);
+and and_21(and_out[20], mod_tri[0], not_mod_tri[1], mod_tri[2], not_mod_tri[3], mod_tri[4]);
+and and_22(and_out[21], not_mod_tri[0], mod_tri[1], mod_tri[2], not_mod_tri[3], mod_tri[4]);
+and and_23(and_out[22], mod_tri[0], mod_tri[1], mod_tri[2], not_mod_tri[3], mod_tri[4]);
+and and_24(and_out[23], not_mod_tri[0], not_mod_tri[1], not_mod_tri[2], mod_tri[3], mod_tri[4]);
+and and_25(and_out[24], mod_tri[0], not_mod_tri[1], not_mod_tri[2], mod_tri[3], mod_tri[4]);
+and and_26(and_out[25], not_mod_tri[0], mod_tri[1], not_mod_tri[2], mod_tri[3], mod_tri[4]);
+and and_27(and_out[26], mod_tri[0], mod_tri[1], not_mod_tri[2], mod_tri[3], mod_tri[4]);
+and and_28(and_out[27], not_mod_tri[0], not_mod_tri[1], mod_tri[2], mod_tri[3], mod_tri[4]);
 //or gate
-or or_0(error_bit[0], and_out[0], and_out[17]);
-or or_1(error_bit[1], and_out[1], and_out[16]);
-or or_2(error_bit[2], and_out[3], and_out[14]);
-or or_3(error_bit[3], and_out[7], and_out[10]);
-or or_4(error_bit[4], and_out[2], and_out[15]);
-or or_5(error_bit[5], and_out[5], and_out[12]);
-or or_6(error_bit[6], and_out[6], and_out[11]);
-or or_7(error_bit[7], and_out[4], and_out[13]);
-or or_8(error_bit[8], and_out[8], and_out[9]);
+or or_0(error_bit[0], and_out[0], and_out[27]);
+or or_1(error_bit[1], and_out[1], and_out[26]);
+or or_2(error_bit[2], and_out[3], and_out[24]);
+or or_3(error_bit[3], and_out[7], and_out[20]);
+or or_4(error_bit[4], and_out[12], and_out[15]);
+or or_5(error_bit[5], and_out[2], and_out[25]);
+or or_6(error_bit[6], and_out[5], and_out[22]);
+or or_7(error_bit[7], and_out[11], and_out[16]);
+or or_8(error_bit[8], and_out[4], and_out[23]);
+or or_9(error_bit[9], and_out[9], and_out[18]);
+or or_10(error_bit[10], and_out[8], and_out[19]);
+or or_11(error_bit[11], and_out[10], and_out[17]);
+or or_12(error_bit[12], and_out[6], and_out[21]);
+or or_13(error_bit[13], and_out[13], and_out[14]);
 //xor gate
 xor xor_0(ANc[0],error_bit[0],ANe[0]);
 xor xor_1(ANc[1],error_bit[1],ANe[1]);
@@ -60,6 +75,11 @@ xor xor_5(ANc[5],error_bit[5],ANe[5]);
 xor xor_6(ANc[6],error_bit[6],ANe[6]);
 xor xor_7(ANc[7],error_bit[7],ANe[7]);
 xor xor_8(ANc[8],error_bit[8],ANe[8]);
-assign Nc = ANc / 19;
+xor xor_9(ANc[9],error_bit[9],ANe[9]);
+xor xor_10(ANc[10],error_bit[10],ANe[10]);
+xor xor_11(ANc[11],error_bit[11],ANe[11]);
+xor xor_12(ANc[12],error_bit[12],ANe[12]);
+xor xor_13(ANc[13],error_bit[13],ANe[13]);
+assign Nc = ANc / 29;
 
 endmodule

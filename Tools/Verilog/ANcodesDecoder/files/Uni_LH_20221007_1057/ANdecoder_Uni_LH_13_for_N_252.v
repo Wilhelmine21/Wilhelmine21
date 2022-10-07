@@ -1,4 +1,4 @@
-// File Name: ./files/Uni_LH_20221007_0943/ANdecoder_Uni_LH_13_for_N_11.v
+// File Name: ./files/Uni_LH_20221007_1057/ANdecoder_Uni_LH_13_for_N_252.v
 // module= 13
 // 可更正AN的bit數= 12
 // mod的bit數= 4
