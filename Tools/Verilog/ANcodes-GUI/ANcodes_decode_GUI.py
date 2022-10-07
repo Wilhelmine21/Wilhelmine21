@@ -58,10 +58,6 @@ def gen():
 #
 def AddError():
     if FindA1.get() != 0:
-        if Combobox_Model.current() < 3:
-            Ra_array,Ta_array=TableOne(FindA1.get())
-        else:
-            Ra_array,Ta_array,Sa_array=TableTwo(FindA1.get())
         index=errorbit.get()
         BitAll=(BitAN_A_N.get()).split(",")
         BitAN_e=int(BitAll[0])
@@ -81,26 +77,31 @@ def AddError():
         Finderrorbit.set(Febit)
         # correct
         if Combobox_Model.current() == 0:
+            Ra_array,Ta_array=TableOne(FindA1.get())
             Nc11_bin=CorrectHL(BitAN_e,ANe22_DEC,FindA1.get(),Ra_array,Ta_array,Sa_array)
             Nc11=Bin2Dec(BitAN_e, Nc11_bin)
             ANc11=Nc11*FindA1.get()
 
         if Combobox_Model.current() == 1:
+            Ra_array,Ta_array=TableOne(FindA1.get())
             Nc11_bin=CorrectLH(BitAN_e,ANe22_DEC,FindA1.get(),Ra_array,Ta_array,Sa_array)
             Nc11=Bin2Dec(BitAN_e, Nc11_bin)
             ANc11=Nc11*FindA1.get()
 
         if Combobox_Model.current() == 2:
+            Ra_array,Ta_array=TableOne(FindA1.get())
             Nc11_bin=CorrectUni(BitAN_e,ANe22_DEC,FindA1.get(),Ra_array,Ta_array,Sa_array)
             Nc11=Bin2Dec(BitAN_e, Nc11_bin)
             ANc11=Nc11*FindA1.get()
 
         if Combobox_Model.current() == 3:
+            Ra_array,Ta_array,Sa_array=TableTwo(FindA1.get())
             Nc11_bin=CorrectBER(BitAN_e,ANe22_DEC,FindA1.get(),Ra_array,Ta_array,Sa_array)
             Nc11=Bin2Dec(BitAN_e, Nc11_bin)
             ANc11=Nc11*FindA1.get()
      
         if Combobox_Model.current() == 4:
+            Ra_array,Ta_array,Sa_array=TableTwo(FindA1.get())
             Nc11_bin=CorrectAWE(BitAN_e,ANe22_DEC,FindA1.get(),Ra_array,Ta_array,Sa_array)
             Nc11=Bin2Dec(BitAN_e, Nc11_bin)
             ANc11=Nc11*FindA1.get()
