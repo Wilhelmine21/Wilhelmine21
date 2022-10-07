@@ -1,0 +1,96 @@
+$date
+	Fri Oct 07 09:43:47 2022
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module ANdecoder_tb $end
+$var wire 8 ! Nc [7:0] $end
+$var reg 12 " ANe [11:0] $end
+$scope module D0 $end
+$var wire 12 # ANe [11:0] $end
+$var wire 4 $ not_mod_tri [3:0] $end
+$var wire 12 % not_error_bit [11:0] $end
+$var wire 4 & mod_tri [3:0] $end
+$var wire 12 ' error_bit [11:0] $end
+$var wire 8 ( Nc [7:0] $end
+$var wire 12 ) ANc [11:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b10001111 )
+b1011 (
+b10000 '
+b11 &
+b111111101111 %
+b1100 $
+b10011111 #
+b10011111 "
+b1011 !
+$end
+#10
+b111111011111 %
+b1001 $
+b100000 '
+b1011 !
+b1011 (
+b10001111 )
+b110 &
+b10101111 "
+b10101111 #
+#20
+b111110111111 %
+b11 $
+b1000000 '
+b1011 !
+b1011 (
+b10001111 )
+b1100 &
+b11001111 "
+b11001111 #
+#30
+b111011111111 %
+b110 $
+b100000000 '
+b1011 !
+b1011 (
+b10001111 )
+b1001 &
+b110001111 "
+b110001111 #
+#40
+b110111111111 %
+b1010 $
+b1000000000 '
+b1011 !
+b1011 (
+b10001111 )
+b101 &
+b1010001111 "
+b1010001111 #
+#50
+b101111111111 %
+b101 $
+b10000000000 '
+b1011 !
+b1011 (
+b10001111 )
+b1010 &
+b10010001111 "
+b10010001111 #
+#60
+b11111111111 %
+b1000 $
+b100000000000 '
+b1011 !
+b1011 (
+b10001111 )
+b111 &
+b100010001111 "
+b100010001111 #
+#70

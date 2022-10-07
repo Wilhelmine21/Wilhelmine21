@@ -115,7 +115,7 @@ while n > 0:
             bitAN=cbitN_Two+len(bin(findA_Two)[2:])
             ANe,ANe2,ebit=errorGenTwo(bitAN,findA_Two,N)
             #correct
-            correct2=CorrectTwo(bitAN,ANe,findA_Two,Ra_array,Ta_array,Sa_array)
+            correct2=CorrectBER(bitAN,ANe,findA_Two,Ra_array,Ta_array,Sa_array)
             correct=Bin2Dec(bitAN, correct2)
             if correct == N:
                 print('\nCorrect ^_^\n')
@@ -141,7 +141,7 @@ while n > 0:
             bitAN=cbitN_Two+len(bin(findA_Two)[2:])
             ANe,ANe2,ebit=errorGenTwo(bitAN,findA_Two,N)
             #correct
-            correct2=CorrectTwo(bitAN,ANe,findA_Two,Ra_array,Ta_array,Sa_array)
+            correct2=CorrectAWE(bitAN,ANe,findA_Two,Ra_array,Ta_array,Sa_array)
             correct=Bin2Dec(bitAN, correct2)
             if correct == N:
                 print('\nCorrect ^_^\n')
@@ -255,7 +255,7 @@ while n > 0:
             bitAN=cbitN_Two+len(bin(findA_Two)[2:])
             ANe,ANe2,ebit=errorGenTwo(bitAN,findA_Two,N)
             #correct
-            correct2=CorrectTwo(bitAN,ANe,findA_Two,Ra_array,Ta_array,Sa_array)
+            correct2=CorrectBER(bitAN,ANe,findA_Two,Ra_array,Ta_array,Sa_array)
             correct=Bin2Dec(bitAN, correct2)
             if correct == N:
                 print('\nCorrect ^_^\n')
@@ -281,7 +281,7 @@ while n > 0:
             bitAN=cbitN_Two+len(bin(findA_Two)[2:])
             ANe,ANe2,ebit=errorGenTwo(bitAN,findA_Two,N)
             #correct
-            correct2=CorrectTwo(bitAN,ANe,findA_Two,Ra_array,Ta_array,Sa_array)
+            correct2=CorrectAWE(bitAN,ANe,findA_Two,Ra_array,Ta_array,Sa_array)
             correct=Bin2Dec(bitAN, correct2)
             if correct == N:
                 print('\nCorrect ^_^\n')

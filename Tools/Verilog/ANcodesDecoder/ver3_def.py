@@ -308,9 +308,9 @@ def errorGenTwo(bitAN,module,N):
     ANe=int(ANe2,2)
     R=ANe%module
     print('---------Original Data-------------')
-    print("A\tN\tAN\tAN2\n%d\t%d\t%d\t%s"%(module,N,AN,AN2))
+    print("A\tN\tAN\tAN2\n%d\t%d\t%d\t%s\t"%(module,N,AN,AN2_0))
     print('------Random error generation------')
-    print("R\tebit\tANe\tANe2\n%d\t%d\t%d\t%s"%(R,ebitp,ANe,ANe2))
+    print("R\tebit\tANe\tANe2\n%d\t%d\t%d\t%s\t"%(R,ebitp,ANe,ANe2))
     return ANe,ANe2,ebit
 ####----------------------####
 def TestforAllErrorAWE(bitAN,module,N):
@@ -386,6 +386,44 @@ def TestforAllErrorAlter(bitAN,module,N): #verilog未寫出error bit #效果不�
             ebit_list.append(bitAN-j-1)
             R_list.append(ANe_num%module)
     return ANe_list,ebit_list,R_list
+####----------------------####
+def TestforAllErrorHL(bitAN,module,N): 
+    ANe_list=[]
+    ebit_list=[]
+    R_list=[]
+    AN=module*N
+    AN2=bin(AN)[2:]
+    AN2_0=AN2.zfill(bitAN)
+    AN2_0List=list(AN2_0)
+    for j in range(bitAN-1,-1,-1):
+        AN2_0List_e=AN2_0List.copy()
+        if AN2_0List[j] == '1':
+            AN2_0List_e[j] = '0'
+            ANe2=''.join(AN2_0List_e)
+            ANe_num=int(ANe2,2)
+            ANe_list.append(ANe_num)
+            ebit_list.append(bitAN-j-1)
+            R_list.append(ANe_num%module)
+    return ANe_list,ebit_list,R_list
+####----------------------####
+def TestforAllErrorLH(bitAN,module,N): 
+    ANe_list=[]
+    ebit_list=[]
+    R_list=[]
+    AN=module*N
+    AN2=bin(AN)[2:]
+    AN2_0=AN2.zfill(bitAN)
+    AN2_0List=list(AN2_0)
+    for i in range(bitAN-1,-1,-1):
+        AN2_0List_e=AN2_0List.copy()
+        if AN2_0List[i] == '0':
+            AN2_0List_e[i] = '1'
+            ANe2=''.join(AN2_0List_e)
+            ANe_num=int(ANe2,2)
+            ANe_list.append(ANe_num)
+            ebit_list.append(bitAN-i-1)
+            R_list.append(ANe_num%module)
+    return ANe_list,ebit_list,R_list
 ####----------------------#### 
 def errorGenLH(bitAN,module,N):
     cnt=0
@@ -403,9 +441,9 @@ def errorGenLH(bitAN,module,N):
     ANe=int(ANe2,2)
     R=ANe%module
     print('---------Original Data-------------')
-    print("A\tN\tAN\tAN2\n%d\t%d\t%d\t%s"%(module,N,AN,AN2))
+    print("A\tN\tAN\tAN2\n%d\t%d\t%d\t%s\t"%(module,N,AN,AN2_0))
     print('------Random error generation------')
-    print("R\tebit\tANe\tANe2\n%d\t%d\t%d\t%s"%(R,ebitp,ANe,ANe2))
+    print("R\tebit\tANe\tANe2\n%d\t%d\t%d\t%s\t"%(R,ebitp,ANe,ANe2))
     return ANe,ANe2,ebit
 ####----------------------####
 def errorGenHL(bitAN,module,N):
@@ -424,15 +462,16 @@ def errorGenHL(bitAN,module,N):
     ANe=int(ANe2,2)
     R=ANe%module
     print('---------Original Data-------------')
-    print("A\tN\tAN\tAN2\n%d\t%d\t%d\t%s"%(module,N,AN,AN2))
+    print("A\tN\tAN\tAN2\n%d\t%d\t%d\t%s\t"%(module,N,AN,AN2_0))
     print('------Random error generation------')
-    print("R\tebit\tANe\tANe2\n%d\t%d\t%d\t%s"%(R,ebitp,ANe,ANe2))
+    print("R\tebit\tANe\tANe2\n%d\t%d\t%d\t%s\t"%(R,ebitp,ANe,ANe2))
     return ANe,ANe2,ebit   
 ####------------------correction-----------------------------#### 
-def CorrectTwo(bit,data,module,Ra_array,Ta_array,Sa_array):
+def CorrectAWE(bit,data,module,Ra_array,Ta_array,Sa_array):
     ErrorWay=""
+    bitAN=int((module-1)/2)# 13->13-1=12, 12/2=6
     R=data % module
-    print('-----------CorrectTwo---------------------------')
+    print('-----------Correct AWE---------------------------')
     for i in range(1,bit):
         databin=Dec2Bin(bit, data)
         bitint=int(bit)        #if no int(bit) #when bit=36, 2^bit=0 #I do not know why.
@@ -463,10 +502,56 @@ def CorrectTwo(bit,data,module,Ra_array,Ta_array,Sa_array):
                         dec_data=data_B2D+errValue
                 #############################
                 if(dec_data % module==0):
-                    ANc2=bin(dec_data)[2:]
+                    ANc2=(bin(dec_data)[2:]).zfill(bitAN)
                     final_answer=int(dec_data/module)
                     final_answer_bin=Dec2Bin(bit, final_answer)
-                    print("R\tebit\tANc\tANc2\tNc\tError way\n%d\t%d\t%d\t%s\t%d\t%s"%(R,errorbit,dec_data,ANc2,final_answer,ErrorWay))
+                    print("R\tebit\tANc\tANc2\t\tNc\tError way\n%d\t%d\t%d\t%s\t%d\t%s"%(R,errorbit,dec_data,ANc2,final_answer,ErrorWay))
+                    return final_answer_bin
+                else:
+                    print('Error cannot be detected.')
+                    return databin
+        else:                                   #超過範圍直接輸出
+                print('Error cannot be detected')
+                return databin
+####----------------------####
+def CorrectBER(bit,data,module,Ra_array,Ta_array,Sa_array):
+    bitAN=int((module-1)/2)# 13->13-1=12, 12/2=6
+    R=data % module
+    print('-----------Correct BER---------------------------')
+    for i in range(1,bit):
+        databin=Dec2Bin(bit, data)
+        bitint=int(bit)        #if no int(bit) #when bit=36, 2^bit=0 #I do not know why.
+        pow2Bit=pow(2,bitint)
+        if data < pow2Bit:              
+            if(R==0):
+                final_answer=int(data/module)
+                final_answer_bin=Dec2Bin(bit, final_answer)
+                print('There is no error.')
+                return final_answer_bin
+            elif R in Ra_array:   
+                errorbit=Ta_array[R]
+                data_B2D=Bin2Dec(bit,databin)
+                errValue=2**(errorbit)
+                if(Sa_array[R]==0):
+                    if(errValue>data_B2D):
+                        print('Error cannot be detected.')
+                        return databin
+                    else:
+                        ErrorWay="Addition"
+                        dec_data=data_B2D-errValue
+                else:
+                    if(data_B2D+errValue > 2**bit):
+                        print('Error cannot be detected.')
+                        return databin
+                    else:
+                        ErrorWay="Subtraction"
+                        dec_data=data_B2D+errValue
+                #############################
+                if(dec_data % module==0):
+                    ANc2=(bin(dec_data)[2:]).zfill(bitAN)
+                    final_answer=int(dec_data/module)
+                    final_answer_bin=Dec2Bin(bit, final_answer)
+                    print("R\tebit\tANc\tANc2\t\tNc\n%d\t%d\t%d\t%s\t%d"%(R,errorbit,dec_data,ANc2,final_answer))
                     return final_answer_bin
                 else:
                     print('Error cannot be detected.')
@@ -476,6 +561,7 @@ def CorrectTwo(bit,data,module,Ra_array,Ta_array,Sa_array):
                 return databin
 ####----------------------#### direction: 1->LH ,others->HL # Bug, No USE!
 def CorrectUni(bit,data,module,Ra_array,Ta_array,direction):
+    bitAN=module-1# 13->13-1=12
     if direction == 1:
         R=data % module
         print('-----------CorrectLH---------------------------')
@@ -503,7 +589,7 @@ def CorrectUni(bit,data,module,Ra_array,Ta_array,direction):
                 dec_data=Bin2Dec(bit, databin)
                 #############################
                 if(dec_data % module==0):
-                    ANc2=bin(dec_data)[2:]
+                    ANc2=(bin(dec_data)[2:]).zfill(bitAN)
                     final_answer=int(dec_data/module)
                     # print('final_answer=',final_answer)
                     final_answer_bin=Dec2Bin(bit, final_answer)
@@ -518,6 +604,7 @@ def CorrectUni(bit,data,module,Ra_array,Ta_array,direction):
 ####----------------------####
 def CorrectLH(bit,data,module,Ra_array,Ta_array):
     R=data % module
+    bitAN=module-1# 13->13-1=12
     print('----------CorrectLH----------------')
     # print("R=%d"%R)
     for i in range(1,bit):
@@ -541,7 +628,7 @@ def CorrectLH(bit,data,module,Ra_array,Ta_array):
                 dec_data=Bin2Dec(bit, databin)
                 #############################
                 if(dec_data % module==0):
-                    ANc2=bin(dec_data)[2:]
+                    ANc2=(bin(dec_data)[2:]).zfill(bitAN)
                     final_answer=int(dec_data/module)
                     # print('final_answer=',final_answer)
                     final_answer_bin=Dec2Bin(bit, final_answer)
@@ -555,6 +642,7 @@ def CorrectLH(bit,data,module,Ra_array,Ta_array):
                 return databin
 ####----------------------####
 def CorrectHL(bit,data,module,Ra_array,Ta_array):
+    bitAN=module-1# 13->13-1=12
     Re=data % module
     #print('餘數=',Re)
     R=module -  Re
@@ -582,7 +670,7 @@ def CorrectHL(bit,data,module,Ra_array,Ta_array):
                 dec_data=Bin2Dec(bit, databin)
                 #############################
                 if(dec_data % module==0):                    
-                    ANc2=bin(dec_data)[2:]
+                    ANc2=(bin(dec_data)[2:]).zfill(bitAN)
                     final_answer=int(dec_data/module)
                     # print('final_answer=',final_answer)
                     print("R\tebit\tANc\tANc2\tNc\n%d\t%d\t%d\t%s\t%d"%(R,errorbit,dec_data,ANc2,final_answer))
@@ -1043,15 +1131,15 @@ def Uni_LH_veri(N,module,Ta_array):
     f2.write("$dumpfile(\"%s/A%dN%d.vcd\"); \n$dumpvars(0, ANdecoder_tb);\n"%(Rpath,module,N))  
     f2.write("\nANe=%d'd0;\n"%bitIN)
     #error
-    print('---------------開始生成tb所需的Data---------------')
-    for t1 in range(0,5):
-        print('\n###Data %d 生成###'%(t1+1))
-        #tN=np.random.randint(0,2**bitN)
-        tANe,tANe2,tebit=errorGenLH(bitIN,module,N)
-        #tebitp=bitIN-(tebit+1) #人看的bit
-        #取R
-        #R=tANe%module
-        f2.write("\n#10 ANe=%d'd%d;"%(bitIN,tANe))
+    ANe_list,ebit_list,R_list=TestforAllErrorLH(bitIN,module,N)
+    for t1 in range(len(ANe_list)):
+        tANe=ANe_list[t1]
+        tebit=ebit_list[t1]
+        tR=R_list[t1]
+        if t1 > 0:
+            f2.write("\n#10 ANe=%d'd%d; //R=%s, error bit=%s"%(bitIN,tANe,tR,tebit))
+        else:
+            f2.write("\nANe=%d'd%d; //R=%s, error bit=%s"%(bitIN,tANe,tR,tebit))
     f2.write("\n#10 $finish;\nend\nendmodule\n")
     f2.close()
     print('---------------寫檔案完成---------------')
@@ -1139,15 +1227,15 @@ def Uni_HL_veri(N,module,Ta_array):
     f2.write("$dumpfile(\"%s/A%dN%d.vcd\"); \n$dumpvars(0, ANdecoder_tb);\n"%(Rpath,module,N))  
     f2.write("\nANe=%d'd0;\n"%bitIN)
     #error
-    print('---------------開始生成tb所需的Data---------------')
-    for t1 in range(0,5):
-        print('\n###Data %d 生成###'%(t1+1))
-        #tN=np.random.randint(0,2**bitN)
-        tANe,tANe2,tebit=errorGenHL(bitIN,module,N)
-        #tebitp=bitIN-(tebit+1) #人看的bit
-        #取R
-        #R=tANe%module
-        f2.write("\n#10 ANe=%d'd%d;"%(bitIN,tANe))
+    ANe_list,ebit_list,R_list=TestforAllErrorHL(bitIN,module,N)
+    for t1 in range(len(ANe_list)):
+        tANe=ANe_list[t1]
+        tebit=ebit_list[t1]
+        tR=R_list[t1]
+        if t1 > 0:
+            f2.write("\n#10 ANe=%d'd%d; //R=%s, error bit=%s"%(bitIN,tANe,tR,tebit))
+        else:
+            f2.write("\nANe=%d'd%d; //R=%s, error bit=%s"%(bitIN,tANe,tR,tebit))
     f2.write("\n#10 $finish;\nend\nendmodule\n")
     f2.close()
     print('---------------寫檔案完成---------------')
