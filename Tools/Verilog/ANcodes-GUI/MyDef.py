@@ -241,57 +241,53 @@ def Show_A_TEXT(rang2, show_correct_bit):
     final_string = '\n'.join(txt_A_split)
     print(final_string)
 ####----------------------####
-def AutoFindA(mode,A,cbitN):    
-    N=int(input('\nInput a number(N):'))
-    N_2=bin(N)[2:]
-    N_2_len=len(N_2)
-    print('N的Bit數=',N_2_len) 
-    if mode == 1 :
+def AutoFindA(model,BitN_input,A,cbitN):    
+    if model == 1 :
         print('----------Double R Ring----------')
         Two_A=A
         Two_cbit_N=cbitN
-        if N_2_len in Two_cbit_N: #剛好有對應的樹
-            x_Two=Two_cbit_N.index(N_2_len)
+        if BitN_input in Two_cbit_N: #剛好有對應的樹
+            x_Two=Two_cbit_N.index(BitN_input)
             findA_Two=Two_A[x_Two]
             print('適合的A=',findA_Two)
             print('可更正的bit數(N)=',Two_cbit_N[x_Two])
-            return N,findA_Two,Two_cbit_N[x_Two]
+            return findA_Two,Two_cbit_N[x_Two]
         else:   #大於Nbit的最小數
             Two_cbit_N_a=np.array(Two_cbit_N)
-            index_Two=(np.abs(Two_cbit_N_a-N_2_len)).argmin()
+            index_Two=(np.abs(Two_cbit_N_a-BitN_input)).argmin()
             findA2_Two=Two_A[index_Two]
-            if N_2_len < index_Two :
+            if BitN_input < index_Two :
                 print('適合的A=',findA2_Two)
                 print('可更正的bit數(N)=',Two_cbit_N[index_Two])
-                return N,findA2_Two,Two_cbit_N[index_Two]
+                return findA2_Two,Two_cbit_N[index_Two]
             else:
                 findA3_Two=Two_A[(index_Two+1)]
                 print('適合的A=',findA3_Two)
                 print('可更正的bit數(N)=',Two_cbit_N[(index_Two+1)])
-                return N,findA3_Two,Two_cbit_N[(index_Two+1)]
+                return findA3_Two,Two_cbit_N[(index_Two+1)]
     else :
         print('----------Single R Ring----------')
         One_A=A
         One_cbit_N=cbitN
-        if N_2_len in One_cbit_N: #剛好有對應的樹
-            x_One=One_cbit_N.index(N_2_len)
+        if BitN_input in One_cbit_N: #剛好有對應的樹
+            x_One=One_cbit_N.index(BitN_input)
             findA_One=One_A[x_One]
             print('適合的A=',findA_One)
             print('可更正的bit數(N)=',One_cbit_N[x_One])
-            return N,findA_One,One_cbit_N[x_One]
+            return findA_One,One_cbit_N[x_One]
         else:   #大於Nbit的最小數
             One_cbit_N_a=np.array(One_cbit_N)
-            index_One=(np.abs(One_cbit_N_a-N_2_len)).argmin()
+            index_One=(np.abs(One_cbit_N_a-BitN_input)).argmin()
             findA2_One=One_A[index_One]
-            if N_2_len < index_One :
+            if BitN_input < index_One :
                 print('適合的A=',findA2_One)
                 print('可更正的bit數(N)=',One_cbit_N[index_One])
-                return N,findA2_One,One_cbit_N[index_One]
+                return findA2_One,One_cbit_N[index_One]
             else:
                 findA3_One=One_A[(index_One+1)]
                 print('適合的A=',findA3_One)    
                 print('可更正的bit數(N)=',One_cbit_N[(index_One+1)])
-                return N,findA3_One,One_cbit_N[(index_One+1)]
+                return findA3_One,One_cbit_N[(index_One+1)]
 ####------------------Error-----------------------------####
 def errorGenTwo(bitAN,module,N):
     AN=module*N
