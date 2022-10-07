@@ -243,7 +243,7 @@ def Show_A_TEXT(rang2, show_correct_bit):
 ####----------------------####
 def AutoFindA(model,BitN_input,A,cbitN):    
     if model == 1 :
-        print('----------Double R Ring----------')
+        print('----------Single R Ring----------') #取名取相反了one<=>two
         Two_A=A
         Two_cbit_N=cbitN
         if BitN_input in Two_cbit_N: #剛好有對應的樹
@@ -266,7 +266,7 @@ def AutoFindA(model,BitN_input,A,cbitN):
                 print('可更正的bit數(N)=',Two_cbit_N[(index_Two+1)])
                 return findA3_Two,Two_cbit_N[(index_Two+1)]
     else :
-        print('----------Single R Ring----------')
+        print('----------Double R Ring----------')
         One_A=A
         One_cbit_N=cbitN
         if BitN_input in One_cbit_N: #剛好有對應的樹
