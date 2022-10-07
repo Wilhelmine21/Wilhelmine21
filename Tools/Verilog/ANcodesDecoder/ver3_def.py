@@ -228,7 +228,7 @@ def Show_A_TEXT(rang2, show_correct_bit):
     #################################################
     txt_A=txt_A+'-------------Find an available A-------------\n'\
     +'雙向錯誤可用的A(%d~%d)=%s\n'%(rang1,rang2,Two_A)\
-    +'單向錯誤可用的A(7~100)=%s\n'%One_A\
+    +'單向錯誤可用的A(%d~%d)=%s\n'%(rang1,rang2,One_A)\
     +'-------------Find the most appropriate A-------------\n'\
     +"雙向錯誤最合適的A=%s\n"%Two_A_most\
     +"單向錯誤最合適的A=%s\n"%One_A_most

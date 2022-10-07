@@ -1,4 +1,3 @@
-# 尚未改完
 from ver3_def import *
 n=1
 show_correct_bit=1

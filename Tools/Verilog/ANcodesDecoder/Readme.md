@@ -22,21 +22,10 @@
         * output: Nc
 
 * Terminal(V3):
-    * Step1:選擇A的模式
-        > -------------Find an available A-------------  
-        > 雙向錯誤可用的A(8~100)=[11, 13, 19, 23, 29, 37, 47, 53, 59, 61, 67, 71, 79, 83]  
-        > 可更正bit數(N)=[1, 2, 4, 6, 9, 12, 17, 20, 23, 24, 26, 28, 32, 34]  
-        > 單向錯誤可用的A(7~100)=[11, 13, 19, 29, 37, 53, 59, 61, 67, 83]  
-        > 可更正bit數(N)=[6, 8, 13, 23, 30, 46, 52, 54, 59, 75]    
-        > 
-        > -------------Find the most appropriate A-------------  
-        > 雙向錯誤最合適的A=[13, 29, 61, 83]
-        > 可更正bit數(N)=[2, 9, 24, 34]
-        > 單向錯誤最合適的A=[13, 29, 61, 83]
-        > 可更正bit數(N)=[8, 23, 54, 75]
-        > 
+    * Step1:選擇A的模式  
+        <img src="./img/v3_step1.png"></br>  
         > mode 1 ---> Find an available A  
-        > mode 2 ---> Find the most appropriate A 
+        > mode 2 ---> Find the most appropriate A   
         > Please select a mode:1   
     * Step2:選擇Error models
         > model 1 ---> Uni-direction Fully Asymmetric Channel model  
@@ -44,14 +33,14 @@
         > model 3 ---> BER model  
         > model 4 ---> AWE model  
         > Choose model:3  
-    * Step3:輸入數字並軟體驗證更正能力
-        * Step3-1: 輸入數字
+    * Step3:輸入數字並軟體驗證更正能力  
+        * Step3-1: 輸入數字  
         <img src="./img/v3_step3_1.png"></br>  
-        * Step3-2: 隨機1位元錯誤植入
+        * Step3-2: 隨機1位元錯誤植入  
         <img src="./img/v3_step3_2.png"></br>  
-        * Step3-3: AN codes的更正方法(餘數對應錯誤位元)
+        * Step3-3: AN codes的更正方法(餘數對應錯誤位元)   
         <img src="./img/v3_step3_3.png"></br>  
-    * Step4:生成解碼器Verilog file
+    * Step4:生成解碼器Verilog file  
         * Step4-1: 將基本更正資訊寫入          
         * Step4-2:生成檔案(包含tb)並呼叫iverilog & GTKwave進行驗證
         <img src="./img/v3_step4.png"></br> 
