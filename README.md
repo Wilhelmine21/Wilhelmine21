@@ -30,7 +30,7 @@ Wilhelmine21((Wilhelmine21)) ---> Tools
 			
 		* 7. **[TCB](https://github.com/Wilhelmine21/Wilhelmine21/tree/main/Tools/TCB "TCB")** : Convert multiplication to shift and addition
 		
-		* 8. **[Verilog](https://github.com/Wilhelmine21/Wilhelmine21/tree/main/Tools/Verilog)**: iVerilog and GTKwave相關
+		* 8. **[Verilog](https://github.com/Wilhelmine21/Wilhelmine21/tree/main/Tools/Verilog)**: iVerilog and GTKwave
 				*   **[ANcodes-GUI](https://github.com/Wilhelmine21/Wilhelmine21/tree/main/Tools/Verilog/ANcodes-GUI)** : Use GUI to show how AN codes work
 
 				*   **[ANcodesDecoder](https://github.com/Wilhelmine21/Wilhelmine21/tree/main/Tools/Verilog/ANcodesDecoder)** : AN codes decoder automatically generates verification
