@@ -17,7 +17,7 @@ Wilhelmine21((Wilhelmine21)) ---> Tools
 	* II.   **[Tools](https://github.com/Wilhelmine21/Wilhelmine21/tree/main/Tools "Tools")** : Various commonly used programs and files
 		* 1. **[Drawio](https://github.com/Wilhelmine21/Wilhelmine21/tree/main/Tools/Drawio "Drawio")** : Put the file drawn by [draw.io](https://app.diagrams.net/)
 		
-		* 2. **[GUI(Python-tk)](https://github.com/Wilhelmine21/Wilhelmine21/tree/main/Tools/GUI(Python-tk))**
+		* 2. **[GUI(Python-tk)](https://github.com/Wilhelmine21/Wilhelmine21/tree/main/Tools/GUI(Python-tk))**: Teach how to use tkinter and pyinstaller
 		
 		* 3. **[ICONtoPy](https://github.com/Wilhelmine21/Wilhelmine21/tree/main/Tools/ICONtoPy "ICONtoPy")**: Convert the icon file to a python file so that it can be packaged into an exe file by pyinstaller
 
@@ -32,9 +32,7 @@ Wilhelmine21((Wilhelmine21)) ---> Tools
 		
 		* 8. **[Verilog](https://github.com/Wilhelmine21/Wilhelmine21/tree/main/Tools/Verilog)**: iVerilog and GTKwave
 				*   **[ANcodes-GUI](https://github.com/Wilhelmine21/Wilhelmine21/tree/main/Tools/Verilog/ANcodes-GUI)** : Use GUI to show how AN codes work
-
 				*   **[ANcodesDecoder](https://github.com/Wilhelmine21/Wilhelmine21/tree/main/Tools/Verilog/ANcodesDecoder)** : AN codes decoder automatically generates verification
-
 				*   **[GTKWave](https://github.com/Wilhelmine21/Wilhelmine21/tree/main/Tools/Verilog/GTKWave)** : GTKWave automation commands
 
 ## Releases

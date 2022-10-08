@@ -5,7 +5,7 @@
 * Put the file drawn by [draw.io](https://app.diagrams.net/)
 		
 ## 2. **[GUI(Python-tk)](https://github.com/Wilhelmine21/Wilhelmine21/tree/main/Tools/GUI(Python-tk))**
-* Teach how to use tkinter and pyiinstaller
+* Teach how to use tkinter and pyinstaller
 		
 ## 3. **[ICONtoPy](https://github.com/Wilhelmine21/Wilhelmine21/tree/main/Tools/ICONtoPy "ICONtoPy")**
 * Convert the icon file to a python file so that it can be packaged into an exe file by pyinstaller
