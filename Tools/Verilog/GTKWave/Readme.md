@@ -32,4 +32,4 @@ gtkwave::/Edit/UnHighlight_All
     gtkwave::/Time/Zoom/Zoom_Best_Fit
     gtkwave::/Edit/UnHighlight_All
     ```
-    * 將所有列出的信號改成Decimal顯示並最適化所有值
+    * 將所有列出的信號改成Decimal顯示並視窗最適化
