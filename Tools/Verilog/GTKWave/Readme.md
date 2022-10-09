@@ -402,7 +402,59 @@
     set zero_time [ gtkwave::getTimeZero ]
     puts "$zero_time"
     ```
-### Working...
+### Working...P.124~132
+### 33. name
+* how
+* Syntax: 
+    ```tcl
+    
+    ```
+* 例子: 
+    ```tcl
+    
+    ```
+### Tcl callbacks
+* gtkwave::cbClos​​eTabNumber 包含返回的值是要關閉的選項卡的編號，從零開始。由於這是在選項卡實際關閉之前設置的，因此腳本可以詢問更多信息。
+
+* gtkwave::cbClos​​eTraceGroup 包含正在關閉的擴展跟踪或跟踪組的名稱。
+
+* gtkwave::cbCurrentActiveTab 包含當前選擇的選項卡的編號。請注意，當創建新選項卡時，此回調有時會在新舊選項卡編號之間振盪，最終確定新選項卡正在
+創建的。
+
+* gtkwave::cbError 包含錯誤字符串，例如“重新加載失敗”、“回調中禁止 gtkwave::loadFile”、“回調中禁止gtkwave::reLoadFile”或“回調中禁止gtkwave::setTabActive”。
+
+* gtkwave::cbFromEntryUpdated 包含更新時存儲在“From:”小部件中的值。
+
+* gtkwave::cbOpenTraceGroup 包含正在展開的跟踪或正在打開的跟踪組的名稱。
+
+* gtkwave::cbQuitProgram 包含啟動退出操作的選項卡編號。選項卡從零開始編號。
+
+* gtkwave::cbReloadBegin 包含正在重新加載的跟踪的名稱。這在重新加載序列開始時調用。
+
+* gtkwave::cbReloadEnd 包含正在重新加載的跟踪的名稱。這在重新加載序列結束時調用。
+
+* gtkwave::cbStatusText 包含進入標準錯誤的狀態文本。
+
+* gtkwave::cbTimerPeriod 包含以毫秒為單位的計時器週期（默認為 250），並且在每個計時器週期到期時調用此回調。如果 Tcl 代碼修改這個值，定時器週期可以動態改變。
+
+* gtkwave::cbToEntryUpdated 包含更新時存儲在“To:”小部件中的值。
+
+* gtkwave::cbTracesUpdated 包含跟踪的總數。當從查看器中添加、刪除等時調用此方法。
+
+* gtkwave::cbTreeCollapse 包含被折疊的 SST 樹節點的扁平層次名稱。
+
+* gtkwave::cbTreeExpand 包含被展開的 SST 樹節點的扁平層次名稱。
+
+* gtkwave::cbTreeSelect 包含被選中的 SST 樹節點的扁平分層名稱。
+
+* gtkwave::cbTreeSigDoubleClick 包含在 SST 的信號部分中被雙擊的信號的名稱。
+
+* gtkwave::cbTreeSigSelect 包含在 SST 的信號部分中選擇的信號的名稱。
+
+* gtkwave::cbTreeSigUnselect 包含在 SST 的信號部分中被取消選擇的信號的名稱。
+
+* gtkwave::cbTreeUnselect 包含被取消選擇的 SST 樹節點的扁平分層名稱。
+
 ---
 ## Auto.tcl
 ```tcl
