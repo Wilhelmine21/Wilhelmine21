@@ -39,6 +39,8 @@ Wilhelmine21((Wilhelmine21)) ---> Tools
 * [About Release](https://github.com/Wilhelmine21/Wilhelmine21/blob/main/MyProject_GUI/Releases(GUI).md#releases)
 
 # Wilhelmine's GitHub Stats
-[![Wilhelmine's GitHub stats](https://github-readme-stats.vercel.app/api?username=Wilhelmine21&theme=merko)](https://github.com/Wilhelmine21/github-readme-stats&theme=merko)[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Wilhelmine21&layout=compact&theme=highcontrast)](https://github.com/Wilhelmine21/github-readme-stats&theme=highcontrast)
+[![Wilhelmine's GitHub stats](https://github-readme-stats.vercel.app/api?username=Wilhelmine21&theme=merko)](https://github.com/Wilhelmine21/github-readme-stats&theme=merko)
+## Most Used Languages
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Wilhelmine21&layout=compact&theme=highcontrast)](https://github.com/Wilhelmine21/github-readme-stats&theme=highcontrast)
 ## My toolbox
 <img  src="https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/vscode/vscode-original.svg" alt="VSCode" width="30" height="30"/> 
