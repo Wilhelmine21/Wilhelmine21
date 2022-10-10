@@ -45,4 +45,13 @@
         * Step4-2:生成檔案(包含tb)並呼叫iverilog & GTKwave進行驗證
         <img src="./img/v3_step4.png"></br> 
 * 波形圖驗證:
-<img src="./img/ver3_BERA47N1213.jpg"></br> 
+    * UNI_HL
+    <img src="./img/ver3_UNIHLA29N23234.jpg"></br>
+    * UNI_LH
+    <img src="./img/ver3_UNILHA13N252.jpg"></br> 
+    * Alter
+    <img src="./img/ver3_AlterA29N1312.jpg"></br> 
+    * BER
+    <img src="./img/ver3_BERA47N1213.jpg"></br> 
+    * AWE
+    <img src="./img/ver3_AWEA47N12212.jpg"></br> 
