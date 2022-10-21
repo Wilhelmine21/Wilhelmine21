@@ -109,13 +109,11 @@ Old_versions ---> Readme_old[Readme.md]
 ##  Repository-[AN-codes-GUI](https://github.com/Wilhelmine21/AN-codes-GUI)
 ### Folder tree
 ```mermaid
-graph TD;
+graph LR;
 AN-codes-GUI((AN-codes-GUI)) --> ANcodes_GUI.py
 AN-codes-GUI --> ANcodes_decode_GUI.py
-AN-codes-GUI --> Mod_working.jpg
 AN-codes-GUI --> MyDef.py
 AN-codes-GUI --> Readme.md
-AN-codes-GUI --> decoder_working.jpg
 AN-codes-GUI --> test.py
 ```
 * Use GUI to show how AN codes work
