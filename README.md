@@ -96,15 +96,13 @@ AN-codes-Decoder((AN-codes-Decoder)) ---> Old_versions[(Old_versions)]
 AN-codes-Decoder ---> files[(files)]
 AN-codes-Decoder ---> img[(img)]
 AN-codes-Decoder ---> 4ErrorMode_ver3.py
-AN-codes-Decoder ---> Readme.md
+AN-codes-Decoder ---> Readme[Readme.md]
 AN-codes-Decoder ---> auto.tcl
 AN-codes-Decoder ---> auto_Alter.tcl
 AN-codes-Decoder ---> ver3_def.py
 
-Old_versions ---> 2022-10-05 14.07.31.png
 Old_versions ---> 4ErrorMode_ver2.py
-Old_versions ---> Readme.md
-Old_versions ---> v3_step3_2.png
+Old_versions ---> Readme_old[Readme.md]
 ```
 * AN codes decoder automatically generates verification
 
