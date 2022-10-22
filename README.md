@@ -2,6 +2,11 @@
 - 👋 Hi, I’m Ting-Yu Chen.
 - I'm from [Test Lab](http://testlab.ncue.edu.tw/tch/), Electronic Engineering, National Changhua University of Education.
 
+# Wilhelmine's GitHub Stats
+[![Wilhelmine's GitHub stats](https://github-readme-stats.vercel.app/api?username=Wilhelmine21&theme=merko)](https://github.com/Wilhelmine21/github-readme-stats&theme=merko)
+## Most Used Languages
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Wilhelmine21&layout=compact&theme=highcontrast)](https://github.com/Wilhelmine21/github-readme-stats&theme=highcontrast)
+
 ## Repository-[Wilhelmine21](https://github.com/Wilhelmine21/Wilhelmine21)
 ### Folder tree
 ```mermaid
@@ -135,10 +140,6 @@ GUI-Python-tkinter ---> Readme.md
 ```
 * How to use tkinter and pyinstaller
 
-# Wilhelmine's GitHub Stats
-[![Wilhelmine's GitHub stats](https://github-readme-stats.vercel.app/api?username=Wilhelmine21&theme=merko)](https://github.com/Wilhelmine21/github-readme-stats&theme=merko)
-## Most Used Languages
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Wilhelmine21&layout=compact&theme=highcontrast)](https://github.com/Wilhelmine21/github-readme-stats&theme=highcontrast)
 ## My toolbox 
 [<img  src="https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/vscode/vscode-original.svg" alt="VSCode" width="30" height="30"/>](https://code.visualstudio.com/) &nbsp;[<img  src="./Tools/img/icons8-python.gif" alt="Python" width="30" height="30"/>](https://www.python.org/) &nbsp;[<img  src="./Tools/img/icons8-linux-48.png" alt="Linux" width="30" height="30"/>](https://icons8.com/icons/set/linux)
 * Python, Linux Icon by [Icons8](https://icons8.com/)
