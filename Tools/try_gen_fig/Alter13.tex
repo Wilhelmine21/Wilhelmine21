@@ -1,0 +1,258 @@
+\documentclass{article}
+\usepackage{tikz}
+%\documentclass[tikz, margin=3pt, dvisvgm]{standalone}
+\usepackage[xetex,active,tightpage]{preview}
+\setlength\PreviewBorder{2mm}
+\tikzset{font=\LARGE}
+\usetikzlibrary{arrows,shapes}
+\usepackage{circuitikz}
+\usetikzlibrary{calc}
+\begin{document}
+\begin{preview}
+\begin{tikzpicture}
+\ctikzset{
+    logic ports=ieee,
+    logic ports/scale=0.8,
+	}
+\node (R3) at (0.00,0.00) {$R_3$};
+\draw[-, line width=1pt](0.00,-0.30)--(0.00,-17.20);
+\draw[-, line width=1pt](-1.50,-1.30)--(0.00,-1.30);
+\draw[-, line width=1pt](-1.50,-1.30)--(-1.50,-2.30);
+\node[not port, rotate=-90] (not3) at (-1.50,-2.70){};
+\draw[-, line width=1pt](-1.50,-2.30)--(not3.in);
+\draw[-, line width=1pt](not3.out)--(-1.50,-17.20);
+
+\node (R2) at (3.00,0.00) {$R_2$};
+\draw[-, line width=1pt](3.00,-0.30)--(3.00,-17.20);
+\draw[-, line width=1pt](1.50,-1.30)--(3.00,-1.30);
+\draw[-, line width=1pt](1.50,-1.30)--(1.50,-2.30);
+\node[not port, rotate=-90] (not2) at (1.50,-2.70){};
+\draw[-, line width=1pt](1.50,-2.30)--(not2.in);
+\draw[-, line width=1pt](not2.out)--(1.50,-17.20);
+
+\node (R1) at (6.00,0.00) {$R_1$};
+\draw[-, line width=1pt](6.00,-0.30)--(6.00,-17.20);
+\draw[-, line width=1pt](4.50,-1.30)--(6.00,-1.30);
+\draw[-, line width=1pt](4.50,-1.30)--(4.50,-2.30);
+\node[not port, rotate=-90] (not1) at (4.50,-2.70){};
+\draw[-, line width=1pt](4.50,-2.30)--(not1.in);
+\draw[-, line width=1pt](not1.out)--(4.50,-17.20);
+
+\node (R0) at (9.00,0.00) {$R_0$};
+\draw[-, line width=1pt](9.00,-0.30)--(9.00,-17.20);
+\draw[-, line width=1pt](7.50,-1.30)--(9.00,-1.30);
+\draw[-, line width=1pt](7.50,-1.30)--(7.50,-2.30);
+\node[not port, rotate=-90] (not0) at (7.50,-2.70){};
+\draw[-, line width=1pt](7.50,-2.30)--(not0.in);
+\draw[-, line width=1pt](not0.out)--(7.50,-17.20);
+
+\draw[fill=black](-1.50,-4.00) circle(1mm);
+\draw[fill=black](1.50,-4.00) circle(1mm);
+\draw[fill=black](4.50,-4.00) circle(1mm);
+\draw[fill=black](9.00,-4.00) circle(1mm);
+\draw[-, line width=1pt](-1.50,-4.00)--(9.00,-4.00);
+\node[and port, number inputs=4] (AND1) at (11.00,-4.00){$1$};
+\draw(AND1.in 1) -- (AND1.in 2) -- (AND1.in 3) -- (AND1.in 4);
+\draw[-, line width=4pt](9.00,-4.00)-- ++(1.1, 0);
+
+\draw[fill=black](-1.50,-5.20) circle(1mm);
+\draw[fill=black](1.50,-5.20) circle(1mm);
+\draw[fill=black](6.00,-5.20) circle(1mm);
+\draw[fill=black](7.50,-5.20) circle(1mm);
+\draw[-, line width=1pt](-1.50,-5.20)--(9.00,-5.20);
+\node[and port, number inputs=4] (AND2) at (11.00,-5.20){$2$};
+\draw(AND2.in 1) -- (AND2.in 2) -- (AND2.in 3) -- (AND2.in 4);
+\draw[-, line width=4pt](9.00,-5.20)-- ++(1.1, 0);
+
+\draw[fill=black](-1.50,-6.40) circle(1mm);
+\draw[fill=black](1.50,-6.40) circle(1mm);
+\draw[fill=black](6.00,-6.40) circle(1mm);
+\draw[fill=black](9.00,-6.40) circle(1mm);
+\draw[-, line width=1pt](-1.50,-6.40)--(9.00,-6.40);
+\node[and port, number inputs=4] (AND3) at (11.00,-6.40){$3$};
+\draw(AND3.in 1) -- (AND3.in 2) -- (AND3.in 3) -- (AND3.in 4);
+\draw[-, line width=4pt](9.00,-6.40)-- ++(1.1, 0);
+
+\draw[fill=black](-1.50,-7.60) circle(1mm);
+\draw[fill=black](3.00,-7.60) circle(1mm);
+\draw[fill=black](4.50,-7.60) circle(1mm);
+\draw[fill=black](7.50,-7.60) circle(1mm);
+\draw[-, line width=1pt](-1.50,-7.60)--(9.00,-7.60);
+\node[and port, number inputs=4] (AND4) at (11.00,-7.60){$4$};
+\draw(AND4.in 1) -- (AND4.in 2) -- (AND4.in 3) -- (AND4.in 4);
+\draw[-, line width=4pt](9.00,-7.60)-- ++(1.1, 0);
+
+\draw[fill=black](-1.50,-8.80) circle(1mm);
+\draw[fill=black](3.00,-8.80) circle(1mm);
+\draw[fill=black](4.50,-8.80) circle(1mm);
+\draw[fill=black](9.00,-8.80) circle(1mm);
+\draw[-, line width=1pt](-1.50,-8.80)--(9.00,-8.80);
+\node[and port, number inputs=4] (AND5) at (11.00,-8.80){$5$};
+\draw(AND5.in 1) -- (AND5.in 2) -- (AND5.in 3) -- (AND5.in 4);
+\draw[-, line width=4pt](9.00,-8.80)-- ++(1.1, 0);
+
+\draw[fill=black](-1.50,-10.00) circle(1mm);
+\draw[fill=black](3.00,-10.00) circle(1mm);
+\draw[fill=black](6.00,-10.00) circle(1mm);
+\draw[fill=black](7.50,-10.00) circle(1mm);
+\draw[-, line width=1pt](-1.50,-10.00)--(9.00,-10.00);
+\node[and port, number inputs=4] (AND6) at (11.00,-10.00){$6$};
+\draw(AND6.in 1) -- (AND6.in 2) -- (AND6.in 3) -- (AND6.in 4);
+\draw[-, line width=4pt](9.00,-10.00)-- ++(1.1, 0);
+
+\draw[fill=black](-1.50,-11.20) circle(1mm);
+\draw[fill=black](3.00,-11.20) circle(1mm);
+\draw[fill=black](6.00,-11.20) circle(1mm);
+\draw[fill=black](9.00,-11.20) circle(1mm);
+\draw[-, line width=1pt](-1.50,-11.20)--(9.00,-11.20);
+\node[and port, number inputs=4] (AND7) at (11.00,-11.20){$7$};
+\draw(AND7.in 1) -- (AND7.in 2) -- (AND7.in 3) -- (AND7.in 4);
+\draw[-, line width=4pt](9.00,-11.20)-- ++(1.1, 0);
+
+\draw[fill=black](0.00,-12.40) circle(1mm);
+\draw[fill=black](1.50,-12.40) circle(1mm);
+\draw[fill=black](4.50,-12.40) circle(1mm);
+\draw[fill=black](7.50,-12.40) circle(1mm);
+\draw[-, line width=1pt](-1.50,-12.40)--(9.00,-12.40);
+\node[and port, number inputs=4] (AND8) at (11.00,-12.40){$8$};
+\draw(AND8.in 1) -- (AND8.in 2) -- (AND8.in 3) -- (AND8.in 4);
+\draw[-, line width=4pt](9.00,-12.40)-- ++(1.1, 0);
+
+\draw[fill=black](0.00,-13.60) circle(1mm);
+\draw[fill=black](1.50,-13.60) circle(1mm);
+\draw[fill=black](4.50,-13.60) circle(1mm);
+\draw[fill=black](9.00,-13.60) circle(1mm);
+\draw[-, line width=1pt](-1.50,-13.60)--(9.00,-13.60);
+\node[and port, number inputs=4] (AND9) at (11.00,-13.60){$9$};
+\draw(AND9.in 1) -- (AND9.in 2) -- (AND9.in 3) -- (AND9.in 4);
+\draw[-, line width=4pt](9.00,-13.60)-- ++(1.1, 0);
+
+\draw[fill=black](0.00,-14.80) circle(1mm);
+\draw[fill=black](1.50,-14.80) circle(1mm);
+\draw[fill=black](6.00,-14.80) circle(1mm);
+\draw[fill=black](7.50,-14.80) circle(1mm);
+\draw[-, line width=1pt](-1.50,-14.80)--(9.00,-14.80);
+\node[and port, number inputs=4] (AND10) at (11.00,-14.80){$10$};
+\draw(AND10.in 1) -- (AND10.in 2) -- (AND10.in 3) -- (AND10.in 4);
+\draw[-, line width=4pt](9.00,-14.80)-- ++(1.1, 0);
+
+\draw[fill=black](0.00,-16.00) circle(1mm);
+\draw[fill=black](1.50,-16.00) circle(1mm);
+\draw[fill=black](6.00,-16.00) circle(1mm);
+\draw[fill=black](9.00,-16.00) circle(1mm);
+\draw[-, line width=1pt](-1.50,-16.00)--(9.00,-16.00);
+\node[and port, number inputs=4] (AND11) at (11.00,-16.00){$11$};
+\draw(AND11.in 1) -- (AND11.in 2) -- (AND11.in 3) -- (AND11.in 4);
+\draw[-, line width=4pt](9.00,-16.00)-- ++(1.1, 0);
+
+\draw[fill=black](0.00,-17.20) circle(1mm);
+\draw[fill=black](3.00,-17.20) circle(1mm);
+\draw[fill=black](4.50,-17.20) circle(1mm);
+\draw[fill=black](7.50,-17.20) circle(1mm);
+\draw[-, line width=1pt](-1.50,-17.20)--(9.00,-17.20);
+\node[and port, number inputs=4] (AND12) at (11.00,-17.20){$12$};
+\draw(AND12.in 1) -- (AND12.in 2) -- (AND12.in 3) -- (AND12.in 4);
+\draw[-, line width=4pt](9.00,-17.20)-- ++(1.1, 0);
+
+\node [and port] (NAND0) at ($(AND1)+(8.4,9.0)$){$0$};
+\draw [-, line width=1pt][blue](AND1.out) -- ++(0.2,0) |- (NAND0.in 1);
+\draw [-, line width=1pt](NAND0.in 2) -- ++(-1,0)node[left](Input0){$Input[0]$};
+\draw [fill=white]($(NAND0.in 1)+(0.2,0)$) circle(1mm);
+\node [and port] (NAND1) at ($(AND2)+(8.4,9.0)$){$1$};
+\draw [-, line width=1pt][blue](AND2.out) -- ++(0.4,0) |- (NAND1.in 1);
+\draw [-, line width=1pt](NAND1.in 2) -- ++(-1,0)node[left](Input1){$Input[1]$};
+\draw [fill=white]($(NAND1.in 1)+(0.2,0)$) circle(1mm);
+\node [and port] (NAND4) at ($(AND3)+(8.4,9.0)$){$4$};
+\draw [-, line width=1pt][blue](AND3.out) -- ++(0.6,0) |- (NAND4.in 1);
+\draw [-, line width=1pt](NAND4.in 2) -- ++(-1,0)node[left](Input4){$Input[4]$};
+\draw [fill=white]($(NAND4.in 1)+(0.2,0)$) circle(1mm);
+\node [and port] (NAND2) at ($(AND4)+(8.4,9.0)$){$2$};
+\draw [-, line width=1pt][blue](AND4.out) -- ++(0.8,0) |- (NAND2.in 1);
+\draw [-, line width=1pt](NAND2.in 2) -- ++(-1,0)node[left](Input2){$Input[2]$};
+\draw [fill=white]($(NAND2.in 1)+(0.2,0)$) circle(1mm);
+\node [and port] (NAND9) at ($(AND5)+(8.4,9.0)$){$9$};
+\draw [-, line width=1pt][blue](AND5.out) -- ++(1.0,0) |- (NAND9.in 1);
+\draw [-, line width=1pt](NAND9.in 2) -- ++(-1,0)node[left](Input9){$Input[9]$};
+\draw [fill=white]($(NAND9.in 1)+(0.2,0)$) circle(1mm);
+\node [and port] (NAND5) at ($(AND6)+(8.4,9.0)$){$5$};
+\draw [-, line width=1pt][blue](AND6.out) -- ++(1.2,0) |- (NAND5.in 1);
+\draw [-, line width=1pt](NAND5.in 2) -- ++(-1,0)node[left](Input5){$Input[5]$};
+\draw [fill=white]($(NAND5.in 1)+(0.2,0)$) circle(1mm);
+\node [and port] (NAND11) at ($(AND7)+(8.4,9.0)$){$11$};
+\draw [-, line width=1pt][blue](AND7.out) -- ++(1.4,0) |- (NAND11.in 1);
+\draw [-, line width=1pt](NAND11.in 2) -- ++(-1,0)node[left](Input11){$Input[11]$};
+\draw [fill=white]($(NAND11.in 1)+(0.2,0)$) circle(1mm);
+\node [and port] (NAND3) at ($(AND8)+(8.4,9.0)$){$3$};
+\draw [-, line width=1pt][blue](AND8.out) -- ++(1.6,0) |- (NAND3.in 1);
+\draw [-, line width=1pt](NAND3.in 2) -- ++(-1,0)node[left](Input3){$Input[3]$};
+\draw [fill=white]($(NAND3.in 1)+(0.2,0)$) circle(1mm);
+\node [and port] (NAND8) at ($(AND9)+(8.4,9.0)$){$8$};
+\draw [-, line width=1pt][blue](AND9.out) -- ++(1.8,0) |- (NAND8.in 1);
+\draw [-, line width=1pt](NAND8.in 2) -- ++(-1,0)node[left](Input8){$Input[8]$};
+\draw [fill=white]($(NAND8.in 1)+(0.2,0)$) circle(1mm);
+\node [and port] (NAND10) at ($(AND10)+(8.4,9.0)$){$10$};
+\draw [-, line width=1pt][blue](AND10.out) -- ++(2.0,0) |- (NAND10.in 1);
+\draw [-, line width=1pt](NAND10.in 2) -- ++(-1,0)node[left](Input10){$Input[10]$};
+\draw [fill=white]($(NAND10.in 1)+(0.2,0)$) circle(1mm);
+\node [and port] (NAND7) at ($(AND11)+(8.4,9.0)$){$7$};
+\draw [-, line width=1pt][blue](AND11.out) -- ++(2.2,0) |- (NAND7.in 1);
+\draw [-, line width=1pt](NAND7.in 2) -- ++(-1,0)node[left](Input7){$Input[7]$};
+\draw [fill=white]($(NAND7.in 1)+(0.2,0)$) circle(1mm);
+\node [and port] (NAND6) at ($(AND12)+(8.4,9.0)$){$6$};
+\draw [-, line width=1pt][blue](AND12.out) -- ++(2.4,0) |- (NAND6.in 1);
+\draw [-, line width=1pt](NAND6.in 2) -- ++(-1,0)node[left](Input6){$Input[6]$};
+\draw [fill=white]($(NAND6.in 1)+(0.2,0)$) circle(1mm);
+\node [or port] (OR6) at ($(AND1)+(8.4,-6.0)$){$6$};
+\draw [-, line width=1pt][green](AND1.out) -- ++(2.3,0) |- (OR6.in 1);
+\draw [-, line width=1pt](OR6.in 2) -- ++(-1,0)node[left](Input6){$Input[6]$};
+\node [or port] (OR7) at ($(AND2)+(8.4,-6.0)$){$7$};
+\draw [-, line width=1pt][green](AND2.out) -- ++(2.1,0) |- (OR7.in 1);
+\draw [-, line width=1pt](OR7.in 2) -- ++(-1,0)node[left](Input7){$Input[7]$};
+\node [or port] (OR10) at ($(AND3)+(8.4,-6.0)$){$10$};
+\draw [-, line width=1pt][green](AND3.out) -- ++(1.9,0) |- (OR10.in 1);
+\draw [-, line width=1pt](OR10.in 2) -- ++(-1,0)node[left](Input10){$Input[10]$};
+\node [or port] (OR8) at ($(AND4)+(8.4,-6.0)$){$8$};
+\draw [-, line width=1pt][green](AND4.out) -- ++(1.7,0) |- (OR8.in 1);
+\draw [-, line width=1pt](OR8.in 2) -- ++(-1,0)node[left](Input8){$Input[8]$};
+\node [or port] (OR3) at ($(AND5)+(8.4,-6.0)$){$3$};
+\draw [-, line width=1pt][green](AND5.out) -- ++(1.5,0) |- (OR3.in 1);
+\draw [-, line width=1pt](OR3.in 2) -- ++(-1,0)node[left](Input3){$Input[3]$};
+\node [or port] (OR11) at ($(AND6)+(8.4,-6.0)$){$11$};
+\draw [-, line width=1pt][green](AND6.out) -- ++(1.3,0) |- (OR11.in 1);
+\draw [-, line width=1pt](OR11.in 2) -- ++(-1,0)node[left](Input11){$Input[11]$};
+\node [or port] (OR5) at ($(AND7)+(8.4,-6.0)$){$5$};
+\draw [-, line width=1pt][green](AND7.out) -- ++(1.1,0) |- (OR5.in 1);
+\draw [-, line width=1pt](OR5.in 2) -- ++(-1,0)node[left](Input5){$Input[5]$};
+\node [or port] (OR9) at ($(AND8)+(8.4,-6.0)$){$9$};
+\draw [-, line width=1pt][green](AND8.out) -- ++(0.9,0) |- (OR9.in 1);
+\draw [-, line width=1pt](OR9.in 2) -- ++(-1,0)node[left](Input9){$Input[9]$};
+\node [or port] (OR2) at ($(AND9)+(8.4,-6.0)$){$2$};
+\draw [-, line width=1pt][green](AND9.out) -- ++(0.7,0) |- (OR2.in 1);
+\draw [-, line width=1pt](OR2.in 2) -- ++(-1,0)node[left](Input2){$Input[2]$};
+\node [or port] (OR4) at ($(AND10)+(8.4,-6.0)$){$4$};
+\draw [-, line width=1pt][green](AND10.out) -- ++(0.5,0) |- (OR4.in 1);
+\draw [-, line width=1pt](OR4.in 2) -- ++(-1,0)node[left](Input4){$Input[4]$};
+\node [or port] (OR1) at ($(AND11)+(8.4,-6.0)$){$1$};
+\draw [-, line width=1pt][green](AND11.out) -- ++(0.3,0) |- (OR1.in 1);
+\draw [-, line width=1pt](OR1.in 2) -- ++(-1,0)node[left](Input1){$Input[1]$};
+\node [or port] (OR0) at ($(AND12)+(8.4,-6.0)$){$0$};
+\draw [-, line width=1pt][green](AND12.out) -- ++(0.1,0) |- (OR0.in 1);
+\draw [-, line width=1pt](OR0.in 2) -- ++(-1,0)node[left](Input0){$Input[0]$};
+\draw [-, line width=4pt] (NAND0.out) --  (NAND1.out) --  (NAND2.out) --  (NAND3.out) --  (NAND4.out) --  (NAND5.out) --  (NAND6.out) --  (NAND7.out) --  (NAND8.out) --  (NAND9.out) --  (NAND10.out) --  (NAND11.out);
+\draw [-, line width=4pt] (OR0.out) --  (OR1.out) --  (OR2.out) --  (OR3.out) --  (OR4.out) --  (OR5.out) --  (OR6.out) --  (OR7.out) --  (OR8.out) --  (OR9.out) --  (OR10.out) --  (OR11.out);
+\draw[->, line width=4pt] (NAND9.out) -- ++(2,0)node[right](out1){$Out1$};
+\draw[->, line width=4pt] (OR3.out) -- ++(2,0)node[right](out2){$Out2$};
+\draw [-, line width=1pt]($(NAND6)+(10,-5)$)coordinate (O)--++(30:1)coordinate (A)--++(90:4)coordinate (B)--++(150:1)coordinate (C)--cycle node[left](MUX){MUX};
+\draw [-, line width=4pt]($(A)!0.5!(B)$)--++(0:1)node[right](AN){};
+\draw [-, line width=4pt][align=center]($(O)!0.5!(A)$)--++(-90:2)node[below](){The number with mod A \\ equal to 0 is the output.};
+\foreach \y/\t in {0.2/2} {
+\draw [-, line width=4pt]($(C)! \y*1.1 !(O)$)--++(180:1) node[below](sel0){};}
+\foreach \y/\t in {0.7/7} {
+\draw [-, line width=4pt]($(C)! \y*1.1 !(O)$)--++(180:1) node[above](sel1){};}
+\draw [->, line width=4pt]($(out1)+(0.3,-0.5)$) -| (sel0);
+\draw [->, line width=4pt]($(out2)+(0.3,0.5)$) -| (sel1);
+\draw [->, line width=4pt](AN) -- ++(2,0)node[right](Output){Output};
+\node (rect) at (AN) [draw, thick, fill=white, fill opacity=1,minimum width=1cm,minimum height=4cm] {$/13$};
+\end{tikzpicture}
+\end{preview}
+\end{document}
