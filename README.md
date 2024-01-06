@@ -1,6 +1,4 @@
 # About Me
-- 👋 Hi, I’m Ting-Yu Chen.
-- I'm from [Test Lab](http://testlab.ncue.edu.tw/tch/ "Test Lab"), Electronic Engineering, National Changhua University of Education.
 
 # Wilhelmine's GitHub Stats
 [![Wilhelmine's GitHub stats](https://github-readme-stats.vercel.app/api?username=Wilhelmine21&theme=merko)](https://github.com/Wilhelmine21/github-readme-stats&theme=merko)
