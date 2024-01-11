@@ -1,0 +1,287 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Jan 10 23:15:25 2024
+
+@author: Wilhelmine
+"""
+def check_arr(arr):
+    newarr=[]
+    for i in range(len(arr)):
+        tmp_str=[]
+        for j in range(len(arr[i])):
+            tmp=arr[i][j]
+            if len(tmp) == 1:
+                tmp_str.append(tmp[0])
+            else:
+                tmp_str.append(tmp)
+        newarr.append(tmp_str)
+    return newarr
+
+def get_index(arr):
+    target=1
+    out=[]
+    for i in range(len(arr)):
+        if arr[i] == target:
+            out.append(i)
+    return out
+
+def update_row(board_ans,check_row,index):
+    board_out=board_ans.copy()
+    # print(check_row[index])
+#     print("#old")
+#     print("%s\t%s\t%s\t%s\t%s\t%s"%(board_ans[index][0],board_ans[index][1],\
+# board_ans[index][2],board_ans[index][3],board_ans[index][4],board_ans[index][5]))
+    if 1 in check_row[index]:
+        index1=get_index(check_row[index])
+        num=[board_ans[index][x][0] for x in index1]
+        board_out[index][0]=[list(set(board_ans[index][0])-set(num)) if check_row[index][0] != 1 else board_ans[index][0][0]][0]
+        board_out[index][1]=[list(set(board_ans[index][1])-set(num)) if check_row[index][1] != 1 else board_ans[index][1][0]][0]
+        board_out[index][2]=[list(set(board_ans[index][2])-set(num)) if check_row[index][2] != 1 else board_ans[index][2][0]][0]
+        board_out[index][3]=[list(set(board_ans[index][3])-set(num)) if check_row[index][3] != 1 else board_ans[index][3][0]][0]
+        board_out[index][4]=[list(set(board_ans[index][4])-set(num)) if check_row[index][4] != 1 else board_ans[index][4][0]][0]
+        board_out[index][5]=[list(set(board_ans[index][5])-set(num)) if check_row[index][5] != 1 else board_ans[index][5][0]][0]
+#         print("#mod")
+#         print("%s\t%s\t%s\t%s\t%s\t%s"%(board_out[index][0],board_out[index][1],\
+# board_out[index][2],board_out[index][3],board_out[index][4],board_out[index][5]))
+#         print("# ------------------ #")
+    return board_out
+
+def update_col(board_ans,check_col,index):
+    # print(check_col)
+    if 1 in check_col[index]:
+        index1=get_index(check_col[index])
+        # print(index1)
+        num=[board_ans[x][index][0] for x in index1]
+        # print(num)
+        matrix_board=[[board_ans[j][i] for j in range(len(board_ans))] for i in range(len(board_ans[0])) ]
+        board_out_mod=matrix_board.copy()
+        board_out_mod[index][0]=[list(set(matrix_board[index][0])-set(num)) if check_col[index][0] != 1 else matrix_board[index][0][0]][0]
+        board_out_mod[index][1]=[list(set(matrix_board[index][1])-set(num)) if check_col[index][1] != 1 else matrix_board[index][1][0]][0]
+        board_out_mod[index][2]=[list(set(matrix_board[index][2])-set(num)) if check_col[index][2] != 1 else matrix_board[index][2][0]][0]
+        board_out_mod[index][3]=[list(set(matrix_board[index][3])-set(num)) if check_col[index][3] != 1 else matrix_board[index][3][0]][0]
+        board_out_mod[index][4]=[list(set(matrix_board[index][4])-set(num)) if check_col[index][4] != 1 else matrix_board[index][4][0]][0]
+        board_out_mod[index][5]=[list(set(matrix_board[index][5])-set(num)) if check_col[index][5] != 1 else matrix_board[index][5][0]][0]
+        board_out=[[board_out_mod[j][i] for j in range(len(board_out_mod))] for i in range(len(board_out_mod[0])) ]
+    return board_out
+
+def getVaild(board_ans,n):
+    check_row=[]
+    check_col=[]
+    for i in range(n):
+        tmp1=board_ans[i]
+        # print(tmp1)
+        flag=[1 if len(tmp) == 1 else 0 for tmp in tmp1]
+        # print("%s\t%s\t%s"%(i,board_ans[i],flag))
+        check_row.append(flag)   
+        tmpcol=[]
+        for j in range(n):
+            tmp2=board_ans[j][i]
+            flag2=[1 if len(tmp2) == 1 else 0][0]
+            # print("%s\t%s\t%s\t%s"%(i,j,tmp2,flag2))
+            tmpcol.append(flag2)
+        check_col.append(tmpcol)
+    # print(check_col)
+    return check_row,check_col
+
+def re_slove(board_ans,n):
+    check_row,check_col=getVaild(board_ans,n)
+    board_out1=update_row(board_ans,check_row,0)
+    board_out1c=check_arr(board_out1)
+    
+    check_row,check_col=getVaild(board_out1c,n)
+    board_out2=update_row(board_out1c,check_row,1)
+    board_out2c=check_arr(board_out2)
+    
+    check_row,check_col=getVaild(board_out2c,n)
+    board_out3=update_row(board_out2c,check_row,2)
+    board_out3c=check_arr(board_out3)
+    
+    check_row,check_col=getVaild(board_out3c,n)
+    board_out4=update_row(board_out3c,check_row,3)
+    board_out4c=check_arr(board_out4)
+    
+    check_row,check_col=getVaild(board_out4c,n)
+    board_out5=update_row(board_out4c,check_row,4)
+    board_out5c=check_arr(board_out5)
+    
+    check_row,check_col=getVaild(board_out5c,n)
+    board_out6=update_row(board_out5c,check_row,5)
+    board_out6c=check_arr(board_out6)
+    
+    check_row,check_col=getVaild(board_out6c,n)
+    board_out7=update_col(board_out6c,check_col,0)
+    board_out7c=check_arr(board_out7)
+    
+    check_row,check_col=getVaild(board_out7c,n)
+    board_out8=update_col(board_out7c,check_col,1)
+    board_out8c=check_arr(board_out8)
+    
+    check_row,check_col=getVaild(board_out8c,n)
+    board_out9=update_col(board_out8c,check_col,2)
+    board_out9c=check_arr(board_out9)
+    
+    check_row,check_col=getVaild(board_out9c,n)
+    board_out10=update_col(board_out9c,check_col,3)
+    board_out10c=check_arr(board_out10)
+    
+    check_row,check_col=getVaild(board_out10c,n)
+    board_out11=update_col(board_out10c,check_col,4)
+    board_out11c=check_arr(board_out11)
+    
+    check_row,check_col=getVaild(board_out11c,n)
+    board_out12=update_col(board_out11c,check_col,5)
+    board_out=check_arr(board_out12)
+    check_row,check_col=getVaild(board_out,n)
+    # print("# ------------------ #")
+    # for i in range(n):
+    #     print(board_out[i])  
+    return board_out
+
+fn = "Q1_6x6.list"
+num= ["1","2","3","4","5","6"]
+n=6
+print(f"#Info: {n}x{n} sudoku")
+try:
+    data=[line.strip() for line in open(fn,'r')]
+    row=[]
+    col=[] 
+    for i in range(n):
+        tmp1=data[i].split("|")
+        row.append(tmp1)
+        tmpcol=[]
+        for j in range(n):
+            tmp2=data[j].split("|")[i]
+            tmpcol.append(tmp2)
+        col.append(tmpcol)
+    group=[]
+    for i in range(0,n,2):
+        tmp3=data[i].split("|")
+        tmp4=data[i+1].split("|")
+        group.append([tmp3[0],tmp3[1],tmp3[2],tmp4[0],tmp4[1],tmp4[2]])
+        group.append([tmp3[3],tmp3[4],tmp3[5],tmp4[3],tmp4[4],tmp4[5]])
+    row_ans=[]
+    for i in range(len(row)):
+        tmp5=row[i]
+        tmp_ans=list(set(num)-set(tmp5))
+        row_ans.append(tmp_ans)
+    col_ans=[]
+    for i in range(len(col)):
+        tmp6=col[i]
+        tmp_ans=list(set(num)-set(tmp6))
+        col_ans.append(tmp_ans)
+    group_ans=[]
+    for i in range(len(group)):
+        tmp7=group[i]
+        tmp_ans=list(set(num)-set(tmp7))
+        group_ans.append(tmp_ans)
+    #第一次解
+    PA1=list(set(row_ans[0]) & set(col_ans[0]) & set(group_ans[0]))
+    PB1=list(set(row_ans[0]) & set(col_ans[1]) & set(group_ans[0]))
+    PC1=list(set(row_ans[0]) & set(col_ans[2]) & set(group_ans[0]))
+    PD1=list(set(row_ans[0]) & set(col_ans[3]) & set(group_ans[1]))
+    PE1=list(set(row_ans[0]) & set(col_ans[4]) & set(group_ans[1]))
+    PF1=list(set(row_ans[0]) & set(col_ans[5]) & set(group_ans[1]))
+    
+    PA2=list(set(row_ans[1]) & set(col_ans[0]) & set(group_ans[0]))
+    PB2=list(set(row_ans[1]) & set(col_ans[1]) & set(group_ans[0]))
+    PC2=list(set(row_ans[1]) & set(col_ans[2]) & set(group_ans[0]))
+    PD2=list(set(row_ans[1]) & set(col_ans[3]) & set(group_ans[1]))
+    PE2=list(set(row_ans[1]) & set(col_ans[4]) & set(group_ans[1]))
+    PF2=list(set(row_ans[1]) & set(col_ans[5]) & set(group_ans[1]))
+    
+    PA3=list(set(row_ans[2]) & set(col_ans[0]) & set(group_ans[2]))
+    PB3=list(set(row_ans[2]) & set(col_ans[1]) & set(group_ans[2]))
+    PC3=list(set(row_ans[2]) & set(col_ans[2]) & set(group_ans[2]))
+    PD3=list(set(row_ans[2]) & set(col_ans[3]) & set(group_ans[3]))
+    PE3=list(set(row_ans[2]) & set(col_ans[4]) & set(group_ans[3]))
+    PF3=list(set(row_ans[2]) & set(col_ans[5]) & set(group_ans[3]))
+    
+    PA4=list(set(row_ans[3]) & set(col_ans[0]) & set(group_ans[2]))
+    PB4=list(set(row_ans[3]) & set(col_ans[1]) & set(group_ans[2]))
+    PC4=list(set(row_ans[3]) & set(col_ans[2]) & set(group_ans[2]))
+    PD4=list(set(row_ans[3]) & set(col_ans[3]) & set(group_ans[3]))
+    PE4=list(set(row_ans[3]) & set(col_ans[4]) & set(group_ans[3]))
+    PF4=list(set(row_ans[3]) & set(col_ans[5]) & set(group_ans[3]))
+    
+    PA5=list(set(row_ans[4]) & set(col_ans[0]) & set(group_ans[4]))
+    PB5=list(set(row_ans[4]) & set(col_ans[1]) & set(group_ans[4]))
+    PC5=list(set(row_ans[4]) & set(col_ans[2]) & set(group_ans[4]))
+    PD5=list(set(row_ans[4]) & set(col_ans[3]) & set(group_ans[5]))
+    PE5=list(set(row_ans[4]) & set(col_ans[4]) & set(group_ans[5]))
+    PF5=list(set(row_ans[4]) & set(col_ans[5]) & set(group_ans[5]))
+    
+    PA6=list(set(row_ans[5]) & set(col_ans[0]) & set(group_ans[4]))
+    PB6=list(set(row_ans[5]) & set(col_ans[1]) & set(group_ans[4]))
+    PC6=list(set(row_ans[5]) & set(col_ans[2]) & set(group_ans[4]))
+    PD6=list(set(row_ans[5]) & set(col_ans[3]) & set(group_ans[5]))
+    PE6=list(set(row_ans[5]) & set(col_ans[4]) & set(group_ans[5]))
+    PF6=list(set(row_ans[5]) & set(col_ans[5]) & set(group_ans[5]))
+    
+#    board_possible=[[PA1,PB1,PC1,PD1,PE1,PF1],[PA2,PB2,PC2,PD2,PE2,PF2],\
+#[PA3,PB3,PC3,PD3,PE3,PF3],[PA4,PB4,PC4,PD4,PE4,PF4],\
+#[PA5,PB5,PC5,PD5,PE5,PF5],[PA6,PB6,PC6,PD6,PE6,PF6]]    
+        
+    A1=[PA1 if row[0][0]=="-" else row[0][0]][0]
+    B1=[PB1 if row[0][1]=="-" else row[0][1]][0]
+    C1=[PC1 if row[0][2]=="-" else row[0][2]][0]
+    D1=[PD1 if row[0][3]=="-" else row[0][3]][0]
+    E1=[PE1 if row[0][4]=="-" else row[0][4]][0]
+    F1=[PF1 if row[0][5]=="-" else row[0][5]][0]
+    
+    A2=[PA2 if row[1][0]=="-" else row[1][0]][0]
+    B2=[PB2 if row[1][1]=="-" else row[1][1]][0]
+    C2=[PC2 if row[1][2]=="-" else row[1][2]][0]
+    D2=[PD2 if row[1][3]=="-" else row[1][3]][0]
+    E2=[PE2 if row[1][4]=="-" else row[1][4]][0]
+    F2=[PF2 if row[1][5]=="-" else row[1][5]][0]
+    
+    A3=[PA3 if row[2][0]=="-" else row[2][0]][0]
+    B3=[PB3 if row[2][1]=="-" else row[2][1]][0]
+    C3=[PC3 if row[2][2]=="-" else row[2][2]][0]
+    D3=[PD3 if row[2][3]=="-" else row[2][3]][0]
+    E3=[PE3 if row[2][4]=="-" else row[2][4]][0]
+    F3=[PF3 if row[2][5]=="-" else row[2][5]][0]
+    
+    A4=[PA4 if row[3][0]=="-" else row[3][0]][0]
+    B4=[PB4 if row[3][1]=="-" else row[3][1]][0]
+    C4=[PC4 if row[3][2]=="-" else row[3][2]][0]
+    D4=[PD4 if row[3][3]=="-" else row[3][3]][0]
+    E4=[PE4 if row[3][4]=="-" else row[3][4]][0]
+    F4=[PF4 if row[3][5]=="-" else row[3][5]][0]
+    
+    A5=[PA5 if row[4][0]=="-" else row[4][0]][0]
+    B5=[PB5 if row[4][1]=="-" else row[4][1]][0]
+    C5=[PC5 if row[4][2]=="-" else row[4][2]][0]
+    D5=[PD5 if row[4][3]=="-" else row[4][3]][0]
+    E5=[PE5 if row[4][4]=="-" else row[4][4]][0]
+    F5=[PF5 if row[4][5]=="-" else row[4][5]][0]
+    
+    A6=[PA6 if row[5][0]=="-" else row[5][0]][0]
+    B6=[PB6 if row[5][1]=="-" else row[5][1]][0]
+    C6=[PC6 if row[5][2]=="-" else row[5][2]][0]
+    D6=[PD6 if row[5][3]=="-" else row[5][3]][0]
+    E6=[PE6 if row[5][4]=="-" else row[5][4]][0]
+    F6=[PF6 if row[5][5]=="-" else row[5][5]][0]
+    # print("%s\t|%s\t|%s\t|%s\t|%s\t|%s"%(A1,B1,C1,D1,E1,F1))
+    # print("%s\t|%s\t|%s\t|%s\t|%s\t|%s"%(A2,B2,C2,D2,E2,F2))
+    # print("%s\t|%s\t|%s\t|%s\t|%s\t|%s"%(A3,B3,C3,D3,E3,F3))
+    # print("%s\t|%s\t|%s\t|%s\t|%s\t|%s"%(A4,B4,C4,D4,E4,F4))
+    # print("%s\t|%s\t|%s\t|%s\t|%s\t|%s"%(A5,B5,C5,D5,E5,F5))
+    # print("%s\t|%s\t|%s\t|%s\t|%s\t|%s"%(A6,B6,C6,D6,E6,F6))
+    
+    board_ans=[[A1,B1,C1,D1,E1,F1],[A2,B2,C2,D2,E2,F2],\
+[A3,B3,C3,D3,E3,F3],[A4,B4,C4,D4,E4,F4],\
+[A5,B5,C5,D5,E5,F5],[A6,B6,C6,D6,E6,F6]]        
+
+    board_out=re_slove(board_ans,n)
+    print("%s\t|%s\t|%s\t|%s\t|%s\t|%s"%(board_out[0][0],board_out[0][1],board_out[0][2],board_out[0][3],board_out[0][4],board_out[0][5]))
+    print("%s\t|%s\t|%s\t|%s\t|%s\t|%s"%(board_out[1][0],board_out[1][1],board_out[1][2],board_out[1][3],board_out[1][4],board_out[1][5]))
+    print("%s\t|%s\t|%s\t|%s\t|%s\t|%s"%(board_out[2][0],board_out[2][1],board_out[2][2],board_out[2][3],board_out[2][4],board_out[2][5]))
+    print("%s\t|%s\t|%s\t|%s\t|%s\t|%s"%(board_out[3][0],board_out[3][1],board_out[3][2],board_out[3][3],board_out[3][4],board_out[3][5]))
+    print("%s\t|%s\t|%s\t|%s\t|%s\t|%s"%(board_out[4][0],board_out[4][1],board_out[4][2],board_out[4][3],board_out[4][4],board_out[4][5]))
+    print("%s\t|%s\t|%s\t|%s\t|%s\t|%s"%(board_out[5][0],board_out[5][1],board_out[5][2],board_out[5][3],board_out[5][4],board_out[5][5]))
+      
+except FileNotFoundError:
+    print(f"找不到檔案：{fn}")
+    exit()
+ 
